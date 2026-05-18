@@ -401,10 +401,12 @@ def write_recipe_image(
     recipe_id: str,
     images_dir: Path,
     *,
+    image_index: int = 1,
     overwrite: bool = False,
 ) -> str:
     extension = image_extension(target)
-    output_path = images_dir / f"{recipe_id}{extension}"
+    suffix = "" if image_index == 1 else f"-{image_index}"
+    output_path = images_dir / f"{recipe_id}{suffix}{extension}"
     relative_path = output_path.as_posix()
 
     if output_path.exists() and not overwrite:
@@ -421,15 +423,43 @@ def write_recipe_image(
     return relative_path
 
 
-def first_image_target_for_recipe(
+def image_targets_for_recipe(
     image_events: list[tuple[int, list[str]]],
     start: int,
     end: int,
-) -> str:
+) -> list[str]:
+    result: list[str] = []
+    seen: set[str] = set()
     for line_index, targets in image_events:
-        if start <= line_index <= end and targets:
-            return targets[0]
-    return ""
+        if start <= line_index <= end:
+            for target in targets:
+                if target not in seen:
+                    seen.add(target)
+                    result.append(target)
+    return result
+
+
+def write_recipe_images(
+    docx_path: Path,
+    targets: list[str],
+    recipe_id: str,
+    images_dir: Path,
+    *,
+    overwrite: bool = False,
+) -> list[str]:
+    images: list[str] = []
+    for index, target in enumerate(targets, start=1):
+        image = write_recipe_image(
+            docx_path,
+            target,
+            recipe_id,
+            images_dir,
+            image_index=index,
+            overwrite=overwrite,
+        )
+        if image:
+            images.append(image)
+    return images
 
 
 def section_type(line: str) -> str | None:
@@ -848,10 +878,10 @@ def build_recipes_from_doc(
         full_text = " ".join([title, *body])
         category, subcategory, recipe_type, needs_review, review_notes = classify_recipe(path.name, title, ingredients, steps, notes)
         recipe_id = unique_slug(title, used_slugs)
-        image = ""
-        image_target = first_image_target_for_recipe(image_events, start, end)
-        if extract_images and image_target:
-            image = write_recipe_image(path, image_target, recipe_id, images_dir, overwrite=overwrite_images)
+        images: list[str] = []
+        image_targets = image_targets_for_recipe(image_events, start, end)
+        if extract_images and image_targets:
+            images = write_recipe_images(path, image_targets, recipe_id, images_dir, overwrite=overwrite_images)
 
         recipe = {
             "id": recipe_id,
@@ -859,7 +889,8 @@ def build_recipes_from_doc(
             "category": category,
             "subcategory": subcategory,
             "type": recipe_type,
-            "image": image or PLACEHOLDER_IMAGE,
+            "image": images[0] if images else PLACEHOLDER_IMAGE,
+            "images": images,
             "time": extract_time(full_text),
             "difficulty": extract_difficulty(full_text),
             "servings": extract_servings(full_text),
@@ -945,7 +976,8 @@ def main() -> int:
         all_recipes.extend(recipes)
         pending = sum(1 for recipe in recipes if recipe["needsReview"])
         with_image = sum(1 for recipe in recipes if recipe["image"])
-        print(f"{source}: {len(recipes)} recetas extraidas ({pending} por revisar, {with_image} con imagen)")
+        total_images = sum(len(recipe.get("images", [])) for recipe in recipes)
+        print(f"{source}: {len(recipes)} recetas extraidas ({pending} por revisar, {with_image} con imagen, {total_images} imagenes)")
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(all_recipes, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

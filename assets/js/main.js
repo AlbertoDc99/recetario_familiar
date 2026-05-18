@@ -126,7 +126,23 @@
   }
 
   function imageFor(recipe) {
-    return recipe.image && recipe.image.trim() ? recipe.image : PLACEHOLDER_IMAGE;
+    const images = imageList(recipe);
+    return images[0] || PLACEHOLDER_IMAGE;
+  }
+
+  function imageList(recipe) {
+    const values = [];
+    if (recipe.image && recipe.image.trim()) {
+      values.push(recipe.image.trim());
+    }
+    if (Array.isArray(recipe.images)) {
+      recipe.images.forEach((image) => {
+        if (image && String(image).trim()) {
+          values.push(String(image).trim());
+        }
+      });
+    }
+    return [...new Set(values)];
   }
 
   function compactList(values) {
@@ -207,6 +223,7 @@
         subcategory: recipe.subcategory || "Sin clasificar",
         type: recipe.type || "Sin clasificar",
         image: recipe.image || "",
+        images: Array.isArray(recipe.images) ? recipe.images : [],
         time: recipe.time || "",
         difficulty: recipe.difficulty || "",
         servings: recipe.servings || "",
@@ -415,6 +432,7 @@
       <article class="detail-layout">
         <div>
           <img class="detail-image" src="${escapeHtml(imageFor(recipe))}" alt="" onerror="this.src='${PLACEHOLDER_IMAGE}'">
+          ${renderImageGallery(recipe)}
         </div>
         <div class="detail-content">
           <p class="detail-kicker">${escapeHtml(compactList([recipe.category, recipe.subcategory, recipe.type]).join(" · "))}</p>
@@ -432,6 +450,26 @@
           ${recipe.source ? `<p class="source-line">Fuente: ${escapeHtml(recipe.source)}</p>` : ""}
         </div>
       </article>
+    `;
+  }
+
+  function renderImageGallery(recipe) {
+    const images = imageList(recipe).filter((image) => image !== imageFor(recipe));
+    if (!images.length) {
+      return "";
+    }
+
+    return `
+      <section class="image-gallery" aria-label="Fotos de preparación">
+        <h2>Fotos de preparación</h2>
+        <div class="gallery-grid">
+          ${images.map((image, index) => `
+            <a href="${escapeHtml(image)}" target="_blank" rel="noopener">
+              <img src="${escapeHtml(image)}" alt="Foto de preparación ${index + 1}" loading="lazy" onerror="this.closest('a').remove()">
+            </a>
+          `).join("")}
+        </div>
+      </section>
     `;
   }
 

@@ -152,6 +152,25 @@
     qs(id).value = value || "";
   }
 
+  function compactList(values) {
+    return values.filter((value) => value && String(value).trim());
+  }
+
+  function imageList(recipe) {
+    const values = [];
+    if (recipe.image && recipe.image.trim()) {
+      values.push(recipe.image.trim());
+    }
+    if (Array.isArray(recipe.images)) {
+      recipe.images.forEach((image) => {
+        if (image && String(image).trim()) {
+          values.push(String(image).trim());
+        }
+      });
+    }
+    return [...new Set(values)];
+  }
+
   function renderForm() {
     const recipe = selectedRecipe();
     if (!recipe) {
@@ -169,6 +188,7 @@
     setFieldValue("#field-difficulty", recipe.difficulty);
     setFieldValue("#field-servings", recipe.servings);
     setFieldValue("#field-image", recipe.image);
+    setFieldValue("#field-images", imageList(recipe).join("\n"));
     setFieldValue("#field-ingredients", (recipe.ingredients || []).join("\n"));
     setFieldValue("#field-steps", (recipe.steps || []).join("\n"));
     setFieldValue("#field-notes", recipe.notes);
@@ -192,6 +212,9 @@
     const current = selectedRecipe() || {};
     const title = el.title.value.trim() || "Receta sin título";
     const id = uniqueSlug(el.id.value.trim() || title, current.id);
+    const galleryImages = linesFromTextarea(el.images.value);
+    const mainImage = el.image.value.trim() || galleryImages[0] || "";
+    const images = [...new Set(compactList([mainImage, ...galleryImages]))];
     return {
       ...current,
       id,
@@ -199,7 +222,8 @@
       category: el.category.value,
       subcategory: el.subcategory.value,
       type: el.type.value,
-      image: el.image.value.trim(),
+      image: mainImage,
+      images,
       time: el.time.value.trim(),
       difficulty: el.difficulty.value.trim(),
       servings: el.servings.value.trim(),
@@ -236,6 +260,7 @@
       subcategory: "Sin clasificar",
       type: "Sin clasificar",
       image: "",
+      images: [],
       time: "",
       difficulty: "",
       servings: "",
@@ -311,6 +336,9 @@
     const extension = file.name.split(".").pop()?.toLowerCase() || "jpg";
     const id = el.id.value.trim() || uniqueSlug(el.title.value || "receta");
     el.image.value = `assets/img/recetas/${id}.${extension}`;
+    if (!el.images.value.trim()) {
+      el.images.value = el.image.value;
+    }
     el.imagePreview.src = URL.createObjectURL(file);
   }
 
@@ -366,6 +394,7 @@
     el.difficulty = qs("#field-difficulty");
     el.servings = qs("#field-servings");
     el.image = qs("#field-image");
+    el.images = qs("#field-images");
     el.imageFile = qs("#field-image-file");
     el.imagePreview = qs("#image-preview");
     el.ingredients = qs("#field-ingredients");

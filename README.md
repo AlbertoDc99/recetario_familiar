@@ -129,6 +129,10 @@ Ejemplo:
   "subcategory": "Elaborados",
   "type": "Tartas y pasteles",
   "image": "assets/img/recetas/tarta-de-queso.jpg",
+  "images": [
+    "assets/img/recetas/tarta-de-queso.jpg",
+    "assets/img/recetas/tarta-de-queso-2.jpg"
+  ],
   "time": "45 minutos",
   "difficulty": "Fácil",
   "servings": "6 personas",
@@ -159,6 +163,7 @@ Desde ahí puedes:
 - cambiar categoría, subcategoría y tipo;
 - editar ingredientes, pasos y notas;
 - cambiar la ruta de la imagen;
+- editar la galería de imágenes de la receta;
 - marcar una receta como comida habitual para el menú semanal;
 - marcar una receta como destacada;
 - crear una receta nueva;
@@ -204,7 +209,7 @@ Por defecto usa recetas marcadas como habituales, destacadas o favoritas. Si qui
 
 Si todavía no hay suficientes habituales, el planificador avisará. Puedes activar `Completar con otras recetas saladas si faltan habituales`, pero esa opción puede meter recetas menos rutinarias.
 
-## Cómo cambiar una imagen
+## Cómo cambiar imágenes
 
 Guarda las fotos en:
 
@@ -212,19 +217,25 @@ Guarda las fotos en:
 assets/img/recetas/
 ```
 
-Recomendación: usa el mismo nombre que el `id` de la receta:
+Recomendación: usa el mismo nombre que el `id` de la receta para la foto principal y sufijos numerados para fotos de preparación:
 
 ```text
 assets/img/recetas/tarta-de-queso.jpg
+assets/img/recetas/tarta-de-queso-2.jpg
+assets/img/recetas/tarta-de-queso-3.jpg
 ```
 
-Luego edita el campo `image`:
+Luego edita `image` para la foto principal y `images` para la galería completa:
 
 ```json
-"image": "assets/img/recetas/tarta-de-queso.jpg"
+"image": "assets/img/recetas/tarta-de-queso.jpg",
+"images": [
+  "assets/img/recetas/tarta-de-queso.jpg",
+  "assets/img/recetas/tarta-de-queso-2.jpg"
+]
 ```
 
-Si `image` está vacío, la web usa automáticamente:
+Si `image` e `images` están vacíos, la web usa automáticamente:
 
 ```text
 assets/img/placeholder.jpg
@@ -296,7 +307,7 @@ Sube:
 - `docs/`
 - `source-docs/.gitkeep`
 
-En esta extracción inicial, `assets/img/recetas/` pesa aproximadamente 171 MB. Funciona, pero si GitHub tarda mucho convendra reducir o recomprimir imagenes.
+En esta extracción, `assets/img/recetas/` pesa aproximadamente 189 MB porque incluye fotos principales y algunas fotos de preparación. Funciona, pero si GitHub tarda mucho convendra reducir o recomprimir imagenes.
 
 ## Qué NO subir a GitHub
 
