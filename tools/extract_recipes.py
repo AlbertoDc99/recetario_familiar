@@ -71,6 +71,40 @@ GENERIC_TITLE_WORDS = {
     "elaboración",
 }
 
+NON_TITLE_PREFIXES = (
+    "material adicional",
+    "material necesario",
+    "papel ",
+    "utensilios",
+    "molde",
+    "moldes",
+    "lista de ingredientes",
+    "importante",
+    "opcional",
+    "como guarnicion",
+    "como guarnición",
+    "un poco de",
+    "una pizca",
+    "unas ",
+    "unos ",
+)
+
+TITLE_KEYWORDS = (
+    "arroz",
+    "bizcocho",
+    "brownie",
+    "crema",
+    "croquetas",
+    "ensalada",
+    "flan",
+    "galletas",
+    "lomo",
+    "pollo",
+    "sopa",
+    "tarta",
+    "tortilla",
+)
+
 TAPA_KEYWORDS = (
     "aperitivo",
     "aperitivos",
@@ -451,6 +485,10 @@ def is_probable_title(lines: list[str], index: int) -> bool:
         return False
     if section_type(line):
         return False
+    if any(compact.startswith(prefix) for prefix in NON_TITLE_PREFIXES):
+        return False
+    if re.search(r"\b(para decorar|para adornar|para cubrir|para poner|cantidad al gusto)\b", compact):
+        return False
     if is_numbered_or_bullet(line):
         return False
     if line.endswith((".", ";", ",")):
@@ -468,7 +506,8 @@ def is_probable_title(lines: list[str], index: int) -> bool:
     if uppercase_title:
         return True
     starts_like_title = line[:1].isupper()
-    if next_is_marker and len(line) <= 90 and starts_like_title and not ingredient_like(line):
+    has_title_keyword = any(compact.startswith(keyword) for keyword in TITLE_KEYWORDS)
+    if next_is_marker and len(line) <= 90 and starts_like_title and (has_title_keyword or not ingredient_like(line)):
         return True
     return False
 

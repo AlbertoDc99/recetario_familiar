@@ -5074,7 +5074,13 @@
       "Vamos a necesitar unos cuantos globos inflados en el mismo tamaño más o menos. Unas hojas de papel de horno para apoyar los cuencos de chocolate y que se sequen y un chocolate que funda bien, da igual negro, blanco o con leche. Yo os recomiendo que sea un sucedáneo de chocolate que funde muy bien y se mantiene líquido cuando pierde un poco de temperatura.",
       "Inflar los globos de tamaño similar. Lavar muy bien los globos una vez inflados.",
       "Fundir el chocolate hasta que esté completamente líquido, no dejar de remover constantemente para que no queden trozos sin fundir. Una vez que el chocolate esté listo, pasarlo a un recipiente estrecho, donde quepan los globos y actuar con rapidez.",
-      "Coger una bandeja grande y poner un papel de hornear sobre ella. Mojar cada globo en el chocolate más o menos hasta la mitad, escurrir un poco y apoyar sobre el papel. El mismo chocolate sobrante que escurra del globo, hará de peana de los cuencos de chocolate. Además, no tenemos por qué hacerlos rectos, podemos dar diferentes formas, que queden más altos de un lado que de otro o de forma irregular."
+      "Coger una bandeja grande y poner un papel de hornear sobre ella. Mojar cada globo en el chocolate más o menos hasta la mitad, escurrir un poco y apoyar sobre el papel. El mismo chocolate sobrante que escurra del globo, hará de peana de los cuencos de chocolate. Además, no tenemos por qué hacerlos rectos, podemos dar diferentes formas, que queden más altos de un lado que de otro o de forma irregular.",
+      "IMPORTANTE",
+      "El chocolate debe de estar un poco tibio, por debajo de los 40 º, si mojamos el globo con el chocolate demasiado caliente se puede explotar y quemarnos con el chocolate.",
+      "Si el chocolate está muy caliente los cuencos quedan con una película blanca muy fea por dentro.",
+      "Poner a refrigerar en la nevera durante unos 15/20 minutos o hasta que se hayan secado. Despegar con cuidado del papel de horno.",
+      "Una vez listos y refrigerados, los despegamos del papel con cuidado y con una tijera cortar el globo por donde lo atamos, mejor despacio, para que el aire salga poco a poco. Si los explotamos, podemos dañar los cuencos. Una vez que pierdan el aire, solo tendremos que despegar el globo de forma suave. Conservar los cuencos en el refrigerador hasta que se vayan a usar.",
+      "Y ya tenemos nuestros cuencos de chocolate preparados para poner una mousse, un helado, una crema…lo que sea pero que esté frío pues con algo caliente se fundiría."
     ],
     "notes": "",
     "tags": [
@@ -5086,34 +5092,6 @@
     ],
     "source": "DULCES.docx",
     "needsReview": false
-  },
-  {
-    "id": "importante",
-    "title": "IMPORTANTE",
-    "category": "Dulce",
-    "subcategory": "Elaborados",
-    "type": "Cremas y mousses",
-    "image": "assets/img/recetas/importante.png",
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
-    "steps": [],
-    "notes": "El chocolate debe de estar un poco tibio, por debajo de los 40 º, si mojamos el globo con el chocolate demasiado caliente se puede explotar y quemarnos con el chocolate.\nSi el chocolate está muy caliente los cuencos quedan con una película blanca muy fea por dentro.\n4. Poner a refrigerar en la nevera durante unos 15/20 minutos o hasta que se hayan secado. Despegar con cuidado del papel de horno.\n5. Una vez listos y refrigerados, los despegamos del papel con cuidado y con una tijera cortar el globo por donde lo atamos, mejor despacio, para que el aire salga poco a poco. Si los explotamos, podemos dañar los cuencos. Una vez que pierdan el aire, solo tendremos que despegar el globo de forma suave. Conservar los cuencos en el refrigerador hasta que se vayan a usar.\nY ya tenemos nuestros cuencos de chocolate preparados para poner una mousse, un helado, una crema…lo que sea pero que esté frío pues con algo caliente se fundiría.",
-    "tags": [
-      "Dulce",
-      "Elaborados",
-      "Cremas y mousses",
-      "Horno",
-      "Chocolate",
-      "Por revisar"
-    ],
-    "source": "DULCES.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron ingredientes",
-      "No se detectaron pasos"
-    ]
   },
   {
     "id": "mousse-rapido-de-cafe",
@@ -7192,36 +7170,8 @@
       "60 gr (6 cucharadas) de maicena o almidón de maíz",
       "120 gr de mantequilla sin sal",
       "1 cucharada de esencia o extracto de vainilla",
-      "Molde desmontable de 24 cm x 8 cm de alto"
-    ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Dulce",
-      "Elaborados",
-      "Tartas y pasteles",
-      "Horno",
-      "Sin horno",
-      "Chocolate",
-      "Por revisar"
-    ],
-    "source": "DULCES.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "papel-film",
-    "title": "Papel film",
-    "category": "Dulce",
-    "subcategory": "Sencillos",
-    "type": "Bizcochos",
-    "image": "assets/img/recetas/papel-film.png",
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
+      "Molde desmontable de 24 cm x 8 cm de alto",
+      "Papel film",
       "400 ml (1+2/3 tazas) de nata para montar o crema de leche para batir",
       "50 gr (6 cucharadas) de azúcar glas o azúcar impalpable",
       "10 gr (2 cucharadas) de cacao puro en polvo",
@@ -7238,8 +7188,10 @@
     "notes": "",
     "tags": [
       "Dulce",
-      "Sencillos",
-      "Bizcochos",
+      "Elaborados",
+      "Tartas y pasteles",
+      "Horno",
+      "Sin horno",
       "Chocolate"
     ],
     "source": "DULCES.docx",
@@ -7268,29 +7220,31 @@
       "300 g de queso fresco para untar",
       "125 g de azúcar glasé",
       "12 nueces peladas para decorar",
-      "150 ml de café fuerte"
+      "150 ml de café fuerte",
+      "Material adicional: papel para hornear"
     ],
-    "steps": [],
+    "steps": [
+      "Hacer 150 ml. de café fuerte con el café soluble y dejar enfriar. Picar las nueces en trozos grandes. Separar las yemas de las claras.",
+      "Mezclar brevemente las yemas de huevo, el azúcar y el aceite con 100 ml. del café. Tamizar la harina, la levadura en polvo y un pellizco de sal, añadir a la mezcla anterior y mezclar brevemente. Montar las claras a punto de nieve con un pellizco de sal, dividir en 3 porciones e ir mezclando una a una las porciones con la masa anterior. Al añadir la última porción, introducir también las nueces picadas y mezclar. Cubrir la base de un molde desmontable (22 cm. Ø) con papel para hornear, engrasar el resto del molde y verter la masa. Hornear en el horno precalentado a 170ºC durante aprox. 50 minutos. Apagar el horno y dejar reposar la tarta dentro durante unos 5-10 minutos y después retirar y colocar sobre una rejilla. Dejar enfriar durante 5 minutos, desmoldar y retirar el papel con cuidado. Dejar enfriar por completo y cortar por la mitad, de manera que tengamos una mitad superior y otra inferior.",
+      "Mezclar el queso fresco con 2-3 cucharaditas de café y remover con una espátula. Añadir 25 g. de azúcar glasé tamizado previamente y mezclar. Extender la mezcla sobre la mitad inferior de la tarta y colocar la mitad superior encima. En un cuenco, tamizar el resto del azúcar glasé y mezclar con el resto del café, unas 2-3 cucharaditas, hasta obtener un glaseado espeso. Cubrir la parte de arriba de la tarta con el glaseado, decorar con nueces y dejar secar."
+    ],
     "notes": "",
     "tags": [
       "Dulce",
       "Elaborados",
       "Tartas y pasteles",
-      "Por revisar"
+      "Horno"
     ],
     "source": "DULCES.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
+    "needsReview": false
   },
   {
-    "id": "material-adicional-papel-para-hornear",
-    "title": "Material adicional: papel para hornear",
+    "id": "tarta-de-chocolate-con-nueces",
+    "title": "Tarta de chocolate con nueces",
     "category": "Dulce",
     "subcategory": "Elaborados",
     "type": "Tartas y pasteles",
-    "image": "assets/img/recetas/material-adicional-papel-para-hornear.png",
+    "image": "assets/img/recetas/tarta-de-chocolate-con-nueces.png",
     "time": "",
     "difficulty": "",
     "servings": "",
@@ -7304,10 +7258,6 @@
       "Azúcar glas, cantidad necesaria"
     ],
     "steps": [
-      "Hacer 150 ml. de café fuerte con el café soluble y dejar enfriar. Picar las nueces en trozos grandes. Separar las yemas de las claras.",
-      "Mezclar brevemente las yemas de huevo, el azúcar y el aceite con 100 ml. del café. Tamizar la harina, la levadura en polvo y un pellizco de sal, añadir a la mezcla anterior y mezclar brevemente. Montar las claras a punto de nieve con un pellizco de sal, dividir en 3 porciones e ir mezclando una a una las porciones con la masa anterior. Al añadir la última porción, introducir también las nueces picadas y mezclar. Cubrir la base de un molde desmontable (22 cm. Ø) con papel para hornear, engrasar el resto del molde y verter la masa. Hornear en el horno precalentado a 170ºC durante aprox. 50 minutos. Apagar el horno y dejar reposar la tarta dentro durante unos 5-10 minutos y después retirar y colocar sobre una rejilla. Dejar enfriar durante 5 minutos, desmoldar y retirar el papel con cuidado. Dejar enfriar por completo y cortar por la mitad, de manera que tengamos una mitad superior y otra inferior.",
-      "Mezclar el queso fresco con 2-3 cucharaditas de café y remover con una espátula. Añadir 25 g. de azúcar glasé tamizado previamente y mezclar. Extender la mezcla sobre la mitad inferior de la tarta y colocar la mitad superior encima. En un cuenco, tamizar el resto del azúcar glasé y mezclar con el resto del café, unas 2-3 cucharaditas, hasta obtener un glaseado espeso. Cubrir la parte de arriba de la tarta con el glaseado, decorar con nueces y dejar secar.",
-      "Tarta de chocolate",
       "Engrasamos un molde desmontable de unos 26 cm de diámetro con un poco de mantequilla.",
       "Derretimos la mantequilla en el microondas.",
       "Trituramos las nueces con una picadora hasta obtener una textura muy fina, similar a una harina gruesa.",
@@ -8232,35 +8182,9 @@
       "150 gr de azúcar",
       "El zumo de 1 limón",
       "Útiles de cocina:",
-      "molde redondo de 26cm de diámetro"
+      "molde redondo de 26cm de diámetro",
+      "Papel de horno para forrar la base del molde"
     ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Dulce",
-      "Elaborados",
-      "Tartas y pasteles",
-      "Horno",
-      "Sin horno",
-      "Por revisar"
-    ],
-    "source": "DULCES.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "papel-de-horno-para-forrar-la-base-del-molde",
-    "title": "Papel de horno para forrar la base del molde",
-    "category": "Dulce",
-    "subcategory": "Elaborados",
-    "type": "Bizcochos",
-    "image": "",
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
     "steps": [
       "Lo primero que haremos será montar la nata para tenerla lista. La nata deberá estar muy fría. Pon la mariposa en las cuchillas, agita bien el envase de la nata, vierte en el vaso y programa velocidad 3 ½, sin poner tiempo. Reserva en un bol tapado con film transparente en la nevera.",
       "En el vaso limpio de la thermomix, pon 250 ml de agua y calienta el agua 4 minutos, varoma, velocidad 1.",
@@ -8280,17 +8204,14 @@
     "tags": [
       "Dulce",
       "Elaborados",
-      "Bizcochos",
+      "Tartas y pasteles",
       "Thermomix",
       "Microondas",
       "Horno",
-      "Por revisar"
+      "Sin horno"
     ],
     "source": "DULCES.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron ingredientes"
-    ]
+    "needsReview": false
   },
   {
     "id": "tarta-de-limon-y-merengue",
@@ -16445,34 +16366,9 @@
       "50 ml de nata para cocinar",
       "Sal",
       "Pimienta blanca",
-      "Un poco de aceite de oliva virgen extra"
+      "Un poco de aceite de oliva virgen extra",
+      "Unas gambas frescas"
     ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Sopas y cremas",
-      "Verduras",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "unas-gambas-frescas",
-    "title": "Unas gambas frescas",
-    "category": "Salado",
-    "subcategory": "Segundos",
-    "type": "Mariscos",
-    "image": "",
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
     "steps": [
       "Poner a cocer en una cacerola la coliflor y la cebolla, con sal, un buen chorro de leche y agua. Pasado un cuarto de hora añadir la patata y terminar de cocer todo.",
       "Cuando esté cocido, separar la verdura y la patata con un poco de caldo. Reservar el resto del caldo para conseguir el espesor deseado de la crema.",
@@ -16482,16 +16378,12 @@
     "notes": "",
     "tags": [
       "Salado",
-      "Segundos",
-      "Mariscos",
-      "Verduras",
-      "Por revisar"
+      "Primeros",
+      "Sopas y cremas",
+      "Verduras"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron ingredientes"
-    ]
+    "needsReview": false
   },
   {
     "id": "crema-de-esparragos-blancos",
@@ -17354,7 +17246,16 @@
       "En un vaso de batidora echamos los ajos, sal, el vinagre de manzana, la leche, 150 ml. de aceite de girasol y un chorretín de aceite de oliva.",
       "Se bate despacio con la batidora abajo y se va subiendo despacito, se va echando el resto de aceite de girasol hasta que esté bien emulsionada.",
       "Se añade la manzana y batimos con fuerza para que esté bien suave.",
-      "Se emplata poniendo pegotitos de alioli con unas hojitas de tomillo-"
+      "Se emplata poniendo pegotitos de alioli con unas hojitas de tomillo-",
+      "CRUJIENTE DE PIMENTÓN PARA ADORNAR",
+      "20 grs de aceite de oliva",
+      "50 grs de harina",
+      "50 grs de agua",
+      "2 grs o dos cucharaditas de pimentón",
+      "Se mezclan los ingredientes.",
+      "Se echa un poco en una sartén bien caliente.",
+      "Se deja que se evapore el líquido y cuando tenga ese aspecto se saca.",
+      "Se coloca en un papel de cocina absorbente y ya está."
     ],
     "notes": "",
     "tags": [
@@ -17367,40 +17268,6 @@
     ],
     "source": "RECETAS DE EVERNOTE.docx",
     "needsReview": false
-  },
-  {
-    "id": "crujiente-de-pimenton-para-adornar",
-    "title": "CRUJIENTE DE PIMENTÓN PARA ADORNAR",
-    "category": "Salado",
-    "subcategory": "Sin clasificar",
-    "type": "Sin clasificar",
-    "image": "assets/img/recetas/crujiente-de-pimenton-para-adornar.png",
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
-      "20 grs de aceite de oliva",
-      "50 grs de harina",
-      "50 grs de agua",
-      "2 grs o dos cucharaditas de pimentón"
-    ],
-    "steps": [
-      "Se mezclan los ingredientes.",
-      "Se echa un poco en una sartén bien caliente.",
-      "Se deja que se evapore el líquido y cuando tenga ese aspecto se saca.",
-      "Se coloca en un papel de cocina absorbente y ya está."
-    ],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "Subcategoria salada poco clara",
-      "Tipo especifico poco claro"
-    ]
   },
   {
     "id": "crumble-de-fritada-de-pimientos",
@@ -17486,9 +17353,9 @@
     "title": "CUCURUCHOS DE CARBÓN VEGETAL CON RELLENO DE HUMMUS CON AJO ASADO",
     "category": "Salado",
     "subcategory": "Segundos",
-    "type": "Albondigas y rellenos",
+    "type": "Asados",
     "image": "assets/img/recetas/cucuruchos-de-carbon-vegetal-con-relleno-de-hummus-con-ajo-asado.png",
-    "time": "",
+    "time": "10 minutos",
     "difficulty": "",
     "servings": "",
     "ingredients": [
@@ -17500,33 +17367,9 @@
       "1/4 c/p de comino molido",
       "1/4 c/p de pimentón",
       "Unas gotas de zumo de limón",
-      "Sal"
+      "Sal",
+      "Unas semillas de sésamo, para decorar"
     ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Segundos",
-      "Albondigas y rellenos",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "unas-semillas-de-sesamo-para-decorar",
-    "title": "Unas semillas de sésamo, para decorar",
-    "category": "Salado",
-    "subcategory": "Segundos",
-    "type": "Asados",
-    "image": "",
-    "time": "10 minutos",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
     "steps": [
       "Precalentar el horno a 180ºC. Disponer los dientes de ajo pelados dentro de un trozo de papel de aluminio con una pizca de sal y unas gotas de aceite. Cerrar formando un paquetito y hornear durante unos 10 minutos aproximadamente.",
       "En cuanto el ajo esté asado, verterlo en el vaso de la batidora junto al resto de ingredientes.",
@@ -17539,14 +17382,10 @@
       "Segundos",
       "Asados",
       "Horno",
-      "Pasta",
-      "Por revisar"
+      "Pasta"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron ingredientes"
-    ]
+    "needsReview": false
   },
   {
     "id": "cucuruchos-de-crema-de-salmon",
@@ -17590,8 +17429,8 @@
     "id": "cucuruchos-de-espinacas-con-relleno-de-crema-de-ueso-stilton",
     "title": "CUCURUCHOS DE ESPINACAS CON RELLENO DE CREMA DE UESO STILTON",
     "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Sopas y cremas",
+    "subcategory": "Segundos",
+    "type": "Albondigas y rellenos",
     "image": "assets/img/recetas/cucuruchos-de-espinacas-con-relleno-de-crema-de-ueso-stilton.png",
     "time": "",
     "difficulty": "",
@@ -17600,33 +17439,9 @@
       "6 cucuruchos de espinacas",
       "60 gr. de queso Stilton u otro queso azul",
       "25 gr. de mantequilla a punto pomada",
-      "25 ml. de nata líquida"
+      "25 ml. de nata líquida",
+      "Perejil seco, para decorar"
     ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Sopas y cremas",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "perejil-seco-para-decorar",
-    "title": "Perejil seco, para decorar",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Pasta",
-    "image": "",
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
     "steps": [
       "En un cazo o en el microondas, calentar la nata hasta que hierva. En este punto, verter en ella el queso troceado y mezclar enérgicamente para que se funda. Añadir la mantequilla en punto pomada y batir con unas varillas. Dejar enfriar durante unos minutos en la nevera para que coja textura.",
       "Con la ayuda de una manga pastelera, rellenar cada cucurucho, espolvorear con perejil seco y servir."
@@ -17634,16 +17449,13 @@
     "notes": "Para hacer el tahine: Tostar dos cucharadas soperas de semillas de sésamo en una sartén. En cuanto cojan color, verter en un mortero. Añadir una pizca de sal, un poco de pimienta negra, dos cucharadas de aceite de oliva y una cucharada de agua. Triturar con la mano de mortero hasta obtener una pasta espesa.\nCon los rellenos, los cucuruchos se remojan, por lo que es recomendable prepararlos en el último momento o dejar los rellenos refrigerados y rellenarlos antes de servir.",
     "tags": [
       "Salado",
-      "Primeros",
-      "Pasta",
+      "Segundos",
+      "Albondigas y rellenos",
       "Microondas",
-      "Por revisar"
+      "Pasta"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron ingredientes"
-    ]
+    "needsReview": false
   },
   {
     "id": "cucuruchos-de-tomate-con-relleno-de-guacamole",
@@ -19402,35 +19214,9 @@
       "500 ml. de agua",
       "1 chorrito de vino blanco",
       "3 patatas medianas",
-      "Laurel"
+      "Laurel",
+      "Opcional: azafrán o colorante alimentario"
     ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Guisos y potajes",
-      "Thermomix",
-      "Carne",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "opcional-azafran-o-colorante-alimentario",
-    "title": "Opcional: azafrán o colorante alimentario",
-    "category": "Salado",
-    "subcategory": "Segundos",
-    "type": "Carnes",
-    "image": "",
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
     "steps": [
       "Ponemos en el vaso la cebolla, el ajo, los tomates y el aceite, y picamos 5 segundos en velocidad 5. Sofreímos 10 minutos, a 100º, en velocidad 2.",
       "Añadimos la carne troceada y salpimentada, sofreímos 5 minutos, a 100º, velocidad 1.",
@@ -19440,17 +19226,13 @@
     "notes": "",
     "tags": [
       "Salado",
-      "Segundos",
-      "Carnes",
+      "Primeros",
+      "Guisos y potajes",
       "Thermomix",
-      "Carne",
-      "Por revisar"
+      "Carne"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron ingredientes"
-    ]
+    "needsReview": false
   },
   {
     "id": "fabes-con-almejas",
@@ -20541,33 +20323,9 @@
       "Sal y pimienta negra recién molida (Al gusto)",
       "Aceite de oliva virgen extra (para la fritura)",
       "5 lonchas de jamón Selecta alimentado con castañas Coren (Galicia Calidade)",
-      "4 pimientos del piquillo asados"
+      "4 pimientos del piquillo asados",
+      "Perejil picado fresco para adornar"
     ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Huevos y tortillas",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "perejil-picado-fresco-para-adornar",
-    "title": "Perejil picado fresco para adornar",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Verduras y hortalizas",
-    "image": "",
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
     "steps": [
       "Lavamos las patatas en agua fría, las cortamos en rodajas de medio centímetro, patatas panaderas. Secamos las patatas con papel de cocina y reservamos.",
       "Ponemos el aceite en una sartén grande. Cuando esté caliente echamos un pedazo de patata y cuando salgan burbujas añadimos el resto. Freímos a fuego medio durante unos 10-12 minutos. Que no queden muy crujientes, pero no cocidas, hay que ir pinchando para saber cuándo están en ese punto medio.",
@@ -20582,14 +20340,10 @@
     "tags": [
       "Salado",
       "Primeros",
-      "Verduras y hortalizas",
-      "Por revisar"
+      "Huevos y tortillas"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron ingredientes"
-    ]
+    "needsReview": false
   },
   {
     "id": "huevos-rotos-con-patatas",
@@ -21889,34 +21643,9 @@
       "1 cucharada pequeña de harina",
       "50 g de vino blanco",
       "200 g de caldo de pescado",
-      "Sal y Pimienta"
+      "Sal y Pimienta",
+      "Unas hebras de azafrán"
     ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Salsas y bases",
-      "Pescado",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "unas-hebras-de-azafran",
-    "title": "Unas hebras de azafrán",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Sopas y cremas",
-    "image": "",
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
     "steps": [
       "Poner a calentar el aceite oliva virgen extra en una sartén honda o en un cazuela. Cuando esté caliente, freír el diente de ajo entero y pelado. Reservar en un mortero.",
       "Machacar en el mortero el ajo, las almendras y un poco de perejil.",
@@ -21932,14 +21661,11 @@
     "tags": [
       "Salado",
       "Primeros",
-      "Sopas y cremas",
-      "Por revisar"
+      "Salsas y bases",
+      "Pescado"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron ingredientes"
-    ]
+    "needsReview": false
   },
   {
     "id": "lubina-o-dorada-al-horno",
@@ -25349,10 +25075,10 @@
     "id": "pate-de-anchoas",
     "title": "PATÉ DE ANCHOAS",
     "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Huevos y tortillas",
+    "subcategory": "Segundos",
+    "type": "Pescados",
     "image": "assets/img/recetas/pate-de-anchoas.png",
-    "time": "",
+    "time": "10 minutos",
     "difficulty": "",
     "servings": "",
     "ingredients": [
@@ -25360,34 +25086,9 @@
       "1 lata de 120 g de anchoas en aceite de oliva virgen extra",
       "1 lata de 120 g de atún en aceite de oliva virgen extra",
       "100 g de nata para cocinar",
-      "½ cucharada de ketchup"
+      "½ cucharada de ketchup",
+      "Unas huevas de lumpo rojas para adornar"
     ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Huevos y tortillas",
-      "Pescado",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "unas-huevas-de-lumpo-rojas-para-adornar",
-    "title": "Unas huevas de lumpo rojas para adornar",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Huevos y tortillas",
-    "image": "",
-    "time": "10 minutos",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
     "steps": [
       "Cocer tres huevos durante 10 minutos. Dejarlos un par de minutos más fuera del fuego en el agua caliente. Refrescar debajo del grifo y pelarlos. Se necesitan dos enteros y una yema del tercero. Trocearlos y ponerlos en el vaso de la batidora.",
       "Sacar las anchoas, ponerlas en un colador y pasarlas por el chorro de agua fresca, abriendo muy poco el grifo. Escurrir y volver a meter unos minutos en su aceite mientras preparamos el resto de ingredientes.",
@@ -25401,15 +25102,12 @@
     "notes": "Se pueden hacer un par de horas antes de la merienda pues las tartaletas duran crujientes. Lo que es cierto es que al tener el paté en la manga pastelera no se tarda nada en montarlas.",
     "tags": [
       "Salado",
-      "Primeros",
-      "Huevos y tortillas",
-      "Por revisar"
+      "Segundos",
+      "Pescados",
+      "Pescado"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron ingredientes"
-    ]
+    "needsReview": false
   },
   {
     "id": "otro-2",
@@ -29487,34 +29185,8 @@
     "ingredients": [
       "4 filetes de pollo enteros y abiertos",
       "Sal y pimienta",
-      "Unos orejones"
-    ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Segundos",
-      "Pollo y aves",
-      "Carne",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "unas-ciruelas-sin-hueso",
-    "title": "Unas ciruelas sin hueso",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Salsas y bases",
-    "image": "",
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
+      "Unos orejones",
+      "Unas ciruelas sin hueso",
       "Dos cucharadas de aceite de oliva virgen extra",
       "Una cebolla mediana",
       "Unos orejones, ciruelas y frambuesas deshidratados",
@@ -29539,8 +29211,8 @@
     "notes": "Un truco que cambia mucho este plato y le da un toque especial, es pasar los rollitos una vez cocidos por la sartén o la plancha, ligeramente pincelada de aceite de oliva, y a fuego muy fuerte, y antes de partirlos, sólo lo justo para que cojan color. Se quedan con un sabor muy especial y muy, muy rico.\nLas frutas deshidratadas que os comento son muy fáciles de encontrar. Hoy en día están en cualquier supermercado; yo las compro en Mercadona.\nLa salsa estará más rica cuanto mejor sea el coñac que le pongamos. Como en casa no lo bebemos, siempre guardo una buena botella para mis salsas, y aunque parezca un sacrilegio para los entendidos, para mí no lo es: mis salsas no tienen nada especial, y están muy buenas, y es que el único secreto que tengo es que siempre pongo lo mejor. Así mismo, siempre que preparo caldo de cocido, guardo unos botes en el congelador para mis avíos, con lo que el día que preparo este plato realmente no me da ningún trabajo.\nYo lo he presentado como un segundo plato, pero está también fantástico como propuesta de sándwich para una comida en el trabajo o en el campo. Pan de molde, una pizca de mayonesa, unas rodajas, finas en este caso, de este estupendo fiambre, y si no hemos hecho salsa podemos poner unas hojas de brotes de lechuga encima, y es un bocado fantástico.",
     "tags": [
       "Salado",
-      "Primeros",
-      "Salsas y bases",
+      "Segundos",
+      "Pollo y aves",
       "Carne"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
@@ -29851,34 +29523,9 @@
       "200 gr de atún",
       "4 cs de mayonesa",
       "50 gr de alcaparras",
-      "2 huevos duros"
+      "2 huevos duros",
+      "Unas ramitas de eneldo fresco"
     ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Segundos",
-      "Pescados",
-      "Pescado",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "unas-ramitas-de-eneldo-fresco",
-    "title": "Unas ramitas de eneldo fresco",
-    "category": "Salado",
-    "subcategory": "Segundos",
-    "type": "Pescados",
-    "image": "",
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
     "steps": [
       "Desmenuza el atún y mézclalo con las alcaparras, dos lonchas de salmón y el huevo duro bien picados. Añade mayonesa al gusto y mezcla hasta integrar.",
       "Extiende sobre film de cocina las rebanadas de pan de molde solapando los bordes y presionando para que se unan. Alisa con un rodillo y coloca una capa del relleno por encima. Enrolla y deja en la nevera media hora.",
@@ -29889,14 +29536,10 @@
       "Salado",
       "Segundos",
       "Pescados",
-      "Pescado",
-      "Por revisar"
+      "Pescado"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron ingredientes"
-    ]
+    "needsReview": false
   },
   {
     "id": "salmon-lasana-de",
@@ -30550,35 +30193,8 @@
     "ingredients": [
       "1 lomo de salmón fresco (o dos lomitos pequeños, en total unos 220 g)",
       "Harina de maíz (maicena)",
-      "Aceite de girasol o de sésamo (el de oliva aporta mucho sabor pero puedes usarlo si lo prefieres)"
-    ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Segundos",
-      "Pescados",
-      "Pescado",
-      "Carne",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "semillas-de-sesamo-o-cebollino-picado-para-decorar",
-    "title": "Semillas de sésamo o cebollino picado para decorar",
-    "category": "Salado",
-    "subcategory": "Segundos",
-    "type": "Pescados",
-    "image": "",
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
+      "Aceite de girasol o de sésamo (el de oliva aporta mucho sabor pero puedes usarlo si lo prefieres)",
+      "Semillas de sésamo o cebollino picado para decorar",
       "75 ml de salsa de soja",
       "2 cucharadas de vinagre de arroz (puedes usar de manzana o cualquier vinagre suave) y la misma cantidad de agua",
       "1 cucharadita de postre rasa de azúcar blanca o morena",
@@ -32614,34 +32230,9 @@
       "Un trozo de pan de pueblo",
       "100 g de jamón serrano",
       "2 huevos",
-      "1 y ½ l de caldo casero de pollo"
+      "1 y ½ l de caldo casero de pollo",
+      "Unas hebras de azafrán"
     ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Sopas y cremas",
-      "Carne",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "unas-hebras-de-azafran-2",
-    "title": "Unas hebras de azafrán",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Sopas y cremas",
-    "image": "",
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
     "steps": [
       "Cortar los espárragos verdes con la mano en trozos regulares, desechando la parte más dura. Lavarlos y escurrirlos bien.",
       "Poner en una cacerola el aceite, y cuando esté caliente, retirarla del fuego, y con el calor residual pochar el ajo, para que no se queme. Añadir el pimentón.",
@@ -32653,14 +32244,11 @@
       "Salado",
       "Primeros",
       "Sopas y cremas",
-      "Verduras",
-      "Por revisar"
+      "Carne",
+      "Verduras"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "reviewNotes": [
-      "No se detectaron ingredientes"
-    ]
+    "needsReview": false
   },
   {
     "id": "sopa-de-lasana",
