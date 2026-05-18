@@ -128,6 +128,7 @@ input[type="search"] {
 input:focus-visible,
 button:focus-visible,
 .recipe-card:focus-visible,
+.card-link:focus-visible,
 .brand:focus-visible {
   outline: 3px solid rgba(102, 114, 74, 0.35);
   outline-offset: 3px;
@@ -273,7 +274,7 @@ main {
 
 .controls-band {
   display: grid;
-  grid-template-columns: minmax(260px, 1.1fr) minmax(250px, 0.95fr) minmax(190px, 0.7fr) minmax(220px, 0.85fr);
+  grid-template-columns: minmax(240px, 1.1fr) minmax(150px, 0.55fr) minmax(230px, 0.95fr) minmax(180px, 0.7fr) minmax(210px, 0.85fr);
   gap: 18px;
   align-items: start;
   padding: 24px 0 12px;
@@ -453,6 +454,7 @@ select {
 }
 
 .recipe-card {
+  position: relative;
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -470,6 +472,50 @@ select {
   border-color: rgba(102, 114, 74, 0.55);
   box-shadow: 0 14px 36px rgba(58, 42, 24, 0.12);
   transform: translateY(-2px);
+}
+
+.card-link {
+  min-height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
+
+.favorite-button {
+  min-width: 38px;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(222, 208, 184, 0.9);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.92);
+  color: var(--clay-dark);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  box-shadow: 0 8px 24px rgba(58, 42, 24, 0.12);
+}
+
+.recipe-card > .favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.favorite-button[aria-pressed="true"] {
+  border-color: rgba(168, 95, 61, 0.45);
+  background: #f5dfd0;
+}
+
+.detail-favorite {
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 0.95rem;
 }
 
 .card-image {
@@ -521,6 +567,12 @@ select {
   color: var(--clay-dark);
 }
 
+.pill.featured {
+  border-color: rgba(168, 95, 61, 0.45);
+  background: #f5dfd0;
+  color: var(--clay-dark);
+}
+
 .card-preview {
   margin: auto 0 0;
   color: var(--muted);
@@ -549,6 +601,13 @@ select {
 
 .detail-view {
   padding-top: 26px;
+}
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
 }
 
 .detail-layout {

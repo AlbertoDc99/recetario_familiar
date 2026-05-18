@@ -9,6 +9,7 @@ La web está pensada para publicarse gratis en GitHub Pages.
 ```text
 .
 ├── index.html
+├── admin.html
 ├── README.md
 ├── robots.txt
 ├── .gitignore
@@ -21,6 +22,7 @@ La web está pensada para publicarse gratis en GitHub Pages.
 │   │   ├── placeholder.jpg
 │   │   └── recetas/
 │   └── js/
+│       ├── admin.js
 │       ├── auth.js
 │       └── main.js
 ├── docs/
@@ -135,6 +137,7 @@ Ejemplo:
   "notes": "Queda mejor de un día para otro.",
   "tags": ["Dulce", "Horno"],
   "source": "DULCES.docx",
+  "featured": false,
   "needsReview": false
 }
 ```
@@ -155,6 +158,7 @@ Desde ahí puedes:
 - cambiar categoría, subcategoría y tipo;
 - editar ingredientes, pasos y notas;
 - cambiar la ruta de la imagen;
+- marcar una receta como destacada;
 - crear una receta nueva;
 - descargar un nuevo `recipes.json`.
 
@@ -179,6 +183,12 @@ powershell -ExecutionPolicy Bypass -File tools/publicar_cambios.ps1 -Message "Ac
 La página principal incluye un asistente con apariencia de chat. No usa IA externa ni cuesta dinero: compara los ingredientes escritos con las recetas del JSON y sugiere las mejores coincidencias.
 
 También muestra ingredientes que quizá falten para cada receta sugerida.
+
+## Favoritas y destacadas
+
+La estrella de cada receta marca una favorita en ese navegador. Es comodo para cada persona, pero no se publica para toda la familia porque se guarda en `localStorage`.
+
+Para destacar una receta para todos, abre `admin.html`, marca `Marcar como destacada`, descarga el nuevo `recipes.json` y publicalo. Las recetas destacadas aparecen con una etiqueta y se pueden filtrar desde `Mostrar`.
 
 ## Cómo cambiar una imagen
 
@@ -257,11 +267,13 @@ Estas medidas reducen accesos casuales, pero no protegen información sensible. 
 Sube:
 
 - `index.html`
+- `admin.html`
 - `README.md`
 - `robots.txt`
 - `.gitignore`
 - `assets/css/styles.css`
 - `assets/js/auth.js`
+- `assets/js/admin.js`
 - `assets/js/main.js`
 - `assets/data/recipes.json`
 - `assets/img/placeholder.jpg`

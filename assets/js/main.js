@@ -3,6 +3,8 @@
 
   const DATA_URL = "assets/data/recipes.json";
   const PLACEHOLDER_IMAGE = "assets/img/placeholder.jpg";
+  const FAVORITES_KEY = "recetario_favorites_v1";
+  const QUICK_OPTIONS = ["Todas", "Destacadas", "Favoritas"];
   const CATEGORY_ORDER = ["Todas", "Salado", "Dulce", "Tapas"];
   const SUBCATEGORY_ORDER = ["Todas", "Primeros", "Segundos", "Sencillos", "Elaborados", "Tapas", "Sin clasificar"];
   const TYPE_ORDER = [
@@ -41,12 +43,58 @@
     "Reposteria frita",
     "Sin clasificar",
   ];
+  const STOPWORDS = new Set([
+    "a",
+    "al",
+    "con",
+    "de",
+    "del",
+    "el",
+    "en",
+    "la",
+    "las",
+    "lo",
+    "los",
+    "para",
+    "por",
+    "sin",
+    "un",
+    "una",
+    "unas",
+    "unos",
+    "y",
+    "o",
+  ]);
+  const PANTRY_BASICS = new Set([
+    "aceite",
+    "agua",
+    "azucar",
+    "pimienta",
+    "sal",
+  ]);
+  const LOW_VALUE_INGREDIENTS = new Set([
+    "aceite",
+    "agua",
+    "ajo",
+    "azucar",
+    "cebolla",
+    "harina",
+    "huevo",
+    "huevos",
+    "leche",
+    "mantequilla",
+    "nata",
+    "pimienta",
+    "sal",
+  ]);
 
   const state = {
     recipes: [],
     filtered: [],
+    favoriteIds: new Set(),
     loaded: false,
     filters: {
+      quick: "Todas",
       search: "",
       category: "Todas",
       subcategory: "Todas",
@@ -105,6 +153,37 @@
     return count === 1 ? "1 receta" : `${count} recetas`;
   }
 
+  function loadFavorites() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]");
+      state.favoriteIds = new Set(Array.isArray(saved) ? saved : []);
+    } catch {
+      state.favoriteIds = new Set();
+    }
+  }
+
+  function saveFavorites() {
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify([...state.favoriteIds]));
+  }
+
+  function isFavorite(recipeOrId) {
+    const id = typeof recipeOrId === "string" ? recipeOrId : recipeOrId?.id;
+    return Boolean(id && state.favoriteIds.has(id));
+  }
+
+  function toggleFavorite(id) {
+    if (state.favoriteIds.has(id)) {
+      state.favoriteIds.delete(id);
+    } else {
+      state.favoriteIds.add(id);
+    }
+    saveFavorites();
+  }
+
+  function recipePriority(recipe) {
+    return (isFavorite(recipe.id) ? 2 : 0) + (recipe.featured ? 1 : 0);
+  }
+
   async function loadRecipes() {
     if (state.loaded) {
       return;
@@ -133,8 +212,10 @@
         notes: recipe.notes || "",
         tags: Array.isArray(recipe.tags) ? recipe.tags : [],
         source: recipe.source || "",
+        featured: Boolean(recipe.featured),
         needsReview: Boolean(recipe.needsReview),
       }));
+      loadFavorites();
       state.loaded = true;
       renderFilters();
       applyFilters();
@@ -171,9 +252,14 @@
   }
 
   function renderFilters() {
+    renderQuickFilters();
     renderCategoryFilters();
     renderSubcategoryFilters();
     renderTypeFilters();
+  }
+
+  function renderQuickFilters() {
+    elements.quickSelect.innerHTML = QUICK_OPTIONS.map((option) => selectOption(option, state.filters.quick)).join("");
   }
 
   function renderCategoryFilters() {
@@ -216,8 +302,12 @@
       const matchesCategory = state.filters.category === "Todas" || recipe.category === state.filters.category;
       const matchesSubcategory = state.filters.subcategory === "Todas" || recipe.subcategory === state.filters.subcategory;
       const matchesType = state.filters.type === "Todas" || recipe.type === state.filters.type;
-      return matchesSearch && matchesCategory && matchesSubcategory && matchesType;
-    });
+      const matchesQuick =
+        state.filters.quick === "Todas" ||
+        (state.filters.quick === "Destacadas" && recipe.featured) ||
+        (state.filters.quick === "Favoritas" && isFavorite(recipe.id));
+      return matchesSearch && matchesQuick && matchesCategory && matchesSubcategory && matchesType;
+    }).sort((left, right) => recipePriority(right) - recipePriority(left));
 
     renderCategoryFilters();
     renderSubcategoryFilters();
@@ -234,6 +324,9 @@
 
   function summaryText() {
     const parts = [];
+    if (state.filters.quick !== "Todas") {
+      parts.push(state.filters.quick);
+    }
     if (state.filters.category !== "Todas") {
       parts.push(state.filters.category);
     }
@@ -252,17 +345,32 @@
   function renderCard(recipe) {
     const preview = compactList(recipe.ingredients).slice(0, 3).join(" · ");
     const meta = compactList([recipe.category, recipe.subcategory, recipe.type]).map((item) => `<span class="pill">${escapeHtml(item)}</span>`).join("");
+    const featured = recipe.featured ? '<span class="pill featured">Destacada</span>' : "";
     const review = recipe.needsReview ? '<span class="pill review">Por revisar</span>' : "";
 
     return `
-      <a class="recipe-card" href="#receta/${encodeURIComponent(recipe.id)}">
-        <img class="card-image" src="${escapeHtml(imageFor(recipe))}" alt="" loading="lazy" onerror="this.src='${PLACEHOLDER_IMAGE}'">
-        <div class="card-body">
-          <h2 class="card-title">${escapeHtml(recipe.title)}</h2>
-          <div class="card-meta">${meta}${review}</div>
-          <p class="card-preview">${escapeHtml(preview || recipe.source || "Receta familiar")}</p>
-        </div>
-      </a>
+      <article class="recipe-card${isFavorite(recipe.id) ? " is-favorite" : ""}">
+        ${favoriteButton(recipe, "card")}
+        <a class="card-link" href="#receta/${encodeURIComponent(recipe.id)}">
+          <img class="card-image" src="${escapeHtml(imageFor(recipe))}" alt="" loading="lazy" onerror="this.src='${PLACEHOLDER_IMAGE}'">
+          <div class="card-body">
+            <h2 class="card-title">${escapeHtml(recipe.title)}</h2>
+            <div class="card-meta">${featured}${meta}${review}</div>
+            <p class="card-preview">${escapeHtml(preview || recipe.source || "Receta familiar")}</p>
+          </div>
+        </a>
+      </article>
+    `;
+  }
+
+  function favoriteButton(recipe, variant) {
+    const active = isFavorite(recipe.id);
+    const label = active ? "Quitar de favoritas" : "Marcar como favorita";
+    const text = variant === "detail" ? `<span>${active ? "Favorita" : "Marcar favorita"}</span>` : "";
+    return `
+      <button class="favorite-button ${variant === "detail" ? "detail-favorite" : ""}" type="button" data-favorite-id="${escapeHtml(recipe.id)}" aria-pressed="${active}" aria-label="${label}" title="${label}">
+        <span aria-hidden="true">${active ? "&#9733;" : "&#9734;"}</span>${text}
+      </button>
     `;
   }
 
@@ -287,12 +395,16 @@
 
   function renderDetail(recipe) {
     const metaItems = compactList([recipe.category, recipe.subcategory, recipe.type, recipe.time, recipe.difficulty, recipe.servings]);
+    const featured = recipe.featured ? '<span class="pill featured">Destacada</span>' : "";
     const review = recipe.needsReview ? '<span class="pill review">Por revisar</span>' : "";
 
     elements.listView.hidden = true;
     elements.detailView.hidden = false;
     elements.detailView.innerHTML = `
-      <button class="back-button" type="button" data-back-to-list>Volver al listado</button>
+      <div class="detail-actions">
+        <button class="back-button" type="button" data-back-to-list>Volver al listado</button>
+        ${favoriteButton(recipe, "detail")}
+      </div>
       <article class="detail-layout">
         <div>
           <img class="detail-image" src="${escapeHtml(imageFor(recipe))}" alt="" onerror="this.src='${PLACEHOLDER_IMAGE}'">
@@ -301,6 +413,7 @@
           <p class="detail-kicker">${escapeHtml(compactList([recipe.category, recipe.subcategory, recipe.type]).join(" · "))}</p>
           <h1>${escapeHtml(recipe.title)}</h1>
           <div class="detail-meta">
+            ${featured}
             ${metaItems.map((item) => `<span class="pill">${escapeHtml(item)}</span>`).join("")}
             ${review}
           </div>
@@ -366,26 +479,26 @@
   }
 
   function parseIngredientInput(value) {
-    const chunks = value
+    let chunks = value
       .split(/[,;]+|\s+y\s+/i)
       .map((item) => item.trim())
       .filter(Boolean);
-    const stopwords = new Set(["con", "para", "una", "uno", "unos", "unas", "de", "del", "las", "los", "el", "la"]);
-    const labels = chunks.length > 1
-      ? chunks
-      : value.split(/\s+/).map((item) => item.trim()).filter((item) => item.length > 2 && !stopwords.has(normalize(item)));
+
+    if (chunks.length <= 1) {
+      const words = tokenizeIngredient(value);
+      chunks = words.length > 1 ? words : chunks;
+    }
+
+    const labels = chunks
+      .map((label) => ({
+        raw: label,
+        tokens: tokenizeIngredient(label),
+      }))
+      .filter((label) => label.tokens.length);
     const terms = new Set();
 
     labels.forEach((label) => {
-      const normalizedLabel = normalize(label);
-      if (normalizedLabel.length > 2) {
-        terms.add(normalizedLabel);
-      }
-      normalizedLabel.split(/\s+/).forEach((word) => {
-        if (word.length > 2 && !stopwords.has(word)) {
-          terms.add(word);
-        }
-      });
+      label.tokens.forEach((token) => terms.add(token));
     });
 
     return {
@@ -394,43 +507,140 @@
     };
   }
 
-  function ingredientMatches(text, terms) {
-    const normalizedText = normalize(text);
-    return terms.some((term) => normalizedText.includes(term));
+  function singularize(word) {
+    if (word.endsWith("s") && word.length > 4) {
+      return word.slice(0, -1);
+    }
+    return word;
+  }
+
+  function tokenizeIngredient(value) {
+    return normalize(value)
+      .replace(/https?:\/\/\S+/g, " ")
+      .replace(/\b\d+([.,/]\d+)?\b/g, " ")
+      .split(/[^a-z0-9]+/)
+      .map((word) => singularize(word.trim()))
+      .filter((word) => word.length > 2 && !STOPWORDS.has(word));
+  }
+
+  function tokenMatches(token, candidate) {
+    return token === candidate || (token.length >= 5 && candidate.length >= 5 && (token.includes(candidate) || candidate.includes(token)));
+  }
+
+  function containsToken(tokens, token) {
+    return tokens.some((candidate) => tokenMatches(token, candidate));
+  }
+
+  function labelWeight(label) {
+    const importantTokens = label.tokens.filter((token) => !LOW_VALUE_INGREDIENTS.has(token));
+    if (importantTokens.length >= 2) {
+      return 3;
+    }
+    if (importantTokens.length === 1) {
+      return 2;
+    }
+    return 0.45;
+  }
+
+  function labelMatchesTokens(label, tokens, mode = "strict") {
+    const importantTokens = label.tokens.filter((token) => !LOW_VALUE_INGREDIENTS.has(token));
+    const tokensToMatch = importantTokens.length ? importantTokens : label.tokens;
+
+    if (!tokensToMatch.length) {
+      return false;
+    }
+
+    if (mode === "loose" && importantTokens.length >= 2) {
+      return tokensToMatch.some((token) => containsToken(tokens, token));
+    }
+
+    return tokensToMatch.every((token) => containsToken(tokens, token));
+  }
+
+  function splitIngredientLine(value) {
+    return cleanIngredientName(value)
+      .split(/[,;]+/)
+      .map((item) => item.trim())
+      .filter((item) => item.length > 2 && !/^https?:/i.test(item) && !/^(para\b|preparacion|ingredientes|como se elabora)/i.test(item));
+  }
+
+  function recipeIngredientParts(recipe) {
+    return (recipe.ingredients || []).flatMap(splitIngredientLine);
+  }
+
+  function recipeMatchesLabel(recipe, label, ingredientParts) {
+    const ingredientTokens = tokenizeIngredient(ingredientParts.join(" "));
+    const titleTokens = tokenizeIngredient([recipe.title, recipe.type, ...(recipe.tags || [])].join(" "));
+
+    if (labelMatchesTokens(label, ingredientTokens)) {
+      return "ingredients";
+    }
+
+    const isPorkLoin = label.tokens.includes("lomo") && label.tokens.includes("cerdo");
+    const looksLikeMeatRecipe = recipe.type === "Carnes";
+    if (isPorkLoin && looksLikeMeatRecipe && (containsToken(ingredientTokens, "lomo") || containsToken(titleTokens, "lomo"))) {
+      return "ingredients";
+    }
+
+    if (labelWeight(label) >= 2 && labelMatchesTokens(label, titleTokens)) {
+      return "title";
+    }
+
+    return "";
+  }
+
+  function ingredientPartMatchesUser(part, labels) {
+    const tokens = tokenizeIngredient(part);
+    return labels.some((label) => labelMatchesTokens(label, tokens, "loose"));
   }
 
   function cleanIngredientName(value) {
     return String(value || "")
       .replace(/\([^)]*\)/g, "")
-      .replace(/^[\s\-*•·▪]+/, "")
+      .replace(/^[\s\-*•·▪️]+/, "")
       .replace(/^\d+([.,/]\d+)?\s*/g, "")
-      .replace(/\b(gr|g|kg|ml|l|litro|litros|cucharada|cucharadas|cucharadita|cucharaditas|taza|tazas|vaso|vasos|sobre|sobres)\b\.?/gi, "")
+      .replace(/\b(grs|gr|g|kg|ml|cl|dl|l|litro|litros|cucharada|cucharadas|cucharadita|cucharaditas|cda|cdas|taza|tazas|vaso|vasos|sobre|sobres)\b\.?/gi, "")
+      .replace(/^\s*(de|del)\s+/i, "")
       .replace(/\s+/g, " ")
       .replace(/^[,.;:\s]+|[,.;:\s]+$/g, "")
       .trim();
   }
 
-  function scoreRecipeByIngredients(recipe, labels, terms) {
-    const pantryBasics = new Set(["sal", "aceite", "agua", "pimienta", "azucar", "azúcar"]);
-    const haystack = [
-      recipe.title,
-      recipe.type,
-      ...(recipe.ingredients || []),
-      ...(recipe.tags || []),
-    ].join(" ");
-    const matchedLabels = labels.filter((label) => ingredientMatches(haystack, [normalize(label), ...normalize(label).split(/\s+/)]));
-    const uniqueMatches = [...new Set(matchedLabels)];
-    const missing = (recipe.ingredients || [])
-      .filter((ingredient) => !ingredientMatches(ingredient, terms))
+  function scoreRecipeByIngredients(recipe, parsed) {
+    const ingredientParts = recipeIngredientParts(recipe);
+    const matched = parsed.labels
+      .map((label) => {
+        const source = recipeMatchesLabel(recipe, label, ingredientParts);
+        return source ? { label: label.raw, weight: labelWeight(label), source } : null;
+      })
+      .filter(Boolean);
+    const uniqueMatches = [...new Map(matched.map((item) => [normalize(item.label), item])).values()];
+    const matchWeight = uniqueMatches.reduce((total, item) => total + item.weight, 0);
+    const coverage = parsed.labels.length ? uniqueMatches.length / parsed.labels.length : 0;
+    const hasStrongMatch = uniqueMatches.some((item) => item.weight >= 2);
+    const missing = ingredientParts
+      .filter((ingredient) => !ingredientPartMatchesUser(ingredient, parsed.labels))
       .map(cleanIngredientName)
-      .filter((ingredient) => ingredient.length > 2 && !pantryBasics.has(normalize(ingredient)))
-      .slice(0, 6);
+      .filter((ingredient) => {
+        const tokens = tokenizeIngredient(ingredient);
+        return tokens.length && !tokens.every((token) => PANTRY_BASICS.has(token));
+      })
+      .slice(0, 8);
+    const weakOnlyPenalty = hasStrongMatch ? 0 : 12;
+    const score =
+      matchWeight * 14 +
+      coverage * 10 +
+      (coverage === 1 ? 8 : 0) -
+      Math.min(missing.length, 8) * 0.6 -
+      weakOnlyPenalty -
+      (recipe.needsReview ? 2 : 0);
 
-    const score = uniqueMatches.length * 12 - Math.min(missing.length, 6) + (recipe.needsReview ? -2 : 0);
     return {
       recipe,
       score,
-      matches: uniqueMatches,
+      coverage,
+      hasStrongMatch,
+      matches: uniqueMatches.map((item) => item.label),
       missing,
     };
   }
@@ -466,13 +676,21 @@
 
     const parsed = parseIngredientInput(query);
     const results = state.recipes
-      .map((recipe) => scoreRecipeByIngredients(recipe, parsed.labels, parsed.terms))
-      .filter((result) => result.matches.length > 0)
-      .sort((left, right) => right.score - left.score || left.missing.length - right.missing.length)
+      .map((recipe) => scoreRecipeByIngredients(recipe, parsed))
+      .filter((result) => {
+        if (!result.matches.length) {
+          return false;
+        }
+        if (parsed.labels.length === 1) {
+          return result.hasStrongMatch || result.coverage === 1;
+        }
+        return result.hasStrongMatch && (result.coverage >= 0.5 || result.matches.length >= 2);
+      })
+      .sort((left, right) => right.score - left.score || right.coverage - left.coverage || left.missing.length - right.missing.length)
       .slice(0, 5);
 
     if (!results.length) {
-      appendChatMessage("bot", "No he encontrado recetas claras con esos ingredientes. Prueba con nombres más generales, como pollo, arroz, pasta o chocolate.");
+      appendChatMessage("bot", "No he encontrado recetas claras con esos ingredientes. Prueba con nombres algo mas generales, como cerdo, arroz, pasta o chocolate.");
       return;
     }
 
@@ -485,6 +703,11 @@
   function bindEvents() {
     elements.searchInput.addEventListener("input", (event) => {
       state.filters.search = event.target.value;
+      applyFilters();
+    });
+
+    elements.quickSelect.addEventListener("change", (event) => {
+      state.filters.quick = event.target.value;
       applyFilters();
     });
 
@@ -515,6 +738,15 @@
     });
 
     document.addEventListener("click", (event) => {
+      const favorite = event.target.closest("[data-favorite-id]");
+      if (favorite) {
+        event.preventDefault();
+        toggleFavorite(favorite.dataset.favoriteId);
+        applyFilters();
+        route();
+        return;
+      }
+
       const filter = event.target.closest("[data-filter-type]");
       if (filter) {
         const type = filter.dataset.filterType;
@@ -546,6 +778,7 @@
     elements.visibleCount = qs("#visible-count");
     elements.activeSummary = qs("#active-summary");
     elements.searchInput = qs("#search-input");
+    elements.quickSelect = qs("#quick-select");
     elements.categoryFilters = qs("#category-filters");
     elements.subcategorySelect = qs("#subcategory-select");
     elements.typeSelect = qs("#type-select");

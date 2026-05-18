@@ -133,7 +133,7 @@
     el.recipeList.innerHTML = visible.map((recipe) => `
       <button class="admin-recipe-item${recipe.id === state.selectedId ? " active" : ""}" type="button" data-recipe-id="${escapeHtml(recipe.id)}">
         <strong>${escapeHtml(recipe.title)}</strong>
-        <span>${escapeHtml([recipe.category, recipe.subcategory, recipe.type].filter(Boolean).join(" · "))}</span>
+        <span>${escapeHtml([recipe.featured ? "Destacada" : "", recipe.category, recipe.subcategory, recipe.type].filter(Boolean).join(" · "))}</span>
       </button>
     `).join("");
   }
@@ -168,6 +168,7 @@
     setFieldValue("#field-notes", recipe.notes);
     setFieldValue("#field-tags", (recipe.tags || []).join(", "));
     setFieldValue("#field-source", recipe.source);
+    el.featured.checked = Boolean(recipe.featured);
     el.review.checked = Boolean(recipe.needsReview);
     updatePreview(recipe.image);
   }
@@ -200,6 +201,7 @@
       notes: el.notes.value.trim(),
       tags: tagsFromInput(el.tags.value),
       source: el.source.value.trim() || "Edición manual",
+      featured: el.featured.checked,
       needsReview: el.review.checked,
     };
   }
@@ -234,6 +236,7 @@
       notes: "",
       tags: [],
       source: "Edición manual",
+      featured: false,
       needsReview: true,
     };
     state.recipes.unshift(recipe);
@@ -251,6 +254,7 @@
       ...JSON.parse(JSON.stringify(recipe)),
       id: uniqueSlug(`${recipe.title} copia`),
       title: `${recipe.title} copia`,
+      featured: false,
       needsReview: true,
     };
     state.recipes.unshift(copy);
@@ -338,6 +342,7 @@
     el.notes = qs("#field-notes");
     el.tags = qs("#field-tags");
     el.source = qs("#field-source");
+    el.featured = qs("#field-featured");
     el.review = qs("#field-review");
   }
 
