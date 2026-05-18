@@ -52,7 +52,7 @@
         </section>
 
         <section class="admin-notice">
-          Los cambios se guardan en esta sesión del navegador. Para publicar, descarga el JSON y súbelo con Git.
+          Los cambios se guardan como borrador en este navegador. Para publicarlos y no perderlos, descarga el JSON y súbelo con Git.
         </section>
 
         <section class="admin-layout">
@@ -158,6 +158,11 @@
               </div>
 
               <label class="checkbox-line">
+                <input id="field-menu-candidate" type="checkbox">
+                Comida habitual para menú semanal
+              </label>
+
+              <label class="checkbox-line">
                 <input id="field-featured" type="checkbox">
                 Marcar como destacada
               </label>
@@ -168,9 +173,10 @@
               </label>
 
               <div class="editor-actions">
-                <button class="primary-button" type="submit">Guardar en esta sesión</button>
+                <button class="primary-button" type="submit">Guardar borrador</button>
                 <button class="ghost-button" id="duplicate-button" type="button">Duplicar</button>
                 <button class="ghost-button" id="export-button" type="button">Descargar recipes.json</button>
+                <button class="ghost-button" id="discard-draft-button" type="button">Descartar borrador</button>
               </div>
             </form>
           </section>

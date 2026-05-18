@@ -37,6 +37,7 @@
             </span>
           </a>
           <div class="header-actions">
+            <a class="ghost-button" href="#menu-semanal">Menú</a>
             <a class="ghost-button" href="admin.html">Editar</a>
             <button class="ghost-button" id="lock-button" type="button">Bloquear</button>
           </div>
@@ -102,6 +103,35 @@
                 </div>
               </form>
             </div>
+          </section>
+
+          <section class="planner-shell" id="menu-semanal" aria-labelledby="planner-title">
+            <div class="planner-header">
+              <div>
+                <p class="eyebrow">Organizar la semana</p>
+                <h2 id="planner-title">Planificador de menús</h2>
+              </div>
+              <button class="primary-button" id="generate-plan-button" type="button">Crear menú</button>
+            </div>
+
+            <div class="planner-controls">
+              <label>
+                Usar recetas
+                <select id="planner-source">
+                  <option value="trusted">Habituales, destacadas y favoritas</option>
+                  <option value="routine">Solo habituales</option>
+                  <option value="favorites">Solo favoritas</option>
+                  <option value="featured">Solo destacadas</option>
+                </select>
+              </label>
+              <label class="checkbox-line planner-check">
+                <input id="planner-allow-fallback" type="checkbox">
+                Completar con otras recetas saladas si faltan habituales
+              </label>
+            </div>
+
+            <p class="planner-status" id="planner-status">Marca recetas como habituales en el editor para que el menú semanal use platos realistas.</p>
+            <div class="weekly-plan" id="weekly-plan" aria-live="polite"></div>
           </section>
 
           <p class="active-summary" id="active-summary"></p>

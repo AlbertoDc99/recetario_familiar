@@ -332,6 +332,114 @@ select {
   overflow: hidden;
 }
 
+.planner-shell {
+  margin: 12px 0 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  padding: 18px;
+}
+
+.planner-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+}
+
+.planner-header h2 {
+  margin: 0;
+  font-size: 1.55rem;
+}
+
+.planner-controls {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(280px, 1fr);
+  gap: 16px;
+  align-items: end;
+  margin-top: 16px;
+}
+
+.planner-controls label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.planner-check {
+  min-height: 44px;
+  align-content: center;
+}
+
+.planner-status {
+  margin: 14px 0;
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.92rem;
+}
+
+.weekly-plan {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(150px, 1fr));
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.day-card {
+  min-width: 150px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  padding: 12px;
+}
+
+.day-card h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.day-card div + div {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.day-card strong,
+.day-card a,
+.day-card span {
+  display: block;
+}
+
+.day-card strong {
+  color: var(--olive-dark);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+}
+
+.day-card a {
+  margin-top: 4px;
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.day-card span {
+  margin-top: 5px;
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+}
+
+.planner-missing {
+  color: var(--clay-dark) !important;
+  font-weight: 700;
+}
+
 .assistant-toggle {
   width: 100%;
   display: flex;
@@ -571,6 +679,12 @@ select {
   border-color: rgba(168, 95, 61, 0.45);
   background: #f5dfd0;
   color: var(--clay-dark);
+}
+
+.pill.routine {
+  border-color: rgba(102, 114, 74, 0.45);
+  background: #e7ebd7;
+  color: var(--olive-dark);
 }
 
 .card-preview {
@@ -881,6 +995,7 @@ select {
 
 @media (max-width: 980px) {
   .controls-band,
+  .planner-controls,
   .detail-layout,
   .admin-layout {
     grid-template-columns: 1fr;
@@ -924,13 +1039,15 @@ select {
   }
 
   .brand-title {
-    max-width: 170px;
-    font-size: 1rem;
+    max-width: 105px;
+    font-size: 0.95rem;
   }
 
   .ghost-button,
   .back-button {
-    padding-inline: 10px;
+    min-height: 34px;
+    padding-inline: 8px;
+    font-size: 0.9rem;
   }
 
   .recipe-grid {

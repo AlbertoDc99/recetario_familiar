@@ -4,9 +4,10 @@
   const DATA_URL = "assets/data/recipes.json";
   const PLACEHOLDER_IMAGE = "assets/img/placeholder.jpg";
   const FAVORITES_KEY = "recetario_favorites_v1";
-  const QUICK_OPTIONS = ["Todas", "Destacadas", "Favoritas"];
+  const QUICK_OPTIONS = ["Todas", "Habituales", "Destacadas", "Favoritas"];
   const CATEGORY_ORDER = ["Todas", "Salado", "Dulce", "Tapas"];
   const SUBCATEGORY_ORDER = ["Todas", "Primeros", "Segundos", "Sencillos", "Elaborados", "Tapas", "Sin clasificar"];
+  const MENU_DAYS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
   const TYPE_ORDER = [
     "Todas",
     "Sopas y cremas",
@@ -143,6 +144,8 @@
       recipe.servings,
       recipe.notes,
       recipe.source,
+      recipe.menuCandidate ? "habitual menu semanal" : "",
+      recipe.featured ? "destacada" : "",
       ...(recipe.ingredients || []),
       ...(recipe.steps || []),
       ...(recipe.tags || []),
@@ -181,7 +184,7 @@
   }
 
   function recipePriority(recipe) {
-    return (isFavorite(recipe.id) ? 2 : 0) + (recipe.featured ? 1 : 0);
+    return (recipe.menuCandidate ? 4 : 0) + (isFavorite(recipe.id) ? 2 : 0) + (recipe.featured ? 1 : 0);
   }
 
   async function loadRecipes() {
@@ -212,6 +215,7 @@
         notes: recipe.notes || "",
         tags: Array.isArray(recipe.tags) ? recipe.tags : [],
         source: recipe.source || "",
+        menuCandidate: Boolean(recipe.menuCandidate),
         featured: Boolean(recipe.featured),
         needsReview: Boolean(recipe.needsReview),
       }));
@@ -304,6 +308,7 @@
       const matchesType = state.filters.type === "Todas" || recipe.type === state.filters.type;
       const matchesQuick =
         state.filters.quick === "Todas" ||
+        (state.filters.quick === "Habituales" && recipe.menuCandidate) ||
         (state.filters.quick === "Destacadas" && recipe.featured) ||
         (state.filters.quick === "Favoritas" && isFavorite(recipe.id));
       return matchesSearch && matchesQuick && matchesCategory && matchesSubcategory && matchesType;
@@ -345,6 +350,7 @@
   function renderCard(recipe) {
     const preview = compactList(recipe.ingredients).slice(0, 3).join(" · ");
     const meta = compactList([recipe.category, recipe.subcategory, recipe.type]).map((item) => `<span class="pill">${escapeHtml(item)}</span>`).join("");
+    const menuCandidate = recipe.menuCandidate ? '<span class="pill routine">Habitual</span>' : "";
     const featured = recipe.featured ? '<span class="pill featured">Destacada</span>' : "";
     const review = recipe.needsReview ? '<span class="pill review">Por revisar</span>' : "";
 
@@ -352,10 +358,10 @@
       <article class="recipe-card${isFavorite(recipe.id) ? " is-favorite" : ""}">
         ${favoriteButton(recipe, "card")}
         <a class="card-link" href="#receta/${encodeURIComponent(recipe.id)}">
-          <img class="card-image" src="${escapeHtml(imageFor(recipe))}" alt="" loading="lazy" onerror="this.src='${PLACEHOLDER_IMAGE}'">
+            <img class="card-image" src="${escapeHtml(imageFor(recipe))}" alt="" loading="lazy" onerror="this.src='${PLACEHOLDER_IMAGE}'">
           <div class="card-body">
             <h2 class="card-title">${escapeHtml(recipe.title)}</h2>
-            <div class="card-meta">${featured}${meta}${review}</div>
+            <div class="card-meta">${menuCandidate}${featured}${meta}${review}</div>
             <p class="card-preview">${escapeHtml(preview || recipe.source || "Receta familiar")}</p>
           </div>
         </a>
@@ -395,6 +401,7 @@
 
   function renderDetail(recipe) {
     const metaItems = compactList([recipe.category, recipe.subcategory, recipe.type, recipe.time, recipe.difficulty, recipe.servings]);
+    const menuCandidate = recipe.menuCandidate ? '<span class="pill routine">Habitual</span>' : "";
     const featured = recipe.featured ? '<span class="pill featured">Destacada</span>' : "";
     const review = recipe.needsReview ? '<span class="pill review">Por revisar</span>' : "";
 
@@ -413,6 +420,7 @@
           <p class="detail-kicker">${escapeHtml(compactList([recipe.category, recipe.subcategory, recipe.type]).join(" · "))}</p>
           <h1>${escapeHtml(recipe.title)}</h1>
           <div class="detail-meta">
+            ${menuCandidate}
             ${featured}
             ${metaItems.map((item) => `<span class="pill">${escapeHtml(item)}</span>`).join("")}
             ${review}
@@ -476,6 +484,108 @@
         <div class="tag-list">${values.map((tag) => `<span class="pill">${escapeHtml(tag)}</span>`).join("")}</div>
       </section>
     `;
+  }
+
+  function isMenuTrusted(recipe) {
+    return recipe.menuCandidate || recipe.featured || isFavorite(recipe.id);
+  }
+
+  function matchesPlannerSource(recipe, source) {
+    if (source === "routine") {
+      return recipe.menuCandidate;
+    }
+    if (source === "favorites") {
+      return isFavorite(recipe.id);
+    }
+    if (source === "featured") {
+      return recipe.featured;
+    }
+    return isMenuTrusted(recipe);
+  }
+
+  function plannerBasePool(subcategory) {
+    return state.recipes.filter((recipe) => recipe.category === "Salado" && recipe.subcategory === subcategory);
+  }
+
+  function plannerTrustedPool(subcategory, source) {
+    return plannerBasePool(subcategory).filter((recipe) => matchesPlannerSource(recipe, source));
+  }
+
+  function plannerPool(subcategory, source, allowFallback) {
+    const base = plannerBasePool(subcategory);
+    const trusted = plannerTrustedPool(subcategory, source);
+    const pool = allowFallback && trusted.length < MENU_DAYS.length ? [...trusted, ...base.filter((recipe) => !trusted.includes(recipe))] : trusted;
+    return shuffleRecipes(pool).slice(0, MENU_DAYS.length);
+  }
+
+  function shuffleRecipes(recipes) {
+    const items = [...recipes].sort((left, right) => recipePriority(right) - recipePriority(left) || left.title.localeCompare(right.title));
+    for (let index = items.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(Math.random() * (index + 1));
+      [items[index], items[swapIndex]] = [items[swapIndex], items[index]];
+    }
+    return items.sort((left, right) => recipePriority(right) - recipePriority(left));
+  }
+
+  function renderPlannerRecipe(recipe) {
+    if (!recipe) {
+      return '<span class="planner-missing">Falta marcar recetas</span>';
+    }
+
+    return `
+      <a href="#receta/${encodeURIComponent(recipe.id)}">${escapeHtml(recipe.title)}</a>
+      <span>${escapeHtml(compactList([recipe.type, recipe.menuCandidate ? "Habitual" : "", recipe.featured ? "Destacada" : "", isFavorite(recipe.id) ? "Favorita" : ""]).join(" · "))}</span>
+    `;
+  }
+
+  function sourceLabel(source) {
+    if (source === "routine") {
+      return "habituales";
+    }
+    if (source === "favorites") {
+      return "favoritas";
+    }
+    if (source === "featured") {
+      return "destacadas";
+    }
+    return "habituales, destacadas y favoritas";
+  }
+
+  function generateWeeklyPlan() {
+    const source = elements.plannerSource.value;
+    const allowFallback = elements.plannerAllowFallback.checked;
+    const trustedFirstCount = plannerTrustedPool("Primeros", source).length;
+    const trustedSecondCount = plannerTrustedPool("Segundos", source).length;
+    const firsts = plannerPool("Primeros", source, allowFallback);
+    const seconds = plannerPool("Segundos", source, allowFallback);
+    const firstsEnough = firsts.length >= MENU_DAYS.length;
+    const secondsEnough = seconds.length >= MENU_DAYS.length;
+    const usedFallback = allowFallback && (trustedFirstCount < MENU_DAYS.length || trustedSecondCount < MENU_DAYS.length);
+
+    elements.weeklyPlan.innerHTML = MENU_DAYS.map((day, index) => `
+      <article class="day-card">
+        <h3>${day}</h3>
+        <div>
+          <strong>Primero</strong>
+          ${renderPlannerRecipe(firsts[index])}
+        </div>
+        <div>
+          <strong>Segundo</strong>
+          ${renderPlannerRecipe(seconds[index])}
+        </div>
+      </article>
+    `).join("");
+
+    const status = [];
+    status.push(`Base usada: recetas ${sourceLabel(source)}.`);
+    status.push(`${trustedFirstCount}/7 primeros y ${trustedSecondCount}/7 segundos marcados en esa base.`);
+    if ((!firstsEnough || !secondsEnough) && !allowFallback) {
+      status.push("Marca más recetas como comida habitual en el editor, o activa completar con otras recetas saladas.");
+    }
+    if (usedFallback) {
+      status.push("He intentado completar el menú con recetas saladas no marcadas para evitar huecos.");
+    }
+    elements.plannerStatus.textContent = status.join(" ");
   }
 
   function parseIngredientInput(value) {
@@ -737,6 +847,8 @@
       handleIngredientQuery();
     });
 
+    elements.generatePlanButton.addEventListener("click", generateWeeklyPlan);
+
     document.addEventListener("click", (event) => {
       const favorite = event.target.closest("[data-favorite-id]");
       if (favorite) {
@@ -787,6 +899,11 @@
     elements.chatLog = qs("#chat-log");
     elements.ingredientForm = qs("#ingredient-form");
     elements.ingredientInput = qs("#ingredient-input");
+    elements.plannerSource = qs("#planner-source");
+    elements.plannerAllowFallback = qs("#planner-allow-fallback");
+    elements.generatePlanButton = qs("#generate-plan-button");
+    elements.plannerStatus = qs("#planner-status");
+    elements.weeklyPlan = qs("#weekly-plan");
   }
 
   function startApp() {

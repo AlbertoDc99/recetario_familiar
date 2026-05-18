@@ -137,6 +137,7 @@ Ejemplo:
   "notes": "Queda mejor de un día para otro.",
   "tags": ["Dulce", "Horno"],
   "source": "DULCES.docx",
+  "menuCandidate": false,
   "featured": false,
   "needsReview": false
 }
@@ -158,9 +159,12 @@ Desde ahí puedes:
 - cambiar categoría, subcategoría y tipo;
 - editar ingredientes, pasos y notas;
 - cambiar la ruta de la imagen;
+- marcar una receta como comida habitual para el menú semanal;
 - marcar una receta como destacada;
 - crear una receta nueva;
 - descargar un nuevo `recipes.json`.
+
+El editor guarda un borrador en el navegador para que no se pierda una tanda de cambios si cierras y vuelves a abrir. Aun así, para que los cambios sean permanentes y aparezcan a toda la familia, hay que descargar `recipes.json`, sustituir `assets/data/recipes.json` y publicarlo.
 
 Importante: el editor no publica solo. Después de descargar `recipes.json`, sustituye `assets/data/recipes.json` y publica con Git:
 
@@ -184,11 +188,21 @@ La página principal incluye un asistente con apariencia de chat. No usa IA exte
 
 También muestra ingredientes que quizá falten para cada receta sugerida.
 
-## Favoritas y destacadas
+## Favoritas, destacadas y habituales
 
 La estrella de cada receta marca una favorita en ese navegador. Es comodo para cada persona, pero no se publica para toda la familia porque se guarda en `localStorage`.
 
 Para destacar una receta para todos, abre `admin.html`, marca `Marcar como destacada`, descarga el nuevo `recipes.json` y publicalo. Las recetas destacadas aparecen con una etiqueta y se pueden filtrar desde `Mostrar`.
+
+Para el menú semanal, usa mejor `Comida habitual para menú semanal`. Esa marca se guarda en `recipes.json`, por lo que es más segura para las recetas rutinarias de casa.
+
+## Planificador de menús
+
+La página principal incluye un planificador semanal de primeros y segundos.
+
+Por defecto usa recetas marcadas como habituales, destacadas o favoritas. Si quieres evitar sugerencias raras entre las más de 800 recetas, marca como `Comida habitual para menú semanal` las recetas de uso normal desde `admin.html` y publica el JSON.
+
+Si todavía no hay suficientes habituales, el planificador avisará. Puedes activar `Completar con otras recetas saladas si faltan habituales`, pero esa opción puede meter recetas menos rutinarias.
 
 ## Cómo cambiar una imagen
 

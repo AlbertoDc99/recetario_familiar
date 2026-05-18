@@ -2,7 +2,8 @@
   "use strict";
 
   const DATA_URL = "assets/data/recipes.json";
-  const DRAFT_KEY = "recetario_editor_draft_v1";
+  const DRAFT_KEY = "recetario_editor_draft_v2";
+  const LEGACY_DRAFT_KEY = "recetario_editor_draft_v1";
   const PLACEHOLDER_IMAGE = "assets/img/placeholder.jpg";
   const CATEGORIES = ["Salado", "Dulce", "Tapas"];
   const SUBCATEGORIES = ["Primeros", "Segundos", "Sencillos", "Elaborados", "Tapas", "Sin clasificar"];
@@ -46,6 +47,7 @@
     recipes: [],
     selectedId: "",
     dirtyCount: 0,
+    draftLoaded: false,
   };
 
   const el = {};
@@ -91,14 +93,16 @@
   async function loadRecipes() {
     const response = await fetch(DATA_URL, { cache: "no-store" });
     const recipes = await response.json();
-    const draft = sessionStorage.getItem(DRAFT_KEY);
+    const draft = localStorage.getItem(DRAFT_KEY) || sessionStorage.getItem(LEGACY_DRAFT_KEY);
+    state.draftLoaded = Boolean(draft);
     state.recipes = draft ? JSON.parse(draft) : recipes;
     state.selectedId = state.recipes[0]?.id || "";
     renderAll();
   }
 
   function persistDraft() {
-    sessionStorage.setItem(DRAFT_KEY, JSON.stringify(state.recipes));
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(state.recipes));
+    state.draftLoaded = true;
     state.dirtyCount += 1;
     renderPending();
   }
@@ -119,6 +123,8 @@
       recipe.category,
       recipe.subcategory,
       recipe.type,
+      recipe.menuCandidate ? "habitual menu semanal" : "",
+      recipe.featured ? "destacada" : "",
       recipe.notes,
       ...(recipe.ingredients || []),
       ...(recipe.steps || []),
@@ -133,7 +139,7 @@
     el.recipeList.innerHTML = visible.map((recipe) => `
       <button class="admin-recipe-item${recipe.id === state.selectedId ? " active" : ""}" type="button" data-recipe-id="${escapeHtml(recipe.id)}">
         <strong>${escapeHtml(recipe.title)}</strong>
-        <span>${escapeHtml([recipe.featured ? "Destacada" : "", recipe.category, recipe.subcategory, recipe.type].filter(Boolean).join(" · "))}</span>
+        <span>${escapeHtml([recipe.menuCandidate ? "Habitual" : "", recipe.featured ? "Destacada" : "", recipe.category, recipe.subcategory, recipe.type].filter(Boolean).join(" · "))}</span>
       </button>
     `).join("");
   }
@@ -168,6 +174,7 @@
     setFieldValue("#field-notes", recipe.notes);
     setFieldValue("#field-tags", (recipe.tags || []).join(", "));
     setFieldValue("#field-source", recipe.source);
+    el.menuCandidate.checked = Boolean(recipe.menuCandidate);
     el.featured.checked = Boolean(recipe.featured);
     el.review.checked = Boolean(recipe.needsReview);
     updatePreview(recipe.image);
@@ -201,6 +208,7 @@
       notes: el.notes.value.trim(),
       tags: tagsFromInput(el.tags.value),
       source: el.source.value.trim() || "Edición manual",
+      menuCandidate: el.menuCandidate.checked,
       featured: el.featured.checked,
       needsReview: el.review.checked,
     };
@@ -236,6 +244,7 @@
       notes: "",
       tags: [],
       source: "Edición manual",
+      menuCandidate: false,
       featured: false,
       needsReview: true,
     };
@@ -254,6 +263,7 @@
       ...JSON.parse(JSON.stringify(recipe)),
       id: uniqueSlug(`${recipe.title} copia`),
       title: `${recipe.title} copia`,
+      menuCandidate: false,
       featured: false,
       needsReview: true,
     };
@@ -274,6 +284,21 @@
     URL.revokeObjectURL(url);
   }
 
+  async function discardDraft() {
+    if (!window.confirm("¿Descartar el borrador guardado en este navegador y volver al JSON publicado?")) {
+      return;
+    }
+
+    localStorage.removeItem(DRAFT_KEY);
+    sessionStorage.removeItem(LEGACY_DRAFT_KEY);
+    state.dirtyCount = 0;
+    state.draftLoaded = false;
+    const response = await fetch(DATA_URL, { cache: "no-store" });
+    state.recipes = await response.json();
+    state.selectedId = state.recipes[0]?.id || "";
+    renderAll();
+  }
+
   function updatePreview(path) {
     el.imagePreview.src = path && path.trim() ? path : PLACEHOLDER_IMAGE;
   }
@@ -290,7 +315,11 @@
   }
 
   function renderPending() {
-    el.pendingCount.textContent = `${state.dirtyCount} cambios pendientes`;
+    if (state.draftLoaded && state.dirtyCount === 0) {
+      el.pendingCount.textContent = "Borrador local cargado";
+      return;
+    }
+    el.pendingCount.textContent = state.dirtyCount === 1 ? "1 cambio pendiente" : `${state.dirtyCount} cambios pendientes`;
   }
 
   function bindEvents() {
@@ -307,6 +336,7 @@
     el.newButton.addEventListener("click", newRecipe);
     el.duplicateButton.addEventListener("click", duplicateRecipe);
     el.exportButton.addEventListener("click", exportJson);
+    el.discardDraftButton.addEventListener("click", discardDraft);
     el.image.addEventListener("input", () => updatePreview(el.image.value));
     el.imageFile.addEventListener("change", handleImageFile);
     el.title.addEventListener("blur", () => {
@@ -326,6 +356,7 @@
     el.newButton = qs("#new-recipe-button");
     el.duplicateButton = qs("#duplicate-button");
     el.exportButton = qs("#export-button");
+    el.discardDraftButton = qs("#discard-draft-button");
     el.title = qs("#field-title");
     el.id = qs("#field-id");
     el.category = qs("#field-category");
@@ -342,6 +373,7 @@
     el.notes = qs("#field-notes");
     el.tags = qs("#field-tags");
     el.source = qs("#field-source");
+    el.menuCandidate = qs("#field-menu-candidate");
     el.featured = qs("#field-featured");
     el.review = qs("#field-review");
   }
