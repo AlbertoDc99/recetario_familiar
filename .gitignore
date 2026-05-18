@@ -1,0 +1,19 @@
+# Documentos Word originales: pueden ser privados y pesados.
+*.docx
+~$*.docx
+source-docs/*
+!source-docs/.gitkeep
+
+# Archivos del sistema y del editor.
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Python local.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Servidores locales o salidas temporales.
+*.log

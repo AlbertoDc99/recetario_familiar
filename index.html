@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>Recetario familiar</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body>
+    <div class="auth-screen" id="auth-screen">
+      <section class="auth-panel" aria-labelledby="auth-title">
+        <p class="eyebrow">Recetario familiar</p>
+        <h1 id="auth-title">La cocina de casa</h1>
+        <p class="auth-copy">Acceso familiar</p>
+
+        <form class="auth-form" id="auth-form">
+          <label for="password-input">Contraseña</label>
+          <div class="password-row">
+            <input id="password-input" name="password" type="password" autocomplete="current-password" required>
+            <button type="submit">Entrar</button>
+          </div>
+          <p class="auth-error" id="auth-error" role="alert" hidden>Contraseña incorrecta.</p>
+        </form>
+      </section>
+    </div>
+
+    <div class="app-shell" id="app" hidden aria-hidden="true">
+      <header class="site-header">
+        <div class="header-inner">
+          <a class="brand" href="#listado" aria-label="Volver al listado de recetas">
+            <span class="brand-mark" aria-hidden="true">R</span>
+            <span>
+              <span class="brand-kicker">Recetario familiar</span>
+              <span class="brand-title">La cocina de casa</span>
+            </span>
+          </a>
+          <div class="header-actions">
+            <a class="ghost-button" href="admin.html">Editar</a>
+            <button class="ghost-button" id="lock-button" type="button">Bloquear</button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="list-view" id="list-view" aria-labelledby="list-title">
+          <div class="intro-band">
+            <div>
+              <p class="eyebrow">Recetas guardadas</p>
+              <h1 id="list-title">Recetario familiar</h1>
+            </div>
+            <p class="recipe-count" id="visible-count">0 recetas</p>
+          </div>
+
+          <section class="controls-band" aria-label="Filtros de recetas">
+            <div class="search-block">
+              <label for="search-input">Buscar</label>
+              <input id="search-input" type="search" placeholder="Nombre, ingrediente, etiqueta..." autocomplete="off">
+            </div>
+
+            <fieldset class="filter-block">
+              <legend>Categoría</legend>
+              <div class="segmented-control" id="category-filters"></div>
+            </fieldset>
+
+            <fieldset class="filter-block">
+              <legend>Subcategoría</legend>
+              <select id="subcategory-select"></select>
+            </fieldset>
+
+            <fieldset class="filter-block">
+              <legend>Tipo</legend>
+              <select id="type-select"></select>
+            </fieldset>
+          </section>
+
+          <section class="assistant-shell" id="assistant-shell" aria-labelledby="assistant-title">
+            <button class="assistant-toggle" id="assistant-toggle" type="button" aria-expanded="false" aria-controls="assistant-panel">
+              <span>
+                <strong id="assistant-title">Asistente de ingredientes</strong>
+                <span>Te sugiere recetas con lo que tienes en casa.</span>
+              </span>
+              <span aria-hidden="true">+</span>
+            </button>
+            <div class="assistant-panel" id="assistant-panel" hidden>
+              <div class="chat-log" id="chat-log" aria-live="polite">
+                <div class="chat-message bot">
+                  Escribe ingredientes separados por comas. Por ejemplo: pollo, arroz, cebolla.
+                </div>
+              </div>
+              <form class="chat-form" id="ingredient-form">
+                <label for="ingredient-input">Ingredientes disponibles</label>
+                <div class="chat-input-row">
+                  <input id="ingredient-input" type="text" placeholder="pollo, arroz, cebolla..." autocomplete="off">
+                  <button type="submit">Sugerir</button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <p class="active-summary" id="active-summary"></p>
+          <div class="empty-state" id="empty-state" hidden>
+            <h2>No hay recetas con esos filtros</h2>
+            <p>Prueba con otra búsqueda o cambia la categoría.</p>
+          </div>
+          <section class="recipe-grid" id="recipe-grid" aria-live="polite"></section>
+        </section>
+
+        <section class="detail-view" id="detail-view" hidden aria-live="polite"></section>
+      </main>
+    </div>
+
+    <script src="assets/js/auth.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

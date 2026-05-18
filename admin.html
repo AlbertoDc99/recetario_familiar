@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>Editor de recetas</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body>
+    <div class="auth-screen" id="auth-screen">
+      <section class="auth-panel" aria-labelledby="auth-title">
+        <p class="eyebrow">Recetario familiar</p>
+        <h1 id="auth-title">Editor</h1>
+        <p class="auth-copy">Acceso familiar</p>
+        <form class="auth-form" id="auth-form">
+          <label for="password-input">Contraseña</label>
+          <div class="password-row">
+            <input id="password-input" name="password" type="password" autocomplete="current-password" required>
+            <button type="submit">Entrar</button>
+          </div>
+          <p class="auth-error" id="auth-error" role="alert" hidden>Contraseña incorrecta.</p>
+        </form>
+      </section>
+    </div>
+
+    <div class="app-shell" id="app" hidden aria-hidden="true">
+      <header class="site-header">
+        <div class="header-inner">
+          <a class="brand" href="index.html">
+            <span class="brand-mark" aria-hidden="true">R</span>
+            <span>
+              <span class="brand-kicker">Recetario familiar</span>
+              <span class="brand-title">Editor de recetas</span>
+            </span>
+          </a>
+          <div class="header-actions">
+            <a class="ghost-button" href="index.html">Ver web</a>
+            <button class="ghost-button" id="lock-button" type="button">Bloquear</button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro-band compact-intro">
+          <div>
+            <p class="eyebrow">Mantenimiento</p>
+            <h1>Editar recetas</h1>
+          </div>
+          <p class="recipe-count" id="editor-count">0 recetas</p>
+        </section>
+
+        <section class="admin-notice">
+          Los cambios se guardan en esta sesión del navegador. Para publicar, descarga el JSON y súbelo con Git.
+        </section>
+
+        <section class="admin-layout">
+          <aside class="admin-sidebar">
+            <div class="search-block">
+              <label for="admin-search">Buscar receta</label>
+              <input id="admin-search" type="search" placeholder="Nombre, ingrediente, tipo..." autocomplete="off">
+            </div>
+            <button class="primary-button full-button" id="new-recipe-button" type="button">Nueva receta</button>
+            <div class="admin-recipe-list" id="admin-recipe-list"></div>
+          </aside>
+
+          <section class="admin-editor" aria-labelledby="editor-title">
+            <div class="editor-toolbar">
+              <div>
+                <p class="eyebrow">Ficha</p>
+                <h2 id="editor-title">Selecciona una receta</h2>
+              </div>
+              <span class="pill review" id="pending-count">0 cambios pendientes</span>
+            </div>
+
+            <form class="editor-form" id="recipe-form">
+              <div class="form-grid two">
+                <label>
+                  Título
+                  <input id="field-title" type="text">
+                </label>
+                <label>
+                  ID
+                  <input id="field-id" type="text">
+                </label>
+              </div>
+
+              <div class="form-grid three">
+                <label>
+                  Categoría
+                  <select id="field-category"></select>
+                </label>
+                <label>
+                  Subcategoría
+                  <select id="field-subcategory"></select>
+                </label>
+                <label>
+                  Tipo
+                  <select id="field-type"></select>
+                </label>
+              </div>
+
+              <div class="form-grid three">
+                <label>
+                  Tiempo
+                  <input id="field-time" type="text">
+                </label>
+                <label>
+                  Dificultad
+                  <input id="field-difficulty" type="text">
+                </label>
+                <label>
+                  Raciones
+                  <input id="field-servings" type="text">
+                </label>
+              </div>
+
+              <label>
+                Imagen
+                <input id="field-image" type="text" placeholder="assets/img/recetas/tarta-de-queso.jpg">
+              </label>
+              <div class="image-helper">
+                <img id="image-preview" src="assets/img/placeholder.jpg" alt="">
+                <div>
+                  <label class="file-label">
+                    Elegir foto
+                    <input id="field-image-file" type="file" accept="image/*">
+                  </label>
+                  <p>Si eliges una foto, se previsualiza y se propone una ruta. La foto real hay que copiarla a `assets/img/recetas/` antes de publicar.</p>
+                </div>
+              </div>
+
+              <label>
+                Ingredientes, uno por línea
+                <textarea id="field-ingredients" rows="8"></textarea>
+              </label>
+
+              <label>
+                Preparación, un paso por línea
+                <textarea id="field-steps" rows="9"></textarea>
+              </label>
+
+              <label>
+                Notas
+                <textarea id="field-notes" rows="4"></textarea>
+              </label>
+
+              <div class="form-grid two">
+                <label>
+                  Etiquetas, separadas por coma
+                  <input id="field-tags" type="text">
+                </label>
+                <label>
+                  Fuente
+                  <input id="field-source" type="text">
+                </label>
+              </div>
+
+              <label class="checkbox-line">
+                <input id="field-review" type="checkbox">
+                Marcar como pendiente de revisar
+              </label>
+
+              <div class="editor-actions">
+                <button class="primary-button" type="submit">Guardar en esta sesión</button>
+                <button class="ghost-button" id="duplicate-button" type="button">Duplicar</button>
+                <button class="ghost-button" id="export-button" type="button">Descargar recipes.json</button>
+              </div>
+            </form>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="assets/js/auth.js" defer></script>
+    <script src="assets/js/admin.js" defer></script>
+  </body>
+</html>
