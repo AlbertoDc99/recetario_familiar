@@ -127,7 +127,9 @@
       recipe.featured ? "destacada" : "",
       recipe.notes,
       ...(recipe.ingredients || []),
+      ...((recipe.ingredientSections || []).flatMap((section) => [section.title, ...(section.items || [])])),
       ...(recipe.steps || []),
+      ...((recipe.preparation || []).map((block) => block.text || "")),
       ...(recipe.tags || []),
     ].join(" "));
     return text.includes(query);
@@ -208,6 +210,67 @@
     return value.split(/[,;\n]+/).map((tag) => tag.trim()).filter(Boolean);
   }
 
+  function syncPreparation(preparation, steps) {
+    if (!Array.isArray(preparation) || !preparation.length) {
+      return [];
+    }
+
+    const nextSteps = compactList(steps);
+    let stepIndex = 0;
+    const nextPreparation = [];
+
+    preparation.forEach((block) => {
+      if (!block || typeof block !== "object") {
+        return;
+      }
+      if (block.type === "image" && block.src) {
+        nextPreparation.push({ type: "image", src: String(block.src).trim() });
+        return;
+      }
+      if (block.type === "step" && stepIndex < nextSteps.length) {
+        nextPreparation.push({ type: "step", text: nextSteps[stepIndex] });
+        stepIndex += 1;
+      }
+    });
+
+    while (stepIndex < nextSteps.length) {
+      nextPreparation.push({ type: "step", text: nextSteps[stepIndex] });
+      stepIndex += 1;
+    }
+
+    return nextPreparation;
+  }
+
+  function syncIngredientSections(sections, ingredients) {
+    if (!Array.isArray(sections) || !sections.length) {
+      return [];
+    }
+
+    const nextIngredients = compactList(ingredients);
+    let itemIndex = 0;
+    const nextSections = sections.map((section) => {
+      const previousItems = Array.isArray(section?.items) ? section.items : [];
+      const itemCount = previousItems.length;
+      const items = nextIngredients.slice(itemIndex, itemIndex + itemCount);
+      itemIndex += itemCount;
+      return {
+        title: section?.title || "",
+        items,
+      };
+    }).filter((section) => section.items.length);
+
+    if (itemIndex < nextIngredients.length) {
+      const extras = nextIngredients.slice(itemIndex);
+      if (nextSections.length) {
+        nextSections[nextSections.length - 1].items.push(...extras);
+      } else {
+        nextSections.push({ title: "Otros", items: extras });
+      }
+    }
+
+    return nextSections;
+  }
+
   function formRecipe() {
     const current = selectedRecipe() || {};
     const title = el.title.value.trim() || "Receta sin título";
@@ -215,6 +278,8 @@
     const galleryImages = linesFromTextarea(el.images.value);
     const mainImage = el.image.value.trim() || galleryImages[0] || "";
     const images = [...new Set(compactList([mainImage, ...galleryImages]))];
+    const ingredients = linesFromTextarea(el.ingredients.value);
+    const steps = linesFromTextarea(el.steps.value);
     return {
       ...current,
       id,
@@ -227,8 +292,10 @@
       time: el.time.value.trim(),
       difficulty: el.difficulty.value.trim(),
       servings: el.servings.value.trim(),
-      ingredients: linesFromTextarea(el.ingredients.value),
-      steps: linesFromTextarea(el.steps.value),
+      ingredients,
+      ingredientSections: syncIngredientSections(current.ingredientSections, ingredients),
+      steps,
+      preparation: syncPreparation(current.preparation, steps),
       notes: el.notes.value.trim(),
       tags: tagsFromInput(el.tags.value),
       source: el.source.value.trim() || "Edición manual",

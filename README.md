@@ -109,7 +109,9 @@ Revisa especialmente:
 - `subcategory`
 - `type`
 - `ingredients`
+- `ingredientSections`, si existe
 - `steps`
+- `preparation`, si existe
 - `notes`
 - `reviewNotes`
 
@@ -137,7 +139,15 @@ Ejemplo:
   "difficulty": "Fácil",
   "servings": "6 personas",
   "ingredients": ["500 g de queso crema", "3 huevos"],
+  "ingredientSections": [
+    { "title": "Base", "items": ["500 g de queso crema", "3 huevos"] }
+  ],
   "steps": ["Mezclar los ingredientes.", "Hornear hasta que cuaje."],
+  "preparation": [
+    { "type": "step", "text": "Mezclar los ingredientes." },
+    { "type": "image", "src": "assets/img/recetas/tarta-de-queso-2.jpg" },
+    { "type": "step", "text": "Hornear hasta que cuaje." }
+  ],
   "notes": "Queda mejor de un día para otro.",
   "tags": ["Dulce", "Horno"],
   "source": "DULCES.docx",
@@ -170,6 +180,8 @@ Desde ahí puedes:
 - descargar un nuevo `recipes.json`.
 
 El editor guarda un borrador en el navegador para que no se pierda una tanda de cambios si cierras y vuelves a abrir. Aun así, para que los cambios sean permanentes y aparezcan a toda la familia, hay que descargar `recipes.json`, sustituir `assets/data/recipes.json` y publicarlo.
+
+El archivo descargado es siempre el JSON general completo del recetario, no solo la receta que se acaba de editar. Por eso se pueden acumular muchas correcciones, habituales y destacadas, descargar una sola vez y publicar todo junto.
 
 Importante: el editor no publica solo. Después de descargar `recipes.json`, sustituye `assets/data/recipes.json` y publica con Git:
 
@@ -234,6 +246,8 @@ Luego edita `image` para la foto principal y `images` para la galería completa:
   "assets/img/recetas/tarta-de-queso-2.jpg"
 ]
 ```
+
+Si la receta tiene fotos dentro de la preparación, el extractor añade también `preparation`. Ese campo conserva el orden de pasos e imágenes para que la web muestre las fotos junto al paso correspondiente. Si editas a mano una receta sencilla, puedes dejar solo `steps`; `preparation` es opcional.
 
 Si `image` e `images` están vacíos, la web usa automáticamente:
 

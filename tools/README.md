@@ -34,7 +34,9 @@ La extracción es heurística:
 
 - detecta títulos de recetas por líneas destacadas, normalmente en mayúsculas;
 - separa ingredientes, preparación y notas si encuentra encabezados reconocibles;
+- conserva algunos grupos internos de ingredientes en `ingredientSections`, por ejemplo bizcocho, crema, relleno o montaje;
 - guarda `image` como foto principal y `images` como galería completa de la receta;
+- cuando hay fotos dentro de la preparación, guarda también `preparation` con pasos e imágenes en el orden aproximado del Word;
 - clasifica recetas de `DULCES.docx` como `Dulce`;
 - clasifica recetas de Evernote como `Salado`, salvo evidencias de `Tapas` o `Dulce`;
 - añade un campo `type` con una clasificación más concreta, por ejemplo sopas, arroces, pasta, pescados, carnes, bizcochos, tartas o galletas;

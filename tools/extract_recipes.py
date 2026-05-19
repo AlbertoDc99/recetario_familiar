@@ -427,28 +427,28 @@ def image_targets_for_recipe(
     image_events: list[tuple[int, list[str]]],
     start: int,
     end: int,
-) -> list[str]:
-    result: list[str] = []
+) -> list[tuple[int, str]]:
+    result: list[tuple[int, str]] = []
     seen: set[str] = set()
     for line_index, targets in image_events:
         if start <= line_index <= end:
             for target in targets:
                 if target not in seen:
                     seen.add(target)
-                    result.append(target)
+                    result.append((line_index, target))
     return result
 
 
 def write_recipe_images(
     docx_path: Path,
-    targets: list[str],
+    targets: list[tuple[int, str]],
     recipe_id: str,
     images_dir: Path,
     *,
     overwrite: bool = False,
-) -> list[str]:
-    images: list[str] = []
-    for index, target in enumerate(targets, start=1):
+) -> list[tuple[int, str]]:
+    images: list[tuple[int, str]] = []
+    for index, (line_index, target) in enumerate(targets, start=1):
         image = write_recipe_image(
             docx_path,
             target,
@@ -458,7 +458,7 @@ def write_recipe_images(
             overwrite=overwrite,
         )
         if image:
-            images.append(image)
+            images.append((line_index, image))
     return images
 
 
@@ -502,6 +502,16 @@ def has_recipe_marker_ahead(lines: list[str], index: int, window: int = 14) -> b
     return False
 
 
+def inside_recent_ingredient_context(lines: list[str], index: int, window: int = 24) -> bool:
+    for previous_line in reversed(lines[max(0, index - window) : index]):
+        marker = section_type(previous_line)
+        if marker == "steps":
+            return False
+        if marker == "ingredients":
+            return True
+    return False
+
+
 def is_probable_title(lines: list[str], index: int) -> bool:
     line = lines[index].strip()
     compact = normalize_for_match(line).strip(" :-.\t")
@@ -529,7 +539,8 @@ def is_probable_title(lines: list[str], index: int) -> bool:
     upper_ratio = upper / max(letters, 1)
     uppercase_title = upper_ratio >= 0.62 and upper >= max(3, lower * 1.7)
     followed_by_marker = has_recipe_marker_ahead(lines, index)
-    next_is_marker = index + 1 < len(lines) and section_type(lines[index + 1]) in {"ingredients", "steps"}
+    next_marker = section_type(lines[index + 1]) if index + 1 < len(lines) else None
+    next_is_marker = next_marker in {"ingredients", "steps"}
 
     if compact in GENERIC_TITLE_WORDS:
         return followed_by_marker
@@ -537,7 +548,13 @@ def is_probable_title(lines: list[str], index: int) -> bool:
         return True
     starts_like_title = line[:1].isupper()
     has_title_keyword = any(compact.startswith(keyword) for keyword in TITLE_KEYWORDS)
-    if next_is_marker and len(line) <= 90 and starts_like_title and (has_title_keyword or not ingredient_like(line)):
+    if (
+        next_is_marker
+        and len(line) <= 90
+        and starts_like_title
+        and (has_title_keyword or not ingredient_like(line))
+        and not (next_marker == "steps" and inside_recent_ingredient_context(lines, index))
+    ):
         return True
     return False
 
@@ -573,11 +590,13 @@ def ingredient_like(line: str) -> bool:
         return False
     measure_pattern = r"\b(\d+(?:[.,/]\d+)?|un|una|dos|tres|cuatro|medio|media|pizca|chorrito|cucharad[aitas]*|taza|vaso|sobre|gr|g|kg|ml|l)\b"
     fraction_pattern = r"[½¼¾⅓⅔]"
-    food_pattern = r"\b(aceite|sal|azucar|azúcar|harina|levadura|huevo|huevos|leche|mantequilla|tomate|cebolla|ajo|pimienta|chocolate|nata|queso|pollo|carne|pescado|bacalao|limon|limón|naranja|vainilla|canela)\b"
+    food_pattern = r"\b(aceite|agua|sal|azucar|azúcar|harina|levadura|huevo|huevos|leche|mantequilla|tomate|cebolla|ajo|pimienta|chocolate|nata|crema|queso|pollo|carne|pescado|bacalao|limon|limón|naranja|vainilla|canela|cafe|café|expreso|espresso|granos)\b"
+    material_pattern = r"\b(molde|moldes|papel|film|bandeja)\b"
     return bool(
         re.search(measure_pattern, text)
         or re.search(fraction_pattern, line)
         or re.search(food_pattern, text)
+        or re.search(material_pattern, text)
     )
 
 
@@ -587,10 +606,72 @@ def looks_like_procedure(line: str) -> bool:
         return True
     return bool(
         re.match(
-            r"^(se |pon|poner|precalienta|precalentar|mezcla|mezclar|batir|bate|añad|anad|incorpora|hornea|hornear|deja|dejamos|corta|pelar|frie|freir|calienta|calentar|monta|montar)",
+            r"^(se |pon|poner|precalienta|precalentar|mezcla|mezclar|batir|bate|añad|anad|incorpora|hornea|hornear|deja|dejamos|corta|pelar|frie|freir|calienta|calentar|monta\b|montar|montamos|montando)",
             text,
         )
     )
+
+
+def looks_like_subsection_heading(line: str, current: str) -> bool:
+    text = normalize_text(line).strip()
+    compact = normalize_for_match(text).strip(" :-.\t")
+    letters, _, _ = letter_stats(text)
+
+    if current not in {"ingredients", "steps"}:
+        return False
+    if len(text) < 3 or len(text) > 70 or letters < 3:
+        return False
+    if looks_like_url(text) or section_type(text) or is_numbered_or_bullet(text):
+        return False
+    if any(compact.startswith(prefix) for prefix in NON_TITLE_PREFIXES):
+        return False
+    if current == "steps" and looks_like_procedure(text):
+        return False
+
+    heading_words = (
+        "bizcocho",
+        "battercream",
+        "buttercream",
+        "butter cream",
+        "montaje",
+        "decoracion",
+        "decoración",
+        "crema",
+        "masa",
+        "relleno",
+        "cobertura",
+        "glaseado",
+        "almibar",
+        "almíbar",
+        "salsa",
+        "base",
+        "tip",
+    )
+    has_heading_word = any(word in compact for word in heading_words)
+    strong_heading_prefixes = (
+        "bizcocho",
+        "battercream",
+        "buttercream",
+        "butter cream",
+        "montaje",
+        "decoracion",
+        "decoración",
+        "masa",
+        "relleno",
+        "cobertura",
+        "glaseado",
+        "almibar",
+        "almíbar",
+        "salsa",
+        "base",
+        "tip",
+    )
+    has_strong_heading = any(compact.startswith(prefix) for prefix in strong_heading_prefixes)
+    if not text.endswith(":") and not has_strong_heading:
+        return False
+    if ingredient_like(text) and not text.endswith(":") and not has_strong_heading:
+        return False
+    return text.endswith(":") or has_heading_word
 
 
 def maybe_start_ingredient_block(lines: list[str], index: int) -> bool:
@@ -609,32 +690,124 @@ def split_step_line(line: str) -> list[str]:
     return [clean_list_item(part, step=True) for part in parts if clean_list_item(part, step=True)]
 
 
-def parse_body(lines: list[str]) -> tuple[list[str], list[str], str]:
+def parse_body_with_positions(
+    lines: list[str],
+    *,
+    absolute_start: int = 0,
+) -> tuple[list[str], list[dict], list[str], str, list[dict]]:
     ingredients: list[str] = []
-    steps: list[str] = []
+    ingredient_sections: list[dict] = []
+    ungrouped_ingredients: list[str] = []
+    current_ingredient_section: dict | None = None
+    step_entries: list[dict] = []
     notes: list[str] = []
     current = "notes"
 
     for index, line in enumerate(lines):
+        line_index = absolute_start + index
         marker = section_type(line)
         if marker:
             current = marker
             continue
 
         if current == "notes" and maybe_start_ingredient_block(lines, index):
+            if looks_like_url(line):
+                notes.append(clean_list_item(line))
+                continue
             current = "ingredients"
 
         if current == "ingredients" and ingredients and not ingredient_like(line) and looks_like_procedure(line):
             current = "steps"
 
         if current == "ingredients":
-            ingredients.append(clean_list_item(line))
+            if looks_like_subsection_heading(line, current):
+                current_ingredient_section = {"title": clean_list_item(line).rstrip(":"), "items": []}
+                ingredient_sections.append(current_ingredient_section)
+                continue
+
+            item = clean_list_item(line)
+            ingredients.append(item)
+            if current_ingredient_section is not None:
+                current_ingredient_section["items"].append(item)
+            else:
+                ungrouped_ingredients.append(item)
         elif current == "steps":
-            steps.extend(split_step_line(line))
+            if looks_like_subsection_heading(line, current):
+                step_entries.append({"type": "heading", "lineIndex": line_index, "text": clean_list_item(line, step=True).rstrip(":")})
+                continue
+
+            for step in split_step_line(line):
+                step_entries.append({"type": "step", "lineIndex": line_index, "text": step})
         else:
             notes.append(clean_list_item(line))
 
-    return compact_items(ingredients), compact_items(steps), "\n".join(compact_items(notes))
+    if ingredient_sections and ungrouped_ingredients:
+        ingredient_sections.insert(0, {"title": "Otros", "items": ungrouped_ingredients})
+
+    compact_ingredients = compact_items(ingredients)
+    compact_sections: list[dict] = []
+    for section in ingredient_sections:
+        items = compact_items(section.get("items", []))
+        if items:
+            compact_sections.append({"title": section.get("title", ""), "items": items})
+
+    compact_steps_seen: list[str] = []
+    compact_steps: list[str] = []
+    compact_step_entries: list[dict] = []
+    for entry in step_entries:
+        text = normalize_text(str(entry["text"]))
+        if not text:
+            continue
+        if entry.get("type") == "heading":
+            compact_step_entries.append({"type": "heading", "lineIndex": entry["lineIndex"], "text": text})
+            continue
+        if text not in compact_steps_seen:
+            compact_steps_seen.append(text)
+            compact_steps.append(text)
+            compact_step_entries.append({"type": "step", "lineIndex": entry["lineIndex"], "text": text})
+
+    return compact_ingredients, compact_sections, compact_steps, "\n".join(compact_items(notes)), compact_step_entries
+
+
+def parse_body(lines: list[str]) -> tuple[list[str], list[str], str]:
+    ingredients, _, steps, notes, _ = parse_body_with_positions(lines)
+    return ingredients, steps, notes
+
+
+def build_preparation_blocks(
+    step_entries: list[dict],
+    positioned_images: list[tuple[int, str]],
+) -> list[dict]:
+    if not step_entries:
+        return []
+
+    additional_images = [
+        {"lineIndex": line_index, "src": image}
+        for line_index, image in positioned_images[1:]
+    ]
+
+    events: list[tuple[int, int, int, dict]] = []
+    for index, entry in enumerate(step_entries):
+        block_type = "heading" if entry.get("type") == "heading" else "step"
+        events.append((
+            int(entry["lineIndex"]),
+            1 if block_type == "heading" else 2,
+            index,
+            {"type": block_type, "text": entry["text"]},
+        ))
+
+    for index, image in enumerate(additional_images):
+        events.append((
+            int(image["lineIndex"]),
+            0,
+            index,
+            {"type": "image", "src": image["src"]},
+        ))
+
+    events.sort(key=lambda item: (item[0], item[1], item[2]))
+    blocks = [event[3] for event in events]
+    has_extra_structure = bool(additional_images) or any(block["type"] == "heading" for block in blocks)
+    return blocks if has_extra_structure else []
 
 
 def compact_items(items: Iterable[str]) -> list[str]:
@@ -874,14 +1047,19 @@ def build_recipes_from_doc(
         end = boundaries[position + 1] if position + 1 < len(boundaries) else len(lines)
         title = normalize_text(lines[start])
         body = lines[start + 1 : end]
-        ingredients, steps, notes = parse_body(body)
+        ingredients, ingredient_sections, steps, notes, step_entries = parse_body_with_positions(body, absolute_start=start + 1)
         full_text = " ".join([title, *body])
         category, subcategory, recipe_type, needs_review, review_notes = classify_recipe(path.name, title, ingredients, steps, notes)
         recipe_id = unique_slug(title, used_slugs)
-        images: list[str] = []
+        positioned_images: list[tuple[int, str]] = []
         image_targets = image_targets_for_recipe(image_events, start, end)
         if extract_images and image_targets:
-            images = write_recipe_images(path, image_targets, recipe_id, images_dir, overwrite=overwrite_images)
+            positioned_images = write_recipe_images(path, image_targets, recipe_id, images_dir, overwrite=overwrite_images)
+        if normalize_for_match(title) == "rosquillas fritas":
+            positioned_images = [(line_index, image) for line_index, image in positioned_images if line_index != start]
+
+        images = [image for _, image in positioned_images]
+        preparation = build_preparation_blocks(step_entries, positioned_images)
 
         recipe = {
             "id": recipe_id,
@@ -901,6 +1079,10 @@ def build_recipes_from_doc(
             "source": path.name,
             "needsReview": needs_review,
         }
+        if ingredient_sections:
+            recipe["ingredientSections"] = ingredient_sections
+        if preparation:
+            recipe["preparation"] = preparation
         if review_notes:
             recipe["reviewNotes"] = review_notes
         recipes.append(recipe)

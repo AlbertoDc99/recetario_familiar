@@ -94,6 +94,7 @@
     filtered: [],
     favoriteIds: new Set(),
     loaded: false,
+    listScrollY: 0,
     filters: {
       quick: "Todas",
       search: "",
@@ -163,7 +164,9 @@
       recipe.menuCandidate ? "habitual menu semanal" : "",
       recipe.featured ? "destacada" : "",
       ...(recipe.ingredients || []),
+      ...((recipe.ingredientSections || []).flatMap((section) => [section.title, ...(section.items || [])])),
       ...(recipe.steps || []),
+      ...((recipe.preparation || []).map((block) => block.text || "")),
       ...(recipe.tags || []),
     ].join(" "));
   }
@@ -224,10 +227,12 @@
         type: recipe.type || "Sin clasificar",
         image: recipe.image || "",
         images: Array.isArray(recipe.images) ? recipe.images : [],
+        preparation: Array.isArray(recipe.preparation) ? recipe.preparation : [],
         time: recipe.time || "",
         difficulty: recipe.difficulty || "",
         servings: recipe.servings || "",
         ingredients: Array.isArray(recipe.ingredients) ? recipe.ingredients : [],
+        ingredientSections: Array.isArray(recipe.ingredientSections) ? recipe.ingredientSections : [],
         steps: Array.isArray(recipe.steps) ? recipe.steps : [],
         notes: recipe.notes || "",
         tags: Array.isArray(recipe.tags) ? recipe.tags : [],
@@ -414,6 +419,9 @@
   function showList() {
     elements.detailView.hidden = true;
     elements.listView.hidden = false;
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: state.listScrollY || 0, behavior: "auto" });
+    });
   }
 
   function renderDetail(recipe) {
@@ -424,6 +432,7 @@
 
     elements.listView.hidden = true;
     elements.detailView.hidden = false;
+    window.scrollTo({ top: 0, behavior: "auto" });
     elements.detailView.innerHTML = `
       <div class="detail-actions">
         <button class="back-button" type="button" data-back-to-list>Volver al listado</button>
@@ -443,8 +452,8 @@
             ${metaItems.map((item) => `<span class="pill">${escapeHtml(item)}</span>`).join("")}
             ${review}
           </div>
-          ${renderRecipeSection("Ingredientes", recipe.ingredients, "ul")}
-          ${renderRecipeSection("Preparación", recipe.steps, "ol")}
+          ${renderIngredients(recipe)}
+          ${renderPreparation(recipe)}
           ${renderNotes(recipe.notes)}
           ${renderTags(recipe.tags)}
           ${recipe.source ? `<p class="source-line">Fuente: ${escapeHtml(recipe.source)}</p>` : ""}
@@ -453,8 +462,39 @@
     `;
   }
 
+  function preparationBlocks(recipe) {
+    if (!Array.isArray(recipe.preparation)) {
+      return [];
+    }
+
+    return recipe.preparation.filter((block) => {
+      if (!block || typeof block !== "object") {
+        return false;
+      }
+      if (block.type === "step") {
+        return Boolean(block.text && String(block.text).trim());
+      }
+      if (block.type === "image") {
+        return Boolean(block.src && String(block.src).trim());
+      }
+      if (block.type === "heading") {
+        return Boolean(block.text && String(block.text).trim());
+      }
+      return false;
+    });
+  }
+
+  function preparationImageSet(recipe) {
+    return new Set(
+      preparationBlocks(recipe)
+        .filter((block) => block.type === "image")
+        .map((block) => String(block.src).trim())
+    );
+  }
+
   function renderImageGallery(recipe) {
-    const images = imageList(recipe).filter((image) => image !== imageFor(recipe));
+    const preparationImages = preparationImageSet(recipe);
+    const images = imageList(recipe).filter((image) => image !== imageFor(recipe) && !preparationImages.has(image));
     if (!images.length) {
       return "";
     }
@@ -469,6 +509,80 @@
             </a>
           `).join("")}
         </div>
+      </section>
+    `;
+  }
+
+  function renderPreparation(recipe) {
+    const blocks = preparationBlocks(recipe);
+    if (!blocks.length) {
+      return renderRecipeSection("Preparación", recipe.steps, "ol");
+    }
+
+    let stepNumber = 0;
+    return `
+      <section class="recipe-section preparation-section">
+        <h2>Preparación</h2>
+        <div class="preparation-flow">
+          ${blocks.map((block) => {
+            if (block.type === "heading") {
+              return `<h3 class="preparation-heading">${escapeHtml(block.text)}</h3>`;
+            }
+
+            if (block.type === "image") {
+              const src = String(block.src).trim();
+              return `
+                <figure class="preparation-photo">
+                  <a href="${escapeHtml(src)}" target="_blank" rel="noopener">
+                    <img src="${escapeHtml(src)}" alt="Foto de preparación" loading="lazy" onerror="this.closest('figure').remove()">
+                  </a>
+                </figure>
+              `;
+            }
+
+            stepNumber += 1;
+            return `
+              <div class="preparation-step">
+                <span class="preparation-number">${stepNumber}</span>
+                <p>${escapeHtml(block.text)}</p>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  function ingredientSections(recipe) {
+    if (!Array.isArray(recipe.ingredientSections)) {
+      return [];
+    }
+
+    return recipe.ingredientSections
+      .map((section) => ({
+        title: section?.title || "",
+        items: compactList(section?.items || []),
+      }))
+      .filter((section) => section.items.length);
+  }
+
+  function renderIngredients(recipe) {
+    const sections = ingredientSections(recipe);
+    if (!sections.length) {
+      return renderRecipeSection("Ingredientes", recipe.ingredients, "ul");
+    }
+
+    return `
+      <section class="recipe-section ingredient-section">
+        <h2>Ingredientes</h2>
+        ${sections.map((section) => `
+          <div class="ingredient-group">
+            ${section.title ? `<h3>${escapeHtml(section.title)}</h3>` : ""}
+            <ul>
+              ${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+            </ul>
+          </div>
+        `).join("")}
       </section>
     `;
   }
@@ -851,22 +965,26 @@
   function bindEvents() {
     elements.searchInput.addEventListener("input", (event) => {
       state.filters.search = event.target.value;
+      state.listScrollY = 0;
       applyFilters();
     });
 
     elements.quickSelect.addEventListener("change", (event) => {
       state.filters.quick = event.target.value;
+      state.listScrollY = 0;
       applyFilters();
     });
 
     elements.subcategorySelect.addEventListener("change", (event) => {
       state.filters.subcategory = event.target.value;
       state.filters.type = "Todas";
+      state.listScrollY = 0;
       applyFilters();
     });
 
     elements.typeSelect.addEventListener("change", (event) => {
       state.filters.type = event.target.value;
+      state.listScrollY = 0;
       applyFilters();
     });
 
@@ -901,6 +1019,7 @@
       if (filter) {
         const type = filter.dataset.filterType;
         state.filters[type] = filter.dataset.filterValue;
+        state.listScrollY = 0;
         if (type === "category") {
           state.filters.subcategory = "Todas";
           state.filters.type = "Todas";
@@ -909,6 +1028,12 @@
           state.filters.type = "Todas";
         }
         applyFilters();
+        return;
+      }
+
+      const cardLink = event.target.closest(".card-link");
+      if (cardLink) {
+        state.listScrollY = window.scrollY;
         return;
       }
 
