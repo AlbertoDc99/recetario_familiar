@@ -48,6 +48,7 @@
     selectedId: "",
     dirtyCount: 0,
     draftLoaded: false,
+    filter: "all",
   };
 
   const el = {};
@@ -95,7 +96,10 @@
     const recipes = await response.json();
     const draft = localStorage.getItem(DRAFT_KEY) || sessionStorage.getItem(LEGACY_DRAFT_KEY);
     state.draftLoaded = Boolean(draft);
-    state.recipes = draft ? JSON.parse(draft) : recipes;
+    state.recipes = (draft ? JSON.parse(draft) : recipes).map((recipe) => ({
+      ...recipe,
+      needsImageReview: Boolean(recipe.needsImageReview || !recipe.image),
+    }));
     state.selectedId = state.recipes[0]?.id || "";
     renderAll();
   }
@@ -137,11 +141,22 @@
 
   function renderList() {
     const query = normalize(el.search.value.trim());
-    const visible = state.recipes.filter((recipe) => recipeMatches(recipe, query)).slice(0, 120);
+    const matches = state.recipes.filter((recipe) => recipeMatches(recipe, query) && recipeMatchesFilter(recipe));
+    const visible = matches.slice(0, 120);
+    el.sidebarStatus.textContent = `${matches.length} recetas en este filtro`;
     el.recipeList.innerHTML = visible.map((recipe) => `
       <button class="admin-recipe-item${recipe.id === state.selectedId ? " active" : ""}" type="button" data-recipe-id="${escapeHtml(recipe.id)}">
         <strong>${escapeHtml(recipe.title)}</strong>
-        <span>${escapeHtml([recipe.menuCandidate ? "Habitual" : "", recipe.featured ? "Destacada" : "", recipe.category, recipe.subcategory, recipe.type].filter(Boolean).join(" · "))}</span>
+        <span>${escapeHtml([
+          recipe.menuCandidate ? "Habitual" : "",
+          recipe.featured ? "Destacada" : "",
+          recipe.needsReview ? "Por revisar" : "",
+          recipe.needsImageReview ? "Revisar imagen" : "",
+          !hasRealImage(recipe) ? "Sin foto" : "",
+          recipe.category,
+          recipe.subcategory,
+          recipe.type
+        ].filter(Boolean).join(" · "))}</span>
       </button>
     `).join("");
   }
@@ -173,6 +188,29 @@
     return [...new Set(values)];
   }
 
+  function hasRealImage(recipe) {
+    return Boolean(recipe.image && String(recipe.image).trim());
+  }
+
+  function recipeMatchesFilter(recipe) {
+    if (state.filter === "routine") {
+      return Boolean(recipe.menuCandidate);
+    }
+    if (state.filter === "featured") {
+      return Boolean(recipe.featured);
+    }
+    if (state.filter === "review") {
+      return Boolean(recipe.needsReview);
+    }
+    if (state.filter === "imageReview") {
+      return Boolean(recipe.needsImageReview);
+    }
+    if (state.filter === "noImage") {
+      return !hasRealImage(recipe);
+    }
+    return true;
+  }
+
   function renderForm() {
     const recipe = selectedRecipe();
     if (!recipe) {
@@ -199,6 +237,7 @@
     el.menuCandidate.checked = Boolean(recipe.menuCandidate);
     el.featured.checked = Boolean(recipe.featured);
     el.review.checked = Boolean(recipe.needsReview);
+    el.imageReview.checked = Boolean(recipe.needsImageReview);
     updatePreview(recipe.image);
   }
 
@@ -225,6 +264,10 @@
       }
       if (block.type === "image" && block.src) {
         nextPreparation.push({ type: "image", src: String(block.src).trim() });
+        return;
+      }
+      if (block.type === "heading" && block.text) {
+        nextPreparation.push({ type: "heading", text: String(block.text).trim() });
         return;
       }
       if (block.type === "step" && stepIndex < nextSteps.length) {
@@ -302,6 +345,7 @@
       menuCandidate: el.menuCandidate.checked,
       featured: el.featured.checked,
       needsReview: el.review.checked,
+      needsImageReview: el.imageReview.checked,
     };
   }
 
@@ -339,6 +383,7 @@
       menuCandidate: false,
       featured: false,
       needsReview: true,
+      needsImageReview: true,
     };
     state.recipes.unshift(recipe);
     state.selectedId = recipe.id;
@@ -358,6 +403,7 @@
       menuCandidate: false,
       featured: false,
       needsReview: true,
+      needsImageReview: true,
     };
     state.recipes.unshift(copy);
     state.selectedId = copy.id;
@@ -412,13 +458,21 @@
   function renderPending() {
     if (state.draftLoaded && state.dirtyCount === 0) {
       el.pendingCount.textContent = "Borrador local cargado";
+      el.editorHelper.textContent = "Hay un borrador guardado en este navegador. Descarga el archivo para publicarlo o descártalo para volver al JSON publicado.";
       return;
     }
     el.pendingCount.textContent = state.dirtyCount === 1 ? "1 cambio pendiente" : `${state.dirtyCount} cambios pendientes`;
+    el.editorHelper.textContent = state.dirtyCount
+      ? "Cuando termines la tanda, descarga el archivo para Alberto. Incluye todas las recetas, habituales, destacadas y correcciones."
+      : "Los cambios quedan en este navegador hasta descargar el archivo y publicarlo.";
   }
 
   function bindEvents() {
     el.search.addEventListener("input", renderList);
+    el.filter.addEventListener("change", (event) => {
+      state.filter = event.target.value;
+      renderList();
+    });
     el.recipeList.addEventListener("click", (event) => {
       const button = event.target.closest("[data-recipe-id]");
       if (!button) {
@@ -444,6 +498,8 @@
   function cacheElements() {
     el.editorCount = qs("#editor-count");
     el.search = qs("#admin-search");
+    el.filter = qs("#admin-filter");
+    el.sidebarStatus = qs("#admin-sidebar-status");
     el.recipeList = qs("#admin-recipe-list");
     el.editorTitle = qs("#editor-title");
     el.pendingCount = qs("#pending-count");
@@ -472,6 +528,8 @@
     el.menuCandidate = qs("#field-menu-candidate");
     el.featured = qs("#field-featured");
     el.review = qs("#field-review");
+    el.imageReview = qs("#field-image-review");
+    el.editorHelper = qs("#editor-helper");
   }
 
   function start() {

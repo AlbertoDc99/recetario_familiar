@@ -37,9 +37,10 @@ La extracción es heurística:
 - conserva algunos grupos internos de ingredientes en `ingredientSections`, por ejemplo bizcocho, crema, relleno o montaje;
 - guarda `image` como foto principal y `images` como galería completa de la receta;
 - cuando hay fotos dentro de la preparación, guarda también `preparation` con pasos e imágenes en el orden aproximado del Word;
+- marca `needsImageReview: true` cuando falta imagen o la posición de imágenes parece dudosa;
 - clasifica recetas de `DULCES.docx` como `Dulce`;
 - clasifica recetas de Evernote como `Salado`, salvo evidencias de `Tapas` o `Dulce`;
 - añade un campo `type` con una clasificación más concreta, por ejemplo sopas, arroces, pasta, pescados, carnes, bizcochos, tartas o galletas;
 - marca `needsReview: true` cuando faltan ingredientes, pasos o la subcategoría no es clara.
 
-Después de ejecutar el script conviene revisar `assets/data/recipes.json`, especialmente las recetas con `needsReview: true`.
+Después de ejecutar el script conviene revisar `assets/data/recipes.json`, especialmente las recetas con `needsReview: true` o `needsImageReview: true`.

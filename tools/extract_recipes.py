@@ -62,8 +62,10 @@ NOTE_HEADINGS = (
 
 GENERIC_TITLE_WORDS = {
     "otra",
+    "otras",
     "otra receta",
     "otro",
+    "otros",
     "ingredientes",
     "preparacion",
     "preparación",
@@ -543,7 +545,7 @@ def is_probable_title(lines: list[str], index: int) -> bool:
     next_is_marker = next_marker in {"ingredients", "steps"}
 
     if compact in GENERIC_TITLE_WORDS:
-        return followed_by_marker
+        return False
     if uppercase_title:
         return True
     starts_like_title = line[:1].isupper()
@@ -1060,6 +1062,14 @@ def build_recipes_from_doc(
 
         images = [image for _, image in positioned_images]
         preparation = build_preparation_blocks(step_entries, positioned_images)
+        needs_image_review = (
+            not images
+            or (
+                len(positioned_images) > 1
+                and positioned_images[0][0] == start
+                and positioned_images[1][0] <= start + 1
+            )
+        )
 
         recipe = {
             "id": recipe_id,
@@ -1078,6 +1088,7 @@ def build_recipes_from_doc(
             "tags": collect_tags(full_text, category, subcategory, recipe_type, needs_review),
             "source": path.name,
             "needsReview": needs_review,
+            "needsImageReview": needs_image_review,
         }
         if ingredient_sections:
             recipe["ingredientSections"] = ingredient_sections

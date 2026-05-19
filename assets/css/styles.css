@@ -324,6 +324,80 @@ select {
   font-weight: 700;
 }
 
+.daily-shell {
+  margin: 12px 0 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  padding: 18px;
+}
+
+.daily-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+}
+
+.daily-header h2 {
+  margin: 0;
+  font-size: 1.55rem;
+}
+
+.daily-status {
+  margin: 10px 0 14px;
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.92rem;
+}
+
+.daily-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.daily-card {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: inherit;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.daily-card img {
+  width: 72px;
+  aspect-ratio: 1;
+  border-radius: calc(var(--radius) - 2px);
+  object-fit: cover;
+  background: var(--linen);
+}
+
+.daily-card strong,
+.daily-card small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.daily-card strong {
+  line-height: 1.2;
+}
+
+.daily-card small {
+  margin-top: 3px;
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
 .assistant-shell {
   margin: 12px 0 18px;
   border: 1px solid var(--line);
@@ -841,6 +915,10 @@ select {
   align-items: start;
 }
 
+.step-check {
+  display: none;
+}
+
 .preparation-step p {
   margin: 0;
 }
@@ -876,6 +954,49 @@ select {
   max-height: 360px;
   display: block;
   object-fit: cover;
+}
+
+.cooking-mode .detail-layout {
+  grid-template-columns: minmax(0, 880px);
+  justify-content: center;
+}
+
+.cooking-mode .detail-layout > div:first-child {
+  max-width: 520px;
+}
+
+.cooking-mode .detail-content h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.cooking-mode .recipe-section {
+  font-size: 1.12rem;
+}
+
+.cooking-mode .preparation-step {
+  grid-template-columns: 82px 32px minmax(0, 1fr);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(222, 208, 184, 0.7);
+}
+
+.cooking-mode .step-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.cooking-mode .step-check input {
+  width: 18px;
+  height: 18px;
+}
+
+.preparation-step.is-done p {
+  color: var(--muted);
+  text-decoration: line-through;
 }
 
 .notes-box {
@@ -940,6 +1061,23 @@ select {
 
 .full-button {
   width: 100%;
+}
+
+.admin-filter-label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.admin-sidebar-status,
+.editor-helper {
+  margin: 0;
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.88rem;
 }
 
 .admin-recipe-list {
@@ -1099,6 +1237,10 @@ select {
     grid-template-columns: 1fr;
   }
 
+  .daily-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .admin-sidebar {
     position: static;
     max-height: none;
@@ -1163,9 +1305,21 @@ select {
     grid-template-columns: 1fr;
   }
 
+  .daily-header {
+    flex-direction: column;
+  }
+
+  .daily-grid {
+    grid-template-columns: 1fr;
+  }
+
   .preparation-step {
     grid-template-columns: 28px minmax(0, 1fr);
     gap: 10px;
+  }
+
+  .cooking-mode .preparation-step {
+    grid-template-columns: 74px 28px minmax(0, 1fr);
   }
 
   .preparation-photo {

@@ -4,7 +4,7 @@
   const DATA_URL = "assets/data/recipes.json";
   const PLACEHOLDER_IMAGE = "assets/img/placeholder.jpg";
   const FAVORITES_KEY = "recetario_favorites_v1";
-  const QUICK_OPTIONS = ["Todas", "Habituales", "Destacadas", "Favoritas"];
+  const QUICK_OPTIONS = ["Todas", "Habituales", "Destacadas", "Favoritas", "Por revisar", "Revisar imagen", "Sin foto"];
   const CATEGORY_ORDER = ["Todas", "Salado", "Dulce", "Tapas"];
   const SUBCATEGORY_ORDER = ["Todas", "Primeros", "Segundos", "Sencillos", "Elaborados", "Tapas", "Sin clasificar"];
   const MENU_DAYS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
@@ -131,6 +131,10 @@
     return images[0] || PLACEHOLDER_IMAGE;
   }
 
+  function hasRealImage(recipe) {
+    return Boolean(recipe.image && String(recipe.image).trim());
+  }
+
   function imageList(recipe) {
     const values = [];
     if (recipe.image && recipe.image.trim()) {
@@ -240,6 +244,7 @@
         menuCandidate: Boolean(recipe.menuCandidate),
         featured: Boolean(recipe.featured),
         needsReview: Boolean(recipe.needsReview),
+        needsImageReview: Boolean(recipe.needsImageReview || !recipe.image),
       }));
       loadFavorites();
       state.loaded = true;
@@ -332,13 +337,17 @@
         state.filters.quick === "Todas" ||
         (state.filters.quick === "Habituales" && recipe.menuCandidate) ||
         (state.filters.quick === "Destacadas" && recipe.featured) ||
-        (state.filters.quick === "Favoritas" && isFavorite(recipe.id));
+        (state.filters.quick === "Favoritas" && isFavorite(recipe.id)) ||
+        (state.filters.quick === "Por revisar" && recipe.needsReview) ||
+        (state.filters.quick === "Revisar imagen" && recipe.needsImageReview) ||
+        (state.filters.quick === "Sin foto" && !hasRealImage(recipe));
       return matchesSearch && matchesQuick && matchesCategory && matchesSubcategory && matchesType;
     }).sort((left, right) => recipePriority(right) - recipePriority(left));
 
     renderCategoryFilters();
     renderSubcategoryFilters();
     renderTypeFilters();
+    renderDailyRecipes();
     renderList();
   }
 
@@ -375,6 +384,8 @@
     const menuCandidate = recipe.menuCandidate ? '<span class="pill routine">Habitual</span>' : "";
     const featured = recipe.featured ? '<span class="pill featured">Destacada</span>' : "";
     const review = recipe.needsReview ? '<span class="pill review">Por revisar</span>' : "";
+    const imageReview = recipe.needsImageReview ? '<span class="pill review">Revisar imagen</span>' : "";
+    const noImage = hasRealImage(recipe) ? "" : '<span class="pill review">Sin foto</span>';
 
     return `
       <article class="recipe-card${isFavorite(recipe.id) ? " is-favorite" : ""}">
@@ -383,12 +394,41 @@
             <img class="card-image" src="${escapeHtml(imageFor(recipe))}" alt="" loading="lazy" onerror="this.src='${PLACEHOLDER_IMAGE}'">
           <div class="card-body">
             <h2 class="card-title">${escapeHtml(recipe.title)}</h2>
-            <div class="card-meta">${menuCandidate}${featured}${meta}${review}</div>
+            <div class="card-meta">${menuCandidate}${featured}${meta}${review}${imageReview}${noImage}</div>
             <p class="card-preview">${escapeHtml(preview || recipe.source || "Receta familiar")}</p>
           </div>
         </a>
       </article>
     `;
+  }
+
+  function renderDailyRecipes() {
+    const daily = state.recipes
+      .filter((recipe) => recipe.menuCandidate)
+      .sort((left, right) => recipePriority(right) - recipePriority(left) || left.title.localeCompare(right.title, "es"))
+      .slice(0, 8);
+
+    if (!elements.dailyShell) {
+      return;
+    }
+
+    if (!daily.length) {
+      elements.dailyStatus.textContent = "Marca recetas como habituales en el editor para llenar esta zona.";
+      elements.dailyGrid.innerHTML = "";
+      elements.dailyShell.hidden = false;
+      return;
+    }
+
+    elements.dailyStatus.textContent = `${daily.length} recetas de uso frecuente a mano.`;
+    elements.dailyGrid.innerHTML = daily.map((recipe) => `
+      <a class="daily-card" href="#receta/${encodeURIComponent(recipe.id)}">
+        <img src="${escapeHtml(imageFor(recipe))}" alt="" loading="lazy" onerror="this.src='${PLACEHOLDER_IMAGE}'">
+        <span>
+          <strong>${escapeHtml(recipe.title)}</strong>
+          <small>${escapeHtml(compactList([recipe.subcategory, recipe.type]).join(" · "))}</small>
+        </span>
+      </a>
+    `).join("");
   }
 
   function favoriteButton(recipe, variant) {
@@ -417,6 +457,7 @@
   }
 
   function showList() {
+    document.body.classList.remove("cooking-mode");
     elements.detailView.hidden = true;
     elements.listView.hidden = false;
     window.requestAnimationFrame(() => {
@@ -429,6 +470,7 @@
     const menuCandidate = recipe.menuCandidate ? '<span class="pill routine">Habitual</span>' : "";
     const featured = recipe.featured ? '<span class="pill featured">Destacada</span>' : "";
     const review = recipe.needsReview ? '<span class="pill review">Por revisar</span>' : "";
+    const imageReview = recipe.needsImageReview ? '<span class="pill review">Revisar imagen</span>' : "";
 
     elements.listView.hidden = true;
     elements.detailView.hidden = false;
@@ -437,6 +479,7 @@
       <div class="detail-actions">
         <button class="back-button" type="button" data-back-to-list>Volver al listado</button>
         ${favoriteButton(recipe, "detail")}
+        <button class="ghost-button cooking-toggle" type="button" data-cooking-mode>Modo cocina</button>
       </div>
       <article class="detail-layout">
         <div>
@@ -451,6 +494,7 @@
             ${featured}
             ${metaItems.map((item) => `<span class="pill">${escapeHtml(item)}</span>`).join("")}
             ${review}
+            ${imageReview}
           </div>
           ${renderIngredients(recipe)}
           ${renderPreparation(recipe)}
@@ -514,9 +558,18 @@
   }
 
   function renderPreparation(recipe) {
-    const blocks = preparationBlocks(recipe);
+    const richBlocks = preparationBlocks(recipe);
+    const blocks = richBlocks.length
+      ? richBlocks
+      : compactList(recipe.steps || []).map((step) => ({ type: "step", text: step }));
+
     if (!blocks.length) {
-      return renderRecipeSection("Preparación", recipe.steps, "ol");
+      return `
+        <section class="recipe-section">
+          <h2>Preparación</h2>
+          <p>Sin pasos detectados.</p>
+        </section>
+      `;
     }
 
     let stepNumber = 0;
@@ -543,6 +596,10 @@
             stepNumber += 1;
             return `
               <div class="preparation-step">
+                <label class="step-check">
+                  <input type="checkbox" data-step-check>
+                  <span>Hecho</span>
+                </label>
                 <span class="preparation-number">${stepNumber}</span>
                 <p>${escapeHtml(block.text)}</p>
               </div>
@@ -1031,7 +1088,7 @@
         return;
       }
 
-      const cardLink = event.target.closest(".card-link");
+      const cardLink = event.target.closest(".card-link, .daily-card");
       if (cardLink) {
         state.listScrollY = window.scrollY;
         return;
@@ -1039,6 +1096,25 @@
 
       if (event.target.closest("[data-back-to-list]")) {
         window.location.hash = "#listado";
+      }
+
+      const cookingButton = event.target.closest("[data-cooking-mode]");
+      if (cookingButton) {
+        const active = document.body.classList.toggle("cooking-mode");
+        cookingButton.textContent = active ? "Salir de modo cocina" : "Modo cocina";
+        return;
+      }
+
+      const stepCheck = event.target.closest("[data-step-check]");
+      if (stepCheck) {
+        stepCheck.closest(".preparation-step")?.classList.toggle("is-done", stepCheck.checked);
+      }
+    });
+
+    document.addEventListener("change", (event) => {
+      const stepCheck = event.target.closest("[data-step-check]");
+      if (stepCheck) {
+        stepCheck.closest(".preparation-step")?.classList.toggle("is-done", stepCheck.checked);
       }
     });
 
@@ -1052,6 +1128,9 @@
     elements.emptyState = qs("#empty-state");
     elements.visibleCount = qs("#visible-count");
     elements.activeSummary = qs("#active-summary");
+    elements.dailyShell = qs("#daily-shell");
+    elements.dailyStatus = qs("#daily-status");
+    elements.dailyGrid = qs("#daily-grid");
     elements.searchInput = qs("#search-input");
     elements.quickSelect = qs("#quick-select");
     elements.categoryFilters = qs("#category-filters");

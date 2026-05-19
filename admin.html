@@ -52,7 +52,7 @@
         </section>
 
         <section class="admin-notice">
-          Los cambios se guardan como borrador en este navegador. Para publicarlos y no perderlos, descarga el JSON y súbelo con Git.
+          Edita una o varias recetas, guarda el borrador y al final descarga el archivo completo para Alberto. Ese `recipes.json` incluye todos los cambios de la tanda.
         </section>
 
         <section class="admin-layout">
@@ -61,7 +61,19 @@
               <label for="admin-search">Buscar receta</label>
               <input id="admin-search" type="search" placeholder="Nombre, ingrediente, tipo..." autocomplete="off">
             </div>
+            <label class="admin-filter-label">
+              Ver
+              <select id="admin-filter">
+                <option value="all">Todas</option>
+                <option value="routine">Habituales</option>
+                <option value="featured">Destacadas</option>
+                <option value="review">Pendientes de revisar</option>
+                <option value="imageReview">Revisar imagen</option>
+                <option value="noImage">Sin foto</option>
+              </select>
+            </label>
             <button class="primary-button full-button" id="new-recipe-button" type="button">Nueva receta</button>
+            <p class="admin-sidebar-status" id="admin-sidebar-status"></p>
             <div class="admin-recipe-list" id="admin-recipe-list"></div>
           </aside>
 
@@ -176,12 +188,18 @@
                 Marcar como pendiente de revisar
               </label>
 
+              <label class="checkbox-line">
+                <input id="field-image-review" type="checkbox">
+                Revisar imagen de esta receta
+              </label>
+
               <div class="editor-actions">
-                <button class="primary-button" type="submit">Guardar borrador</button>
+                <button class="primary-button" type="submit">Guardar cambio</button>
                 <button class="ghost-button" id="duplicate-button" type="button">Duplicar</button>
-                <button class="ghost-button" id="export-button" type="button">Descargar recipes.json</button>
+                <button class="ghost-button" id="export-button" type="button">Descargar archivo para Alberto</button>
                 <button class="ghost-button" id="discard-draft-button" type="button">Descartar borrador</button>
               </div>
+              <p class="editor-helper" id="editor-helper">Los cambios quedan en este navegador hasta descargar el archivo y publicarlo.</p>
             </form>
           </section>
         </section>

@@ -153,7 +153,8 @@ Ejemplo:
   "source": "DULCES.docx",
   "menuCandidate": false,
   "featured": false,
-  "needsReview": false
+  "needsReview": false,
+  "needsImageReview": false
 }
 ```
 
@@ -176,8 +177,10 @@ Desde ahí puedes:
 - editar la galería de imágenes de la receta;
 - marcar una receta como comida habitual para el menú semanal;
 - marcar una receta como destacada;
+- marcar una receta como pendiente de revisar o con imagen dudosa;
+- filtrar por habituales, destacadas, pendientes, revisar imagen o sin foto;
 - crear una receta nueva;
-- descargar un nuevo `recipes.json`.
+- descargar el archivo completo `recipes.json` para publicarlo.
 
 El editor guarda un borrador en el navegador para que no se pierda una tanda de cambios si cierras y vuelves a abrir. Aun así, para que los cambios sean permanentes y aparezcan a toda la familia, hay que descargar `recipes.json`, sustituir `assets/data/recipes.json` y publicarlo.
 
@@ -212,6 +215,16 @@ La estrella de cada receta marca una favorita en ese navegador. Es comodo para c
 Para destacar una receta para todos, abre `admin.html`, marca `Marcar como destacada`, descarga el nuevo `recipes.json` y publicalo. Las recetas destacadas aparecen con una etiqueta y se pueden filtrar desde `Mostrar`.
 
 Para el menú semanal, usa mejor `Comida habitual para menú semanal`. Esa marca se guarda en `recipes.json`, por lo que es más segura para las recetas rutinarias de casa.
+
+La página principal muestra una zona de `Comidas habituales` para tener a mano las recetas marcadas como habituales.
+
+## Modo cocina
+
+En la vista detalle de una receta puedes activar `Modo cocina`. Aumenta la comodidad de lectura y muestra casillas para ir marcando pasos como hechos mientras cocinas.
+
+## Revisión de imágenes
+
+Algunas fotos extraídas desde Word pueden quedar dudosas o faltar. El campo `needsImageReview` permite localizarlas desde el filtro `Revisar imagen` en la web o en `admin.html`. Las recetas sin foto también se pueden encontrar con el filtro `Sin foto`.
 
 ## Planificador de menús
 
