@@ -5522,7 +5522,7 @@
   },
   {
     "id": "otra-diego-doal",
-    "title": "OTRA (Diego Doal)",
+    "title": "Lemon Pie (Diego Doal)",
     "category": "Dulce",
     "subcategory": "Elaborados",
     "type": "Tartas y pasteles",
@@ -5550,37 +5550,9 @@
       "150 g de azúcar blanco (o glas)",
       "Cuatro gotas de zumo de limón"
     ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Dulce",
-      "Elaborados",
-      "Tartas y pasteles",
-      "Por revisar"
-    ],
-    "source": "DULCES.docx",
-    "needsReview": true,
-    "needsImageReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "masa-de-pastel",
-    "title": "MASA DE PASTEL",
-    "category": "Dulce",
-    "subcategory": "Elaborados",
-    "type": "Masas dulces",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
-      "En un procesador de alimentos añade la harina de trigo, la sal y la mantequilla cortada en cubos, muy fría.",
-      "Haz pulsos de un segundo, hasta que los trozos de mantequilla no sean más grandes que un guisante."
-    ],
     "steps": [
+      "En un procesador de alimentos añade la harina de trigo, la sal y la mantequilla cortada en cubos, muy fría.",
+      "Haz pulsos de un segundo, hasta que los trozos de mantequilla no sean más grandes que un guisante.",
       "Transfiere la mezcla a un bol y añade poco a poco agua helada, mezclando con un tenedor. Intenta formar una masa que se mantenga junta con la menor cantidad de agua posible.",
       "Cuando la masa se mantenga junta, envuélvela en papel film y déjala reposar en la nevera un mínimo de media hora.",
       "Saca la masa y estírala con un rodillo, dándole forma de círculo que sea 2 cm más ancho que el diámetro del molde que vayas a utilizar (el mío es de 22 cm)",
@@ -5627,12 +5599,215 @@
     "tags": [
       "Dulce",
       "Elaborados",
+      "Tartas y pasteles",
       "Masas dulces",
       "Horno"
     ],
     "source": "DULCES.docx",
     "needsReview": false,
-    "needsImageReview": true
+    "needsImageReview": true,
+    "ingredientSections": [
+      {
+        "title": "",
+        "items": [
+          "Masa quebrada",
+          "300 g de harina de trigo",
+          "120 g de mantequilla sin sal",
+          "Pizca de sal",
+          "Agua helada",
+          "LEMON PIE",
+          "8 huevos (L)",
+          "260 ml de zumo de limón (5 limones aprox.)",
+          "Dos cucharadas de ralladura de limón",
+          "375 g de azúcar",
+          "90 gramos de maicena",
+          "625 ml de agua fría",
+          "100 g de mantequilla sin sal",
+          "MERENGUE",
+          "8 claras",
+          "150 g de azúcar blanco (o glas)",
+          "Cuatro gotas de zumo de limón"
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "type": "heading",
+        "text": "MASA DE PASTEL"
+      },
+      {
+        "type": "step",
+        "text": "En un procesador de alimentos añade la harina de trigo, la sal y la mantequilla cortada en cubos, muy fría."
+      },
+      {
+        "type": "step",
+        "text": "Haz pulsos de un segundo, hasta que los trozos de mantequilla no sean más grandes que un guisante."
+      },
+      {
+        "type": "step",
+        "text": "Transfiere la mezcla a un bol y añade poco a poco agua helada, mezclando con un tenedor. Intenta formar una masa que se mantenga junta con la menor cantidad de agua posible."
+      },
+      {
+        "type": "step",
+        "text": "Cuando la masa se mantenga junta, envuélvela en papel film y déjala reposar en la nevera un mínimo de media hora."
+      },
+      {
+        "type": "step",
+        "text": "Saca la masa y estírala con un rodillo, dándole forma de círculo que sea 2 cm más ancho que el diámetro del molde que vayas a utilizar (el mío es de 22 cm)"
+      },
+      {
+        "type": "step",
+        "text": "Dobla la masa en cuatro y coloca el vértice en el centro del molde. Desdobla la masa y ajústala a las paredes."
+      },
+      {
+        "type": "step",
+        "text": "Corta el sobrante y dale la forma deseada. Deja que el molde se enfríe en la nevera media hora."
+      },
+      {
+        "type": "step",
+        "text": "Cubre la base de la masa del pastel con papel vegetal, y coloca peso encima. Hornéala a 180 grados durante 25-30 minutos, o hasta que los bordes se vean secos y cojan un pelín de color."
+      },
+      {
+        "type": "step",
+        "text": "Saca la base del horno, quita el peso, y continúa horneándola 25-30 minutos más, hasta que tenga el color deseado."
+      },
+      {
+        "type": "step",
+        "text": "Saca la base del horno y déjala enfriar en el molde."
+      },
+      {
+        "type": "step",
+        "text": "Mientras, exprime el zumo de los limones y ralla la piel."
+      },
+      {
+        "type": "step",
+        "text": "Separa las yemas y añádelas a un bol. Reserva las claras en la nevera."
+      },
+      {
+        "type": "step",
+        "text": "En un cazo, añade el azúcar, la maicena, la sal, el zumo de limón y el agua fría. Mezcla y ponlo sobre fuego medio-alto."
+      },
+      {
+        "type": "step",
+        "text": "Caliéntalo hasta que veas el primer borbotón."
+      },
+      {
+        "type": "step",
+        "text": "Mientras bates las yemas, añade poco a poco la mezcla caliente, aumentando la velocidad conforme las yemas se vayan temperando."
+      },
+      {
+        "type": "step",
+        "text": "Devuelve la mezcla a la cacerola y llévala a 76 grados, o hasta que veas el primer borbotón."
+      },
+      {
+        "type": "step",
+        "text": "Retira el cazo del fuego y añade la mantequilla y la ralladura de limón. Incorpóralo."
+      },
+      {
+        "type": "step",
+        "text": "Transfiere la mezcla a la base. Cubre el pastel con papel film tocando la superficie del relleno. Deja que enfríe 30 minutos a temperatura ambiente y después al menos 2 horas en la nevera, pero idealmente toda la noche."
+      },
+      {
+        "type": "step",
+        "text": "20 minutos antes de servir, en un bol, añade la mitad del azúcar a las claras, así como las gotas de zumo de limón."
+      },
+      {
+        "type": "step",
+        "text": "Pon el bol al baño maría y bate, hasta que la mezcla llegue a 71 grados."
+      },
+      {
+        "type": "step",
+        "text": "Cuando llegue, continúa batiendo 15 segundos, y después retira el bol del baño maría."
+      },
+      {
+        "type": "step",
+        "text": "Continúa batiendo hasta que las claras espumen."
+      },
+      {
+        "type": "step",
+        "text": "Añade el resto del azúcar y continúa batiendo hasta que se forme el merengue, que forme picos cuyas puntas se doblen ligeramente."
+      },
+      {
+        "type": "step",
+        "text": "Retira el film del pastel y pon el merengue encima. Extiéndelo con una espátula y haz picos."
+      },
+      {
+        "type": "step",
+        "text": "Opcionalmente, tuesta el merengue con un soplete."
+      },
+      {
+        "type": "step",
+        "text": "OTRA (Ana recetas fáciles)"
+      },
+      {
+        "type": "step",
+        "text": "Masa quebrada"
+      },
+      {
+        "type": "step",
+        "text": "200 g de harina de trigo (1 taza y media)"
+      },
+      {
+        "type": "step",
+        "text": "120 g de mantequilla sin sal (1/2 taza)"
+      },
+      {
+        "type": "step",
+        "text": "40 g de azúcar (4 cucharadas)"
+      },
+      {
+        "type": "step",
+        "text": "1 huevo"
+      },
+      {
+        "type": "step",
+        "text": "Crema de limón"
+      },
+      {
+        "type": "step",
+        "text": "5 yemas y 1 huevo entero"
+      },
+      {
+        "type": "step",
+        "text": "250 ml de zumo de limón (5 o 6 limones aprox.)"
+      },
+      {
+        "type": "step",
+        "text": "75 g de mantequilla (1/3 de taza)"
+      },
+      {
+        "type": "step",
+        "text": "150 g de azúcar (2/3 de taza)"
+      },
+      {
+        "type": "step",
+        "text": "250 ml de nata o crema de leche (1 taza)"
+      },
+      {
+        "type": "step",
+        "text": "50 gramos de maicena"
+      },
+      {
+        "type": "step",
+        "text": "MERENGUE"
+      },
+      {
+        "type": "step",
+        "text": "5 claras"
+      },
+      {
+        "type": "step",
+        "text": "200 g de azúcar blanco (2/3 de taza y 4 cucharadas)"
+      },
+      {
+        "type": "step",
+        "text": "1 cucharada de zumo de limón"
+      },
+      {
+        "type": "step",
+        "text": "60 ml de agua (1/4 de taza)"
+      }
+    ]
   },
   {
     "id": "macarons-de-frambuesa",
@@ -8103,9 +8278,7 @@
     "subcategory": "Elaborados",
     "type": "Tartas y pasteles",
     "image": "assets/img/recetas/pastel-de-yogur-de-sufle.png",
-    "images": [
-      "assets/img/recetas/pastel-de-yogur-de-sufle.png"
-    ],
+    "images": [],
     "time": "",
     "difficulty": "",
     "servings": "",
@@ -8120,35 +8293,7 @@
       "✤ Merengue",
       "3 claras de huevo (huevo grande)",
       "50g (5 cucharadas) de azúcar",
-      "10g (1 cucharada) de jugo de limón"
-    ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Dulce",
-      "Elaborados",
-      "Tartas y pasteles",
-      "Por revisar"
-    ],
-    "source": "DULCES.docx",
-    "needsReview": true,
-    "needsImageReview": false,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "sugerencia",
-    "title": "✤ SUGERENCIA",
-    "category": "Dulce",
-    "subcategory": "Elaborados",
-    "type": "Masas dulces",
-    "image": "",
-    "images": [],
-    "time": "60 minutos",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
+      "10g (1 cucharada) de jugo de limón",
       "El peso total de los 3 huevos es de 190 g (antes de romperlos)",
       "[Diámetro del molde: 15 cm, altura 7 cm]",
       "Precalentar el horno a 150 ℃"
@@ -8165,13 +8310,30 @@
     "tags": [
       "Dulce",
       "Elaborados",
+      "Tartas y pasteles",
       "Masas dulces",
       "Horno"
     ],
     "source": "DULCES.docx",
     "needsReview": false,
-    "needsImageReview": true,
+    "needsImageReview": false,
     "ingredientSections": [
+      {
+        "title": "",
+        "items": [
+          "✤ Masa de yema",
+          "30g (3 cucharadas) de harina para pasteles",
+          "10g (1 cucharada) de almidón de maíz",
+          "240 g de yogur sin azúcar",
+          "Limón",
+          "pizcas de sal",
+          "3 yemas de huevo (huevo grande)",
+          "✤ Merengue",
+          "3 claras de huevo (huevo grande)",
+          "50g (5 cucharadas) de azúcar",
+          "10g (1 cucharada) de jugo de limón"
+        ]
+      },
       {
         "title": "Otros",
         "items": [
@@ -8184,6 +8346,36 @@
         "items": [
           "Precalentar el horno a 150 ℃"
         ]
+      }
+    ],
+    "preparation": [
+      {
+        "type": "heading",
+        "text": "✤ SUGERENCIA"
+      },
+      {
+        "type": "step",
+        "text": "Se hace la masa con los ingredientes de la masa de yema, se mezclan bien y por otro lado se hace el merengue."
+      },
+      {
+        "type": "step",
+        "text": "Se añade el merengue y se añade a la masa mezclándolo suavemente."
+      },
+      {
+        "type": "step",
+        "text": "Se rellena un molde y se introduce en el horno"
+      },
+      {
+        "type": "step",
+        "text": "Temperatura del horno: 150 ℃ durante 30 minutos. Posteriormente se baja el horno y se continúa a 140℃ durante otros 30 minutos / 10 minutos de reposo en el horno (tiempo de horneado total 60 minutos)"
+      },
+      {
+        "type": "step",
+        "text": "Después de enfriar completamente, separamos el molde de la torta y el papel."
+      },
+      {
+        "type": "step",
+        "text": "Es mejor comerlo al día siguiente después de la refrigeración."
       }
     ]
   },
@@ -10870,9 +11062,7 @@
     "subcategory": "Elaborados",
     "type": "Tartas y pasteles",
     "image": "assets/img/recetas/tarta-de-chocolate-sin-harina.png",
-    "images": [
-      "assets/img/recetas/tarta-de-chocolate-sin-harina.png"
-    ],
+    "images": [],
     "time": "",
     "difficulty": "",
     "servings": "",
@@ -10933,7 +11123,12 @@
       "Se hace la gelatina mezclando los 3 g de polvo de gelatina con 15 gr de agua. Añadir la leche condensada. Mezclar bien y añadir el chocolate negro picado, juntándolo con el sirope.",
       "Se cuela la mezcla para que no quede ningún grumito.",
       "Cuando la temperatura del glaseado sea de 30º se vierte sobre la tarta, colocada sobre una rejilla y ésta sobre un plato.",
-      "Se cortan los bordes para que quede bonito"
+      "Se cortan los bordes para que quede bonito",
+      "Se saca el bizcocho del horno, cortar los bordes para que quede bien recto el corte. Dividirlo por la mitad y luego en 3 parte para que queden 6 rectángulos de 20*10 cm. Se dejan en una rejilla para que se enfríe.",
+      "Se pone papel de hornear y se pincela una de las planchas con el jarabe para que quede bien borrachito.",
+      "La crema se extiende con una boquilla de 8 mm, en caso de no tener una boquilla, dividir la mezcla en 6 partes y extender 1/6 sobre cada una de las planchas.",
+      "Se pone otra plancha encima, se vuelve a pincelar con el jarabe, se pone la crema encima y así las 6 planchas.",
+      "Se acaba con la capa de crema."
     ],
     "notes": "https://youtu.be/8f0k5n9N84w",
     "tags": [
@@ -10942,7 +11137,9 @@
       "Tartas y pasteles",
       "Microondas",
       "Horno",
-      "Chocolate"
+      "Chocolate",
+      "Sencillos",
+      "Bizcochos"
     ],
     "source": "DULCES.docx",
     "needsReview": false,
@@ -10996,38 +11193,121 @@
           "47 g de chocolate negro (1/4 taza picado)"
         ]
       }
+    ],
+    "preparation": [
+      {
+        "type": "step",
+        "text": "Precalentar el horno a 185º."
+      },
+      {
+        "type": "step",
+        "text": "Poner en un bol el chocolate, el chocolate, la crema y la mantequilla al baño María hasta que se forme una crema. Reservar."
+      },
+      {
+        "type": "step",
+        "text": "En otro bol poner las yemas, el azúcar y la vainilla; batir hasta que se vuelva de color marfil y aumente de volumen."
+      },
+      {
+        "type": "step",
+        "text": "Se añade el cacao en polvo con un colador para que se tamice bien, se añade una pizca de sal y se mezcla todo bien, añadiendo la mezcla anterior del otro bol."
+      },
+      {
+        "type": "step",
+        "text": "Por otro lado, batimos las claras a punto de nieve y agregamos el azúcar en tres golpes, hasta que se quede haciendo picos, batiendo durante 2 minutos a baja velocidad."
+      },
+      {
+        "type": "step",
+        "text": "Se van añadiendo poco a poco las claras integrándolas en movimientos suaves y envolventes."
+      },
+      {
+        "type": "step",
+        "text": "Se extiende la mezcla en una bandeja de 30*40, rellenando bien las esquinas e igual por todas partes, alisándola bien."
+      },
+      {
+        "type": "step",
+        "text": "Se hornea a 175º durante 11-13 minutos."
+      },
+      {
+        "type": "step",
+        "text": "Cómo hacer la crema"
+      },
+      {
+        "type": "step",
+        "text": "Calentar los 80 grs de crema, añadir 6 g de cacao en polvo y mezclar bien."
+      },
+      {
+        "type": "step",
+        "text": "Por otro lado, juntar el chocolate negro con los 3 grs de mantequilla y añadir a la mezcla anterior. Ponerla al baño maría hasta que se derrita el chocolate."
+      },
+      {
+        "type": "step",
+        "text": "Añadir los 300 grs de crema espesa y meterla en una manga pastelera."
+      },
+      {
+        "type": "step",
+        "text": "Cómo hacer el jarabe"
+      },
+      {
+        "type": "step",
+        "text": "Pese el agua y el azúcar"
+      },
+      {
+        "type": "step",
+        "text": "Derretir el azúcar en el microondas y ..."
+      },
+      {
+        "type": "step",
+        "text": "Mezclar con ron y enfriar a temperatura ambiente."
+      },
+      {
+        "type": "step",
+        "text": "Cómo hacer el glaseado"
+      },
+      {
+        "type": "step",
+        "text": "Calentar los 28 grs de agua con el azúcar y el sirope de almidón, mezclando bien hasta alcanzar los 103º ."
+      },
+      {
+        "type": "step",
+        "text": "Se hace la gelatina mezclando los 3 g de polvo de gelatina con 15 gr de agua. Añadir la leche condensada. Mezclar bien y añadir el chocolate negro picado, juntándolo con el sirope."
+      },
+      {
+        "type": "step",
+        "text": "Se cuela la mezcla para que no quede ningún grumito."
+      },
+      {
+        "type": "step",
+        "text": "Cuando la temperatura del glaseado sea de 30º se vierte sobre la tarta, colocada sobre una rejilla y ésta sobre un plato."
+      },
+      {
+        "type": "step",
+        "text": "Se cortan los bordes para que quede bonito"
+      },
+      {
+        "type": "heading",
+        "text": "MONTAJE"
+      },
+      {
+        "type": "step",
+        "text": "Se saca el bizcocho del horno, cortar los bordes para que quede bien recto el corte. Dividirlo por la mitad y luego en 3 parte para que queden 6 rectángulos de 20*10 cm. Se dejan en una rejilla para que se enfríe."
+      },
+      {
+        "type": "step",
+        "text": "Se pone papel de hornear y se pincela una de las planchas con el jarabe para que quede bien borrachito."
+      },
+      {
+        "type": "step",
+        "text": "La crema se extiende con una boquilla de 8 mm, en caso de no tener una boquilla, dividir la mezcla en 6 partes y extender 1/6 sobre cada una de las planchas."
+      },
+      {
+        "type": "step",
+        "text": "Se pone otra plancha encima, se vuelve a pincelar con el jarabe, se pone la crema encima y así las 6 planchas."
+      },
+      {
+        "type": "step",
+        "text": "Se acaba con la capa de crema."
+      }
     ]
-  },
-  {
-    "id": "montaje",
-    "title": "MONTAJE:",
-    "category": "Dulce",
-    "subcategory": "Sencillos",
-    "type": "Bizcochos",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
-      "Se saca el bizcocho del horno, cortar los bordes para que quede bien recto el corte. Dividirlo por la mitad y luego en 3 parte para que queden 6 rectángulos de 20*10 cm. Se dejan en una rejilla para que se enfríe.",
-      "Se pone papel de hornear y se pincela una de las planchas con el jarabe para que quede bien borrachito."
-    ],
-    "steps": [
-      "La crema se extiende con una boquilla de 8 mm, en caso de no tener una boquilla, dividir la mezcla en 6 partes y extender 1/6 sobre cada una de las planchas.",
-      "Se pone otra plancha encima, se vuelve a pincelar con el jarabe, se pone la crema encima y así las 6 planchas.",
-      "Se acaba con la capa de crema."
-    ],
-    "notes": "",
-    "tags": [
-      "Dulce",
-      "Sencillos",
-      "Bizcochos",
-      "Horno"
-    ],
-    "source": "DULCES.docx",
-    "needsReview": false,
-    "needsImageReview": true
   },
   {
     "id": "tarta-de-chocolate-sin-harina-ni-mantequilla",
@@ -11766,9 +12046,7 @@
     "subcategory": "Elaborados",
     "type": "Tartas y pasteles",
     "image": "assets/img/recetas/tarta-de-frixuelos.jpg",
-    "images": [
-      "assets/img/recetas/tarta-de-frixuelos.jpg"
-    ],
+    "images": [],
     "time": "",
     "difficulty": "",
     "servings": "",
@@ -11789,7 +12067,8 @@
       "En una fuente honda se pone la leche, un pellizco de sal, las tres cucharadas de azúcar y los huevos bien batidos; se mezcla todo perfectamente y se le va añadiendo harina, poco a poco, para no formar grumos. Se tiene que formar una pasta muy cremosa, como unas natillas algo espesas. Esta pasta se puede hacer en batidora.",
       "En una sartén, con una cucharada de aceite bien caliente, se pone un poco de la pasta preparada; una buena cucharada o cucharada y media, procurando que quede en una capa muy fina en el fondo de la sartén, se deja dorar a fuego vivo y, rápidamente, se le da la vuelta para dorarlo por el otro lado. Seguidamente, se van pasando a un plato o fuente y se espolvorean con azúcar. Reservamos.",
       "Derretir el chocolate al microondas añadir el azúcar y las yemas y remover todo bien, incorporar la nata y seguir batiendo. Mientras batir las claras a punto de nieve. Por último, mezclar con las claras batidas a punto de nieve con mucho cuidado de que no se bajen y meter a la nevera a enfriar.",
-      "Nata montada, cantidad equivalente más o menos a la de mousse."
+      "Nata montada, cantidad equivalente más o menos a la de mousse.",
+      "Es muy sencillo vamos poniendo un frixuelo en el fondo y después encima la mousse otro frixuelo y la nata otro frixuelo y de nuevo la mousse. Así hasta agotar los ingredientes o la altura de tarta deseada.\nMeter en la nevera y en el momento de servir se puede espolvorear con azúcar y requemar con el soplete."
     ],
     "notes": "",
     "tags": [
@@ -11846,35 +12125,15 @@
       {
         "type": "step",
         "text": "Nata montada, cantidad equivalente más o menos a la de mousse."
+      },
+      {
+        "type": "heading",
+        "text": "MONTAJE"
+      },
+      {
+        "type": "step",
+        "text": "Es muy sencillo vamos poniendo un frixuelo en el fondo y después encima la mousse otro frixuelo y la nata otro frixuelo y de nuevo la mousse. Así hasta agotar los ingredientes o la altura de tarta deseada.\nMeter en la nevera y en el momento de servir se puede espolvorear con azúcar y requemar con el soplete."
       }
-    ]
-  },
-  {
-    "id": "montaje-2",
-    "title": "MONTAJE:",
-    "category": "Dulce",
-    "subcategory": "Elaborados",
-    "type": "Tartas y pasteles",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
-    "steps": [],
-    "notes": "Es muy sencillo vamos poniendo un frixuelo en el fondo y después encima la mousse otro frixuelo y la nata otro frixuelo y de nuevo la mousse. Así hasta agotar los ingredientes o la altura de tarta deseada.\nMeter en la nevera y en el momento de servir se puede espolvorear con azúcar y requemar con el soplete.",
-    "tags": [
-      "Dulce",
-      "Elaborados",
-      "Tartas y pasteles",
-      "Por revisar"
-    ],
-    "source": "DULCES.docx",
-    "needsReview": true,
-    "needsImageReview": true,
-    "reviewNotes": [
-      "No se detectaron ingredientes",
-      "No se detectaron pasos"
     ]
   },
   {
@@ -15530,9 +15789,7 @@
     "subcategory": "Elaborados",
     "type": "Cremas y mousses",
     "image": "assets/img/recetas/tronco-de-navidad-otro.jpg",
-    "images": [
-      "assets/img/recetas/tronco-de-navidad-otro.jpg"
-    ],
+    "images": [],
     "time": "",
     "difficulty": "",
     "servings": "",
@@ -15547,68 +15804,12 @@
       "150 g de nata",
       "100 g de leche",
       "10 g de glucosa",
-      "150 g de chocolate negro 70%."
-    ],
-    "steps": [
-      "Cremoso de chocolate"
-    ],
-    "notes": "",
-    "tags": [
-      "Dulce",
-      "Elaborados",
-      "Cremas y mousses",
-      "Chocolate"
-    ],
-    "source": "DULCES.docx",
-    "needsReview": false,
-    "needsImageReview": false
-  },
-  {
-    "id": "creme-brulee",
-    "title": "Creme brûlée",
-    "category": "Dulce",
-    "subcategory": "Sin clasificar",
-    "type": "Sin clasificar",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
+      "150 g de chocolate negro 70%.",
       "500 g de nata",
       "500 g de leche",
       "200 g de yemas",
       "100 g de azúcar",
-      "una unidad de vainilla Bourbon Madagascar."
-    ],
-    "steps": [
-      "Calentamos la leche y la infusionamos con la vainilla. Dejamos enfriar 24 minutos en el frigorífico y mezclamos con el resto de ingredientes."
-    ],
-    "notes": "",
-    "tags": [
-      "Dulce",
-      "Por revisar"
-    ],
-    "source": "DULCES.docx",
-    "needsReview": true,
-    "needsImageReview": true,
-    "reviewNotes": [
-      "Subcategoria dulce poco clara",
-      "Tipo especifico poco claro"
-    ]
-  },
-  {
-    "id": "sable-breton",
-    "title": "Sable breton",
-    "category": "Dulce",
-    "subcategory": "Elaborados",
-    "type": "Tartas y pasteles",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
+      "una unidad de vainilla Bourbon Madagascar.",
       "500 g de mantequilla",
       "640 g de harina fuerza",
       "7 g de sal maldon",
@@ -15619,6 +15820,8 @@
       "4 g de ralladura de naranja."
     ],
     "steps": [
+      "Cremoso de chocolate",
+      "Calentamos la leche y la infusionamos con la vainilla. Dejamos enfriar 24 minutos en el frigorífico y mezclamos con el resto de ingredientes.",
       "Montamos las yemas con los azúcares y las mezclamos con la mantequilla pomada. Seguidamente incorporamos la harina con el impulsor y la ralladura de naranja. Cocemos en aros metálicos sin engrasar a 170 ºC.",
       "Ponemos el mousse de chocolate en un molde cilíndrico, insertamos un interior de créme brûlée previamente caramelizado, el cremoso de chocolate y volvemos a poner mus de chocolate. Cerramos con un rectángulo de sable breton. Una vez congelado el pastel, pistoleamos con el compresor la mezcla de chocolate - manteca de cacao y para la base rellenamos un rectángulo de sable bretón con cremoso alto el sol."
     ],
@@ -15626,13 +15829,71 @@
     "tags": [
       "Dulce",
       "Elaborados",
-      "Tartas y pasteles",
-      "Chocolate"
+      "Cremas y mousses",
+      "Chocolate",
+      "Tartas y pasteles"
     ],
     "source": "DULCES.docx",
     "needsReview": false,
-    "needsImageReview": true,
+    "needsImageReview": false,
+    "ingredientSections": [
+      {
+        "title": "",
+        "items": [
+          "Mousse de chocolate Alto el Sol",
+          "300 g. leche fresca",
+          "100 g zumo de mandarina",
+          "150 g yemas",
+          "120 g azúcar invertido",
+          "750 g cobertura Alto el Sol",
+          "1500 g nata semi montada.",
+          "150 g de nata",
+          "100 g de leche",
+          "10 g de glucosa",
+          "150 g de chocolate negro 70%."
+        ]
+      },
+      {
+        "title": "Creme brûlée",
+        "items": [
+          "500 g de nata",
+          "500 g de leche",
+          "200 g de yemas",
+          "100 g de azúcar",
+          "una unidad de vainilla Bourbon Madagascar."
+        ]
+      },
+      {
+        "title": "Sable breton",
+        "items": [
+          "500 g de mantequilla",
+          "640 g de harina fuerza",
+          "7 g de sal maldon",
+          "375 g de azúcar grano",
+          "100 g de azúcar muscovado",
+          "400 g de yemas",
+          "40 g de impulsor",
+          "4 g de ralladura de naranja."
+        ]
+      }
+    ],
     "preparation": [
+      {
+        "type": "step",
+        "text": "Cremoso de chocolate"
+      },
+      {
+        "type": "heading",
+        "text": "Creme brûlée"
+      },
+      {
+        "type": "step",
+        "text": "Calentamos la leche y la infusionamos con la vainilla. Dejamos enfriar 24 minutos en el frigorífico y mezclamos con el resto de ingredientes."
+      },
+      {
+        "type": "heading",
+        "text": "Sable breton"
+      },
       {
         "type": "step",
         "text": "Montamos las yemas con los azúcares y las mezclamos con la mantequilla pomada. Seguidamente incorporamos la harina con el impulsor y la ralladura de naranja. Cocemos en aros metálicos sin engrasar a 170 ºC."
@@ -15640,6 +15901,14 @@
       {
         "type": "heading",
         "text": "Montaje"
+      },
+      {
+        "type": "step",
+        "text": "Ponemos el mousse de chocolate en un molde cilíndrico, insertamos un interior de créme brûlée previamente caramelizado, el cremoso de chocolate y volvemos a poner mus de chocolate. Cerramos con un rectángulo de sable breton. Una vez congelado el pastel, pistoleamos con el compresor la mezcla de chocolate - manteca de cacao y para la base rellenamos un rectángulo de sable bretón con cremoso alto el sol."
+      },
+      {
+        "type": "step",
+        "text": "Montamos las yemas con los azúcares y las mezclamos con la mantequilla pomada. Seguidamente incorporamos la harina con el impulsor y la ralladura de naranja. Cocemos en aros metálicos sin engrasar a 170 ºC."
       },
       {
         "type": "step",
@@ -15850,9 +16119,7 @@
     "subcategory": "Elaborados",
     "type": "Bizcochos",
     "image": "assets/img/recetas/tronco-de-navidad-de-turron.png",
-    "images": [
-      "assets/img/recetas/tronco-de-navidad-de-turron.png"
-    ],
+    "images": [],
     "time": "",
     "difficulty": "",
     "servings": "",
@@ -15878,7 +16145,11 @@
       "Se pone a calentar la nata y se le añade el azúcar. Se trocea el turrón y se incorpora a la nata caliente. Se sigue removiendo hasta que el turrón se ha deshecho totalmente.",
       "Se vuelca en un tupper hasta que se entibie y se guarda en la nevera durante 3 horas.",
       "Pasado el tiempo se montan las claras a punto de nieve. Se monta la mezcla de nata y turrón con las varillas eléctricas hasta que está bien montada y esponjosa. Una vez lista se empieza a añadir las claras montadas a punto de nieve poco a poco. Se echa un poco y se mezcla con la espátula y con movimientos envolventes, así hasta terminar con todas las claras montadas.",
-      "Se trocea el chocolate y se deja en un bol. La nata se calienta en el microondas y se vierte sobre el chocolate, se mezcla con el chocolate hasta que está bien derretido todo. Entonces se añade la mantequilla y se vuelve a mezclar bien. Se deja bien tapado con plástico bien pegado para que no se haga capa seca y se deja reposar."
+      "Se trocea el chocolate y se deja en un bol. La nata se calienta en el microondas y se vierte sobre el chocolate, se mezcla con el chocolate hasta que está bien derretido todo. Entonces se añade la mantequilla y se vuelve a mezclar bien. Se deja bien tapado con plástico bien pegado para que no se haga capa seca y se deja reposar.",
+      "Se pone en la bandeja donde se vaya a presentar una hoja de papel vegetal partida por la mitad para que se pueda retirar luego cuando se haya terminado de montar.",
+      "Se monta el tronco rellenando el bizcocho con el relleno de turrón dejando unos centímetros del final sin relleno par que no se salga.",
+      "Se corta un trozo en diagonal para formar como una rama.",
+      "Se cubre el tronco con la ganache de chocolate y se van dibujando con un tenedor arrugas y algún círculo."
     ],
     "notes": "https://youtu.be/kks2A6Lv3ZE",
     "tags": [
@@ -15969,38 +16240,28 @@
       {
         "type": "step",
         "text": "Se trocea el chocolate y se deja en un bol. La nata se calienta en el microondas y se vierte sobre el chocolate, se mezcla con el chocolate hasta que está bien derretido todo. Entonces se añade la mantequilla y se vuelve a mezclar bien. Se deja bien tapado con plástico bien pegado para que no se haga capa seca y se deja reposar."
+      },
+      {
+        "type": "heading",
+        "text": "MONTAJE"
+      },
+      {
+        "type": "step",
+        "text": "Se pone en la bandeja donde se vaya a presentar una hoja de papel vegetal partida por la mitad para que se pueda retirar luego cuando se haya terminado de montar."
+      },
+      {
+        "type": "step",
+        "text": "Se monta el tronco rellenando el bizcocho con el relleno de turrón dejando unos centímetros del final sin relleno par que no se salga."
+      },
+      {
+        "type": "step",
+        "text": "Se corta un trozo en diagonal para formar como una rama."
+      },
+      {
+        "type": "step",
+        "text": "Se cubre el tronco con la ganache de chocolate y se van dibujando con un tenedor arrugas y algún círculo."
       }
     ]
-  },
-  {
-    "id": "montaje-3",
-    "title": "MONTAJE:",
-    "category": "Dulce",
-    "subcategory": "Elaborados",
-    "type": "Bizcochos",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
-      "Se pone en la bandeja donde se vaya a presentar una hoja de papel vegetal partida por la mitad para que se pueda retirar luego cuando se haya terminado de montar."
-    ],
-    "steps": [
-      "Se monta el tronco rellenando el bizcocho con el relleno de turrón dejando unos centímetros del final sin relleno par que no se salga.",
-      "Se corta un trozo en diagonal para formar como una rama.",
-      "Se cubre el tronco con la ganache de chocolate y se van dibujando con un tenedor arrugas y algún círculo."
-    ],
-    "notes": "",
-    "tags": [
-      "Dulce",
-      "Elaborados",
-      "Bizcochos",
-      "Chocolate"
-    ],
-    "source": "DULCES.docx",
-    "needsReview": false,
-    "needsImageReview": true
   },
   {
     "id": "trufas",
@@ -21305,7 +21566,6 @@
     "type": "Canapes",
     "image": "assets/img/recetas/canapes-y-montaditos-especial-navidad.png",
     "images": [
-      "assets/img/recetas/canapes-y-montaditos-especial-navidad.png",
       "assets/img/recetas/canapes-y-montaditos-especial-navidad-2.png",
       "assets/img/recetas/canapes-y-montaditos-especial-navidad-3.png",
       "assets/img/recetas/canapes-y-montaditos-especial-navidad-4.png"
@@ -21330,36 +21590,7 @@
       "Hojas de lechuga",
       "3 huevos de codorniz cocidos",
       "Tallos de cebollino fresco",
-      "6 volovanes"
-    ],
-    "steps": [],
-    "notes": "https://youtu.be/VS2ivJ9zEik",
-    "tags": [
-      "Tapas",
-      "Canapes",
-      "Pescado",
-      "Carne",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "needsImageReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "manga-pastelera",
-    "title": "Manga pastelera",
-    "category": "Salado",
-    "subcategory": "Segundos",
-    "type": "Mariscos",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
+      "6 volovanes",
       "1 aguacate",
       "1 tomate que no sea muy grande",
       "Un trozo de cebolleta",
@@ -21370,29 +21601,74 @@
       "Sal",
       "Aceite de oliva virgen extra",
       "Pimienta recién molida",
-      "3 huevos de codorniz cocidos",
       "3 tomatitos cherry",
-      "6 rebanadas de pan",
       "3 huevos cocidos",
-      "Hojas de lechuga",
       "3 palitos de cangrejo o surimi",
       "Langostinos cocidos y pelados (Gambas o camarones)",
       "2-3 cucharadas de mayonesa",
       "6 langostinos cocidos y pelados para decorar por encima"
     ],
     "steps": [],
-    "notes": "",
+    "notes": "https://youtu.be/VS2ivJ9zEik",
     "tags": [
+      "Tapas",
+      "Canapes",
+      "Pescado",
+      "Carne",
       "Salado",
       "Segundos",
-      "Mariscos",
-      "Por revisar"
+      "Mariscos"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
+    "needsReview": false,
     "needsImageReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
+    "ingredientSections": [
+      {
+        "title": "",
+        "items": [
+          "200 gr lomo de bacalao descongelado y en su punto de sal",
+          "290 gr Pimientos asados",
+          "1 cucharada de queso crema",
+          "2 cucharadas de mayonesa",
+          "2 cucharadas de cebolla frita crujiente",
+          "Rodajas de aceituna negra (cantidad al gusto)",
+          "6 rebanadas de pan",
+          "150 gr de lonchas de salmón ahumado",
+          "3 cucharadas de mayonesa",
+          "1 huevo cocido",
+          "Pepinillos en vinagre",
+          "Alcaparras en vinagre",
+          "Un trozo de cebolleta fresca",
+          "Hojas de lechuga",
+          "3 huevos de codorniz cocidos",
+          "Tallos de cebollino fresco",
+          "6 volovanes"
+        ]
+      },
+      {
+        "title": "Manga pastelera",
+        "items": [
+          "1 aguacate",
+          "1 tomate que no sea muy grande",
+          "Un trozo de cebolleta",
+          "Zumo de lima (Puede ser de limón)",
+          "6 gambas o gambones",
+          "1 ajo",
+          "1/2 cucharadita de pimentón picante o dulce (Paprika)",
+          "Sal",
+          "Aceite de oliva virgen extra",
+          "Pimienta recién molida",
+          "3 huevos de codorniz cocidos",
+          "3 tomatitos cherry",
+          "6 rebanadas de pan",
+          "3 huevos cocidos",
+          "Hojas de lechuga",
+          "3 palitos de cangrejo o surimi",
+          "Langostinos cocidos y pelados (Gambas o camarones)",
+          "2-3 cucharadas de mayonesa",
+          "6 langostinos cocidos y pelados para decorar por encima"
+        ]
+      }
     ]
   },
   {
@@ -22863,9 +23139,7 @@
     "subcategory": "Primeros",
     "type": "Verduras y hortalizas",
     "image": "assets/img/recetas/coliflor-gratinada.png",
-    "images": [
-      "assets/img/recetas/coliflor-gratinada.png"
-    ],
+    "images": [],
     "time": "",
     "difficulty": "",
     "servings": "2 personas",
@@ -22879,17 +23153,22 @@
       "1 cucharadita cebolla en polvo",
       "Sal al gusto"
     ],
-    "steps": [],
+    "steps": [
+      "1️⃣ Limpiar la coliflor de hojas y tallo. Cortar en rodajas de unos 2 cm, de la parte central de la coliflor (de donde sale el tallo) para evitar que se desmoronen.",
+      "2️⃣ Mezclar las especias con el aceite y pincelar las rodajas de coliflor por ambos lados. Disponer en una bandeja de horno y asar 30-35 minutos a 180ºC con horno precalentado.",
+      "3️⃣ Cubrir con mozzarella rallada y hornear 8 minutos más a 220ºC, con función de grill activada.",
+      "4️⃣ Servir con salsa de yogur o alguna crema de verduras. ¡A disfrutar!"
+    ],
     "notes": "https://www.instagram.com/p/CzmJNzkMpTn/",
     "tags": [
       "Salado",
       "Primeros",
       "Verduras y hortalizas",
       "Verduras",
-      "Por revisar"
+      "Horno"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
+    "needsReview": false,
     "needsImageReview": false,
     "ingredientSections": [
       {
@@ -22911,40 +23190,28 @@
         ]
       }
     ],
-    "reviewNotes": [
-      "No se detectaron pasos"
+    "preparation": [
+      {
+        "type": "heading",
+        "text": "👨🏻‍🍳 PASO A PASO"
+      },
+      {
+        "type": "step",
+        "text": "1️⃣ Limpiar la coliflor de hojas y tallo. Cortar en rodajas de unos 2 cm, de la parte central de la coliflor (de donde sale el tallo) para evitar que se desmoronen."
+      },
+      {
+        "type": "step",
+        "text": "2️⃣ Mezclar las especias con el aceite y pincelar las rodajas de coliflor por ambos lados. Disponer en una bandeja de horno y asar 30-35 minutos a 180ºC con horno precalentado."
+      },
+      {
+        "type": "step",
+        "text": "3️⃣ Cubrir con mozzarella rallada y hornear 8 minutos más a 220ºC, con función de grill activada."
+      },
+      {
+        "type": "step",
+        "text": "4️⃣ Servir con salsa de yogur o alguna crema de verduras. ¡A disfrutar!"
+      }
     ]
-  },
-  {
-    "id": "paso-a-paso",
-    "title": "👨🏻‍🍳 PASO A PASO:",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Verduras y hortalizas",
-    "image": "",
-    "images": [],
-    "time": "8 minutos",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
-      "1️⃣ Limpiar la coliflor de hojas y tallo. Cortar en rodajas de unos 2 cm, de la parte central de la coliflor (de donde sale el tallo) para evitar que se desmoronen."
-    ],
-    "steps": [
-      "2️⃣ Mezclar las especias con el aceite y pincelar las rodajas de coliflor por ambos lados. Disponer en una bandeja de horno y asar 30-35 minutos a 180ºC con horno precalentado.",
-      "3️⃣ Cubrir con mozzarella rallada y hornear 8 minutos más a 220ºC, con función de grill activada.",
-      "4️⃣ Servir con salsa de yogur o alguna crema de verduras. ¡A disfrutar!"
-    ],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Verduras y hortalizas",
-      "Horno",
-      "Verduras"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": false,
-    "needsImageReview": true
   },
   {
     "id": "cordero-asado-navidad-miami",
@@ -31871,9 +32138,7 @@
     "subcategory": "Primeros",
     "type": "Guisos y potajes",
     "image": "assets/img/recetas/ossobuco-estofado.png",
-    "images": [
-      "assets/img/recetas/ossobuco-estofado.png"
-    ],
+    "images": [],
     "time": "",
     "difficulty": "",
     "servings": "3-4 personas",
@@ -31889,7 +32154,13 @@
       "️Aceite de oliva virgen extra",
       "️Sal y pimienta al gusto"
     ],
-    "steps": [],
+    "steps": [
+      "4️⃣ Retirar las piezas de ossobuco con cuidado de que no se rompan y triturar la salsa. Reincorporar todo a la olla y reducir a fuego suave otros 25-30 minutos más o hasta que la salsa adquiera el color y la textura que buscamos.",
+      "5️⃣ ¡Servir con la guarnición que más nos guste y a disfrutar!",
+      "🔸 Guarniciones recomendadas: puré de patata, risotto, patatas fritas o al horno, pasta…",
+      "(396) Ossobuco estofado 🍖 ¡Tan tierno que se deshace con la mirada! #recetas #youtubeshorts - YouTube",
+      "1️⃣ Salpimentar el ossobuco y dorar bien por ambos lados, en una olla con aceite de oliva para sellar la carne. Reservar.\n2️⃣ En la misma olla rehogar las hortalizas picadas, unos 10-15 minutos a fuego medio. Agregar el tomate troceado y sofreír otros 10 minutos más. Verter el vino tinto y reducir casi por completo (a fuego alto para evaporar el alcohol).\n3️⃣ Reincorporar la carne, cubrir con el caldo (de carne o pollo, preferiblemente) y hervir a fuego lento unas 2 horas y media con la olla tapada, hasta que la carne esté bien tierna."
+    ],
     "notes": "",
     "tags": [
       "Salado",
@@ -31897,10 +32168,12 @@
       "Guisos y potajes",
       "Carne",
       "Verduras",
-      "Por revisar"
+      "Sopas y cremas",
+      "Horno",
+      "Pasta"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
+    "needsReview": false,
     "needsImageReview": false,
     "ingredientSections": [
       {
@@ -31919,43 +32192,31 @@
         ]
       }
     ],
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "paso-a-paso-2",
-    "title": "👨🏻‍🍳 PASO A PASO:",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Sopas y cremas",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
-      "4️⃣ Retirar las piezas de ossobuco con cuidado de que no se rompan y triturar la salsa. Reincorporar todo a la olla y reducir a fuego suave otros 25-30 minutos más o hasta que la salsa adquiera el color y la textura que buscamos.",
-      "5️⃣ ¡Servir con la guarnición que más nos guste y a disfrutar!",
-      "🔸 Guarniciones recomendadas: puré de patata, risotto, patatas fritas o al horno, pasta…",
-      "(396) Ossobuco estofado 🍖 ¡Tan tierno que se deshace con la mirada! #recetas #youtubeshorts - YouTube"
-    ],
-    "steps": [],
-    "notes": "1️⃣ Salpimentar el ossobuco y dorar bien por ambos lados, en una olla con aceite de oliva para sellar la carne. Reservar.\n2️⃣ En la misma olla rehogar las hortalizas picadas, unos 10-15 minutos a fuego medio. Agregar el tomate troceado y sofreír otros 10 minutos más. Verter el vino tinto y reducir casi por completo (a fuego alto para evaporar el alcohol).\n3️⃣ Reincorporar la carne, cubrir con el caldo (de carne o pollo, preferiblemente) y hervir a fuego lento unas 2 horas y media con la olla tapada, hasta que la carne esté bien tierna.",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Sopas y cremas",
-      "Horno",
-      "Pasta",
-      "Carne",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "needsImageReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
+    "preparation": [
+      {
+        "type": "heading",
+        "text": "👨🏻‍🍳 PASO A PASO"
+      },
+      {
+        "type": "step",
+        "text": "4️⃣ Retirar las piezas de ossobuco con cuidado de que no se rompan y triturar la salsa. Reincorporar todo a la olla y reducir a fuego suave otros 25-30 minutos más o hasta que la salsa adquiera el color y la textura que buscamos."
+      },
+      {
+        "type": "step",
+        "text": "5️⃣ ¡Servir con la guarnición que más nos guste y a disfrutar!"
+      },
+      {
+        "type": "step",
+        "text": "🔸 Guarniciones recomendadas: puré de patata, risotto, patatas fritas o al horno, pasta…"
+      },
+      {
+        "type": "step",
+        "text": "(396) Ossobuco estofado 🍖 ¡Tan tierno que se deshace con la mirada! #recetas #youtubeshorts - YouTube"
+      },
+      {
+        "type": "step",
+        "text": "1️⃣ Salpimentar el ossobuco y dorar bien por ambos lados, en una olla con aceite de oliva para sellar la carne. Reservar.\n2️⃣ En la misma olla rehogar las hortalizas picadas, unos 10-15 minutos a fuego medio. Agregar el tomate troceado y sofreír otros 10 minutos más. Verter el vino tinto y reducir casi por completo (a fuego alto para evaporar el alcohol).\n3️⃣ Reincorporar la carne, cubrir con el caldo (de carne o pollo, preferiblemente) y hervir a fuego lento unas 2 horas y media con la olla tapada, hasta que la carne esté bien tierna."
+      }
     ]
   },
   {
@@ -32874,40 +33135,10 @@
     "subcategory": "Sin clasificar",
     "type": "Sin clasificar",
     "image": "assets/img/recetas/pastel-de-patata-y-espinacas.png",
-    "images": [
-      "assets/img/recetas/pastel-de-patata-y-espinacas.png"
-    ],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
-    "steps": [],
-    "notes": "https://www.instagram.com/p/DDZ-xi3o-bf/",
-    "tags": [
-      "Salado",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "needsImageReview": false,
-    "reviewNotes": [
-      "Subcategoria salada poco clara",
-      "Tipo especifico poco claro",
-      "No se detectaron ingredientes",
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "ingredientes-para-4-personas",
-    "title": "📝 INGREDIENTES PARA 4 PERSONAS",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Huevos y tortillas",
-    "image": "",
     "images": [],
     "time": "",
     "difficulty": "",
-    "servings": "4 personas",
+    "servings": "",
     "ingredients": [
       "4 cdas. de Maizena",
       "500 ml de leche o bebida vegetal",
@@ -32918,43 +33149,15 @@
       "2 huevos duros troceados",
       "Queso rallado"
     ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Huevos y tortillas",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "needsImageReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "pasos",
-    "title": "🍳 PASOS⠀⠀⠀⁠",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Huevos y tortillas",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
-      "Corta las patatas y cuécelas en agua con sal 10 min o hasta que puedas pincharlas con un cuchillo. Escúrrelas y reserva."
-    ],
     "steps": [
+      "Corta las patatas y cuécelas en agua con sal 10 min o hasta que puedas pincharlas con un cuchillo. Escúrrelas y reserva.",
       "Mientras coge una sartén y fríe la cebolla con un poco de sal y aceite hasta que esté blanda. Añade las espinacas y tapa 2 min para que se cocinen rápidamente.",
       "Pon la Maizena en un bol, añade la leche fría y remueve despacio para que se disuelva.",
       "Echa la mezcla a la sartén de las espinacas y vete removiendo 5-7 min hasta que espese la bechamel.",
       "Añade el jamón, los huevos duros y salpimienta al gusto.",
       "Para montar el pastel coge una fuente mediana (20x26cm). Pon las patatas haciendo una capa y encima las espinacas. Echa el queso y lleva al horno a gratinar a 230°C unos 6-7 min."
     ],
-    "notes": "",
+    "notes": "https://www.instagram.com/p/DDZ-xi3o-bf/",
     "tags": [
       "Salado",
       "Primeros",
@@ -32963,7 +33166,52 @@
     ],
     "source": "RECETAS DE EVERNOTE.docx",
     "needsReview": false,
-    "needsImageReview": true
+    "needsImageReview": false,
+    "ingredientSections": [
+      {
+        "title": "📝 INGREDIENTES PARA 4 PERSONAS",
+        "items": [
+          "4 cdas. de Maizena",
+          "500 ml de leche o bebida vegetal",
+          "2 patatas en rodajas",
+          "½ cebolla picada",
+          "300 g de espinacas frescas",
+          "6 lonchas de jamón picado",
+          "2 huevos duros troceados",
+          "Queso rallado"
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "type": "heading",
+        "text": "🍳 PASOS⠀⠀⠀⁠"
+      },
+      {
+        "type": "step",
+        "text": "Corta las patatas y cuécelas en agua con sal 10 min o hasta que puedas pincharlas con un cuchillo. Escúrrelas y reserva."
+      },
+      {
+        "type": "step",
+        "text": "Mientras coge una sartén y fríe la cebolla con un poco de sal y aceite hasta que esté blanda. Añade las espinacas y tapa 2 min para que se cocinen rápidamente."
+      },
+      {
+        "type": "step",
+        "text": "Pon la Maizena en un bol, añade la leche fría y remueve despacio para que se disuelva."
+      },
+      {
+        "type": "step",
+        "text": "Echa la mezcla a la sartén de las espinacas y vete removiendo 5-7 min hasta que espese la bechamel."
+      },
+      {
+        "type": "step",
+        "text": "Añade el jamón, los huevos duros y salpimienta al gusto."
+      },
+      {
+        "type": "step",
+        "text": "Para montar el pastel coge una fuente mediana (20x26cm). Pon las patatas haciendo una capa y encima las espinacas. Echa el queso y lleva al horno a gratinar a 230°C unos 6-7 min."
+      }
+    ]
   },
   {
     "id": "pastel-de-jamon-y-pollo",
@@ -33161,7 +33409,6 @@
     "type": "Pollo y aves",
     "image": "assets/img/recetas/pastel-de-pollo-y-jamon-y-pisto-thermomix.jpg",
     "images": [
-      "assets/img/recetas/pastel-de-pollo-y-jamon-y-pisto-thermomix.jpg",
       "assets/img/recetas/pastel-de-pollo-y-jamon-y-pisto-thermomix-2.jpg"
     ],
     "time": "",
@@ -33174,7 +33421,13 @@
       "500gr de pechugas de pollo o de pavo picadas",
       "2 huevos gordos",
       "30 g de jerez seco o Moriles",
-      "pimienta blanca y nuez moscada recién ralladas"
+      "pimienta blanca y nuez moscada recién ralladas",
+      "1200 grs. pimiento italiano (1000 grs. Limpio)",
+      "80-90 grs de aceite",
+      "1 diente de ajo",
+      "1 lata de tomate triturado (800 grs)",
+      "Sal",
+      "Azúcar"
     ],
     "steps": [
       "-Vuelca en el vaso el jamón serrano a ser posible magro y pulsa 1 ó 2 veces el botón turbo y a continuación tritúralo 2 ó 3 segundos en velocidad",
@@ -33184,7 +33437,11 @@
       "Ahora sí que parece que tenemos “puré”, por la textura de la carne de ave, pero si intentáis separarla con la espátula comprobaréis que está en trocitos. Picar siempre en este orden porque el pollo mancha el vaso y, si se picara al principio, los jamones luego “patinarían” y se picarían mal.",
       "- Sin fregar el vaso, vuelca los huevos, el jerez y las especias. No añadas sal porque los jamones llevan mucha. Bate esta mezcla durante 4 segundos en velocidad 4 y vierte sobre todas las carnes picadas. Con la espátula juntar todo bien hasta que desaparezca el huevo y se consiga una mezcla muy homogénea.",
       "- Moldea con las manos bien limpias dos rollos largos y estrechos de manera que nos quepan en el recipiente Varoma, formando como una especie de chorizo gordo pero sin puntas, es decir que el diámetro sea siempre el mismo y no disminuya en los extremos, para que todas las rodajas, al cortarlo después, salgan del mismo tamaño. Aunque la mezcla está blandita se manipula bien y no se deshace.",
-      "- Prepara el recipiente Varoma embadurnándolo bien con aceite tanto el fondo como las paredes para que el pastel no se pegue y coloca los dos rollos uno al lado del otro, tal cual están, sin envolverlos en nada en absoluto. Reserva el varoma."
+      "- Prepara el recipiente Varoma embadurnándolo bien con aceite tanto el fondo como las paredes para que el pastel no se pegue y coloca los dos rollos uno al lado del otro, tal cual están, sin envolverlos en nada en absoluto. Reserva el varoma.",
+      "Poner en 3 veces los pimientos troceados con el ajo en el vaso y trocearlos 4 seg. / vel. 4 Se va retirando en un bol, ó todo junto 6 seg. /vel. 4.",
+      "Añadir el aceite y programar 20 min. /Varoma/🔄/vel. Cuchara.",
+      "Agregue el tomate y el azúcar y programar 40 min. /Varoma/🔄/vel. Cuchara sin colocar el cubilete, mejor colocar el cestillo encima de la tapa para que no salpique",
+      "(o poner la bandeja o recipiente Varoma con el pollo para que se vaya haciendo)."
     ],
     "notes": "",
     "tags": [
@@ -33192,7 +33449,9 @@
       "Segundos",
       "Pollo y aves",
       "Thermomix",
-      "Carne"
+      "Carne",
+      "Primeros",
+      "Verduras y hortalizas"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
     "needsReview": false,
@@ -33233,44 +33492,53 @@
       {
         "type": "step",
         "text": "- Prepara el recipiente Varoma embadurnándolo bien con aceite tanto el fondo como las paredes para que el pastel no se pegue y coloca los dos rollos uno al lado del otro, tal cual están, sin envolverlos en nada en absoluto. Reserva el varoma."
+      },
+      {
+        "type": "heading",
+        "text": "PISTO"
+      },
+      {
+        "type": "step",
+        "text": "Poner en 3 veces los pimientos troceados con el ajo en el vaso y trocearlos 4 seg. / vel. 4 Se va retirando en un bol, ó todo junto 6 seg. /vel. 4."
+      },
+      {
+        "type": "step",
+        "text": "Añadir el aceite y programar 20 min. /Varoma/🔄/vel. Cuchara."
+      },
+      {
+        "type": "step",
+        "text": "Agregue el tomate y el azúcar y programar 40 min. /Varoma/🔄/vel. Cuchara sin colocar el cubilete, mejor colocar el cestillo encima de la tapa para que no salpique"
+      },
+      {
+        "type": "step",
+        "text": "(o poner la bandeja o recipiente Varoma con el pollo para que se vaya haciendo)."
+      }
+    ],
+    "ingredientSections": [
+      {
+        "title": "",
+        "items": [
+          "Para el pastel de pollo y jamón",
+          "130gr de jamón serrano picado",
+          "250gr de jamón de York o lacón muy magro picados",
+          "500gr de pechugas de pollo o de pavo picadas",
+          "2 huevos gordos",
+          "30 g de jerez seco o Moriles",
+          "pimienta blanca y nuez moscada recién ralladas"
+        ]
+      },
+      {
+        "title": "PISTO",
+        "items": [
+          "1200 grs. pimiento italiano (1000 grs. Limpio)",
+          "80-90 grs de aceite",
+          "1 diente de ajo",
+          "1 lata de tomate triturado (800 grs)",
+          "Sal",
+          "Azúcar"
+        ]
       }
     ]
-  },
-  {
-    "id": "pisto",
-    "title": "PISTO",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Verduras y hortalizas",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
-      "1200 grs. pimiento italiano (1000 grs. Limpio)",
-      "80-90 grs de aceite",
-      "1 diente de ajo",
-      "1 lata de tomate triturado (800 grs)",
-      "Sal",
-      "Azúcar"
-    ],
-    "steps": [
-      "Poner en 3 veces los pimientos troceados con el ajo en el vaso y trocearlos 4 seg. / vel. 4 Se va retirando en un bol, ó todo junto 6 seg. /vel. 4.",
-      "Añadir el aceite y programar 20 min. /Varoma/🔄/vel. Cuchara.",
-      "Agregue el tomate y el azúcar y programar 40 min. /Varoma/🔄/vel. Cuchara sin colocar el cubilete, mejor colocar el cestillo encima de la tapa para que no salpique",
-      "(o poner la bandeja o recipiente Varoma con el pollo para que se vaya haciendo)."
-    ],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Verduras y hortalizas",
-      "Carne"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": false,
-    "needsImageReview": true
   },
   {
     "id": "pastel-de-pollo-y-patata",
@@ -33797,9 +34065,7 @@
     "subcategory": "Primeros",
     "type": "Verduras y hortalizas",
     "image": "assets/img/recetas/pastelitos-de-verduras.png",
-    "images": [
-      "assets/img/recetas/pastelitos-de-verduras.png"
-    ],
+    "images": [],
     "time": "25 minutos",
     "difficulty": "",
     "servings": "",
@@ -33821,7 +34087,7 @@
       "Incorporamos después la harina y levadura tamizadas, sazonamos y volvemos a mezclar.",
       "Engrasamos con un poco de aceite los moldes para magdalenas y dividimos en ellos la masa. Horneamos durante 25 minutos a 180 º C"
     ],
-    "notes": "https://youtu.be/YBtIBppQ3Fk",
+    "notes": "https://youtu.be/YBtIBppQ3Fk\n\nINFORMACIÓN ADICIONAL: Los ingredientes principales de esta receta son las verduras. Las verduras tienen cualidades nutricionales únicas, apenas aportan calorías y grasas, y son muy ricas en vitaminas y minerales, ayudando así en el buen funcionamiento de nuestro cuerpo. Su contenido en fibra es muy significativo, por lo que colaboran en la regulación de la flora intestinal.",
     "tags": [
       "Salado",
       "Primeros",
@@ -33831,35 +34097,6 @@
     "source": "RECETAS DE EVERNOTE.docx",
     "needsReview": false,
     "needsImageReview": false
-  },
-  {
-    "id": "informacion-adicional",
-    "title": "INFORMACIÓN ADICIONAL",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Verduras y hortalizas",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
-    "steps": [],
-    "notes": "Los ingredientes principales de esta receta son las verduras. Las verduras tienen cualidades nutricionales únicas, apenas aportan calorías y grasas, y son muy ricas en vitaminas y minerales, ayudando así en el buen funcionamiento de nuestro cuerpo. Su contenido en fibra es muy significativo, por lo que colaboran en la regulación de la flora intestinal.",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Verduras y hortalizas",
-      "Verduras",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "needsImageReview": true,
-    "reviewNotes": [
-      "No se detectaron ingredientes",
-      "No se detectaron pasos"
-    ]
   },
   {
     "id": "patatas-a-la-escandinava",
@@ -34960,7 +35197,8 @@
     ],
     "source": "RECETAS DE EVERNOTE.docx",
     "needsReview": false,
-    "needsImageReview": false
+    "needsImageReview": false,
+    "menuCandidate": true
   },
   {
     "id": "pechugas-de-pollo-a-la-coca-cola",
@@ -36424,9 +36662,7 @@
     "subcategory": "Segundos",
     "type": "Pollo y aves",
     "image": "assets/img/recetas/pollo-al-limon-chino.png",
-    "images": [
-      "assets/img/recetas/pollo-al-limon-chino.png"
-    ],
+    "images": [],
     "time": "",
     "difficulty": "",
     "servings": "",
@@ -36435,36 +36671,7 @@
       "100 ml. salsa soja🍶",
       "2 huevos (L)🥚",
       "50 grs. maicena🍙",
-      "2cucharadita. levadura seca (8 grs.)🍚"
-    ],
-    "steps": [],
-    "notes": "https://www.instagram.com/p/ChaQJpZjSJL/",
-    "tags": [
-      "Salado",
-      "Segundos",
-      "Pollo y aves",
-      "Carne",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "needsImageReview": false,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "aove",
-    "title": "AOVE🥃",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Huevos y tortillas",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
+      "2cucharadita. levadura seca (8 grs.)🍚",
       "Zumo 1 limón (40 ml)🍋",
       "350 ml. caldo de pollo 🍶",
       "50 grs. azúcar🍚",
@@ -36478,16 +36685,63 @@
       "Bate los huevos con la maicena y levadura.⏱️",
       "Saca los filetes de la nevera, sécalos con papel de cocina y pásalos por esta mezcla de huevo. Fríelos 3 mins. por cada lado (tienen que quedar crujientes y dorados, pero jugosos en el centro). Coloca sobre papel absorbente para quitar el exceso de grasa e incorpóralos a la salsa de limón, da un calentón a todo junto para que armonicen los sabores (el rebozado del pollo se impregnará con la salsa) 🙊👍🏻"
     ],
-    "notes": "",
+    "notes": "https://www.instagram.com/p/ChaQJpZjSJL/",
     "tags": [
       "Salado",
+      "Segundos",
+      "Pollo y aves",
+      "Carne",
       "Primeros",
-      "Huevos y tortillas",
-      "Carne"
+      "Huevos y tortillas"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
     "needsReview": false,
-    "needsImageReview": true
+    "needsImageReview": false,
+    "ingredientSections": [
+      {
+        "title": "",
+        "items": [
+          "4 medias pechugas pollo 🍗",
+          "100 ml. salsa soja🍶",
+          "2 huevos (L)🥚",
+          "50 grs. maicena🍙",
+          "2cucharadita. levadura seca (8 grs.)🍚"
+        ]
+      },
+      {
+        "title": "AOVE🥃",
+        "items": [
+          "Zumo 1 limón (40 ml)🍋",
+          "350 ml. caldo de pollo 🍶",
+          "50 grs. azúcar🍚",
+          "25 grs. maicena🍙",
+          "4 rodajas limón 🍋",
+          "Sal🧂"
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "type": "heading",
+        "text": "AOVE🥃"
+      },
+      {
+        "type": "step",
+        "text": "Corta las pechugas por la mitad longitudinalmente, ponlas en un recipiente, echa la salsa de soja y deja marinar los filetes en la nevera media hora."
+      },
+      {
+        "type": "step",
+        "text": "Prepara la salsa de limón, mezclando todos los ingredientes con una batidora (menos las rodajas de limón), pon la mezcla en una sartén con las rodajas y deja cocinar hasta el primer hervor, hasta que espese, reserva."
+      },
+      {
+        "type": "step",
+        "text": "Bate los huevos con la maicena y levadura.⏱️"
+      },
+      {
+        "type": "step",
+        "text": "Saca los filetes de la nevera, sécalos con papel de cocina y pásalos por esta mezcla de huevo. Fríelos 3 mins. por cada lado (tienen que quedar crujientes y dorados, pero jugosos en el centro). Coloca sobre papel absorbente para quitar el exceso de grasa e incorpóralos a la salsa de limón, da un calentón a todo junto para que armonicen los sabores (el rebozado del pollo se impregnará con la salsa) 🙊👍🏻"
+      }
+    ]
   },
   {
     "id": "pollo-al-limon-estilo-chino",
@@ -37062,9 +37316,7 @@
     "subcategory": "Segundos",
     "type": "Pollo y aves",
     "image": "assets/img/recetas/pollo-en-salsa-con-champinones.png",
-    "images": [
-      "assets/img/recetas/pollo-en-salsa-con-champinones.png"
-    ],
+    "images": [],
     "time": "",
     "difficulty": "",
     "servings": "2 personas",
@@ -37082,17 +37334,25 @@
       "️1 cucharada de aceite de oliva",
       "️Sal y pimienta negra al gusto"
     ],
-    "steps": [],
+    "steps": [
+      "1️⃣ Cortar la pechuga de pollo en dados “tamaño bocado”. Adobar y reposar al menos una hora en frigorífico.",
+      "2️⃣ Salar el pollo y dorar en una cazuela con un buen chorro de aceite de oliva virgen extra. Retirar y reservar. Incorporar el ajo picado junto con los champis cortados en cuartos. Salpimentar ligeramente y rehogar o saltear a fuego alto, removiendo cada poco para evitar que se quemen, durante 6-7 minutos, hasta que estén dorados y hayan mermado su tamaño. 3️⃣ Reincorporar el pollo, desglosar con el vaso de vino blanco y reducir a fuego alto. Cuando haya evaporado casi por completo, verter el caldo de pollo y la maicena diluida en agua.",
+      "4️⃣ Hervir a fuego medio-bajo hasta que la salsa espese y adquiera la textura que buscamos, a mí me ha llevado unos 10-12 minutos.",
+      "Servir con arroz, patatas o sólo con pan ¡y a disfrutar!",
+      "Pollo en salsa con champiñones 🍄🍗 ¡Una receta perfecta para mojar pan! #recetas #youtubeshorts"
+    ],
     "notes": "",
     "tags": [
       "Salado",
       "Segundos",
       "Pollo y aves",
       "Carne",
-      "Por revisar"
+      "Primeros",
+      "Sopas y cremas",
+      "Arroz"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
+    "needsReview": false,
     "needsImageReview": false,
     "ingredientSections": [
       {
@@ -37118,41 +37378,32 @@
         ]
       }
     ],
-    "reviewNotes": [
-      "No se detectaron pasos"
+    "preparation": [
+      {
+        "type": "heading",
+        "text": "👨🏻‍🍳 PASO A PASO"
+      },
+      {
+        "type": "step",
+        "text": "1️⃣ Cortar la pechuga de pollo en dados “tamaño bocado”. Adobar y reposar al menos una hora en frigorífico."
+      },
+      {
+        "type": "step",
+        "text": "2️⃣ Salar el pollo y dorar en una cazuela con un buen chorro de aceite de oliva virgen extra. Retirar y reservar. Incorporar el ajo picado junto con los champis cortados en cuartos. Salpimentar ligeramente y rehogar o saltear a fuego alto, removiendo cada poco para evitar que se quemen, durante 6-7 minutos, hasta que estén dorados y hayan mermado su tamaño. 3️⃣ Reincorporar el pollo, desglosar con el vaso de vino blanco y reducir a fuego alto. Cuando haya evaporado casi por completo, verter el caldo de pollo y la maicena diluida en agua."
+      },
+      {
+        "type": "step",
+        "text": "4️⃣ Hervir a fuego medio-bajo hasta que la salsa espese y adquiera la textura que buscamos, a mí me ha llevado unos 10-12 minutos."
+      },
+      {
+        "type": "step",
+        "text": "Servir con arroz, patatas o sólo con pan ¡y a disfrutar!"
+      },
+      {
+        "type": "step",
+        "text": "Pollo en salsa con champiñones 🍄🍗 ¡Una receta perfecta para mojar pan! #recetas #youtubeshorts"
+      }
     ]
-  },
-  {
-    "id": "paso-a-paso-3",
-    "title": "👨🏻‍🍳 PASO A PASO:",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Sopas y cremas",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
-      "1️⃣ Cortar la pechuga de pollo en dados “tamaño bocado”. Adobar y reposar al menos una hora en frigorífico."
-    ],
-    "steps": [
-      "2️⃣ Salar el pollo y dorar en una cazuela con un buen chorro de aceite de oliva virgen extra. Retirar y reservar. Incorporar el ajo picado junto con los champis cortados en cuartos. Salpimentar ligeramente y rehogar o saltear a fuego alto, removiendo cada poco para evitar que se quemen, durante 6-7 minutos, hasta que estén dorados y hayan mermado su tamaño. 3️⃣ Reincorporar el pollo, desglosar con el vaso de vino blanco y reducir a fuego alto. Cuando haya evaporado casi por completo, verter el caldo de pollo y la maicena diluida en agua.",
-      "4️⃣ Hervir a fuego medio-bajo hasta que la salsa espese y adquiera la textura que buscamos, a mí me ha llevado unos 10-12 minutos.",
-      "Servir con arroz, patatas o sólo con pan ¡y a disfrutar!",
-      "Pollo en salsa con champiñones 🍄🍗 ¡Una receta perfecta para mojar pan! #recetas #youtubeshorts"
-    ],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Sopas y cremas",
-      "Arroz",
-      "Carne"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": false,
-    "needsImageReview": true
   },
   {
     "id": "pollo-en-salsa-con-pasta",
@@ -37217,9 +37468,7 @@
     "subcategory": "Segundos",
     "type": "Pollo y aves",
     "image": "assets/img/recetas/pollo-en-salsa-super-cremoso.jpg",
-    "images": [
-      "assets/img/recetas/pollo-en-salsa-super-cremoso.jpg"
-    ],
+    "images": [],
     "time": "",
     "difficulty": "",
     "servings": "",
@@ -37237,47 +37486,19 @@
     "steps": [
       "Corta el pollo en trozos de bocado y séllalos a fuego fuerte en una sartén. Añade las especias, la leche de coco y la salsa de soja. Corta los champiñones en trocitos e incorpora, tapa y deja cocinar apenas 5 min. entonces, añade queso rallado y deja que se derrita en la salsa para espesarla… quedará súper cremoso! Sirve bien caliente y espolvorea un poquito de cebollino picado. 😜 👍🏻"
     ],
-    "notes": "",
+    "notes": "TIPS: Ingredientes: 1️⃣ Puedes acompañar este plato con un arroz Basmati para complementarlo. ? 2️⃣ La cantidad de queso rallado dependerá de lo cremosa que quieras la salsa.",
     "tags": [
       "Salado",
       "Segundos",
       "Pollo y aves",
-      "Carne"
+      "Carne",
+      "Primeros",
+      "Arroces",
+      "Arroz"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
     "needsReview": false,
     "needsImageReview": false
-  },
-  {
-    "id": "tips",
-    "title": "TIPS:",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Arroces",
-    "image": "",
-    "images": [],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
-      "1️⃣ Puedes acompañar este plato con un arroz Basmati para complementarlo.",
-      "2️⃣ La cantidad de queso rallado dependerá de lo cremosa que quieras la salsa."
-    ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Arroces",
-      "Arroz",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "needsImageReview": true,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
   },
   {
     "id": "pollo-estilo-tikka-masala",
@@ -37506,44 +37727,13 @@
     "subcategory": "Segundos",
     "type": "Pollo y aves",
     "image": "assets/img/recetas/pollo-piri-piri.png",
-    "images": [
-      "assets/img/recetas/pollo-piri-piri.png"
-    ],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [
-      "10/12 muslitos de pollo",
-      "Unas patatas"
-    ],
-    "steps": [],
-    "notes": "",
-    "tags": [
-      "Salado",
-      "Segundos",
-      "Pollo y aves",
-      "Carne",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "needsImageReview": false,
-    "reviewNotes": [
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "perejil-fresco",
-    "title": "Perejil fresco",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Verduras y hortalizas",
-    "image": "",
     "images": [],
     "time": "",
     "difficulty": "",
     "servings": "",
     "ingredients": [
+      "10/12 muslitos de pollo",
+      "Unas patatas",
       "6 dientes de ajo",
       "1 pimiento rojo",
       "1 cebolla mediana",
@@ -37565,14 +37755,63 @@
     "notes": "",
     "tags": [
       "Salado",
+      "Segundos",
+      "Pollo y aves",
+      "Carne",
       "Primeros",
       "Verduras y hortalizas",
-      "Horno",
-      "Carne"
+      "Horno"
     ],
     "source": "RECETAS DE EVERNOTE.docx",
     "needsReview": false,
-    "needsImageReview": true
+    "needsImageReview": false,
+    "ingredientSections": [
+      {
+        "title": "",
+        "items": [
+          "10/12 muslitos de pollo",
+          "Unas patatas"
+        ]
+      },
+      {
+        "title": "Perejil fresco",
+        "items": [
+          "6 dientes de ajo",
+          "1 pimiento rojo",
+          "1 cebolla mediana",
+          "1 chile rojo fresco",
+          "1 cucharadita de orégano",
+          "1 cucharadita de perejil",
+          "2 cucharaditas de pimentón ahumado",
+          "Sal y pimienta negra",
+          "1 cucharada de vino blanco",
+          "3 cucharadas de AOVE",
+          "2 cucharadas de zumo de limón"
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "type": "heading",
+        "text": "Perejil fresco"
+      },
+      {
+        "type": "step",
+        "text": "Se trituran todos los ingredientes de la salsa"
+      },
+      {
+        "type": "step",
+        "text": "Se vierte la salsa sobre los muslitos y se impregna todo. Se deja marinar un par de horas en nevera. No más de 3 horas."
+      },
+      {
+        "type": "step",
+        "text": "Se lavan y cortan las patatas en cubos y se ponen por encima del pollo. Se tapa con papel de horno arrugado mojado en agua."
+      },
+      {
+        "type": "step",
+        "text": "Se hornea a 190º durante 40 minutos. Pasado el tiempo se quita el papel de horno y se deja 30 minutos más hasta que se dore."
+      }
+    ]
   },
   {
     "id": "pollo-teriyaki",
@@ -44075,36 +44314,6 @@
     "subcategory": "Primeros",
     "type": "Sopas y cremas",
     "image": "assets/img/recetas/sopa-instantanea-yatekomo.png",
-    "images": [
-      "assets/img/recetas/sopa-instantanea-yatekomo.png"
-    ],
-    "time": "",
-    "difficulty": "",
-    "servings": "",
-    "ingredients": [],
-    "steps": [],
-    "notes": "https://www.instagram.com/p/CwIlQ53oWWL/",
-    "tags": [
-      "Salado",
-      "Primeros",
-      "Sopas y cremas",
-      "Por revisar"
-    ],
-    "source": "RECETAS DE EVERNOTE.docx",
-    "needsReview": true,
-    "needsImageReview": false,
-    "reviewNotes": [
-      "No se detectaron ingredientes",
-      "No se detectaron pasos"
-    ]
-  },
-  {
-    "id": "1cs-de-aove",
-    "title": "🌱1CS de AOVE",
-    "category": "Salado",
-    "subcategory": "Primeros",
-    "type": "Sopas y cremas",
-    "image": "",
     "images": [],
     "time": "",
     "difficulty": "",
@@ -44125,7 +44334,7 @@
       "🌱1 vaso de agua caliente",
       "➡️Tan sencillo como mezclar todo y esperar 3 minutos!!!"
     ],
-    "notes": "",
+    "notes": "https://www.instagram.com/p/CwIlQ53oWWL/",
     "tags": [
       "Salado",
       "Primeros",
@@ -44135,7 +44344,47 @@
     ],
     "source": "RECETAS DE EVERNOTE.docx",
     "needsReview": false,
-    "needsImageReview": true
+    "needsImageReview": false,
+    "ingredientSections": [
+      {
+        "title": "🌱1CS de AOVE",
+        "items": [
+          "🌱2CS de salsa de soja",
+          "🌱1 CP de crema de frutos secos o tahini (yo he usado crema de almendras)",
+          "🌱2 lonchas de pechuga de pavo con alto porcentaje, que sea de calidad",
+          "🌱1/2 zanahoria picada",
+          "🌱 Un trozo de pimiento a daditos pequeños",
+          "🌱1CS de cebolla deshidratada",
+          "🌱 Perejil picado al gusto"
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "type": "heading",
+        "text": "🌱1CS de AOVE"
+      },
+      {
+        "type": "step",
+        "text": "🌱1CP de especias (he hecho una mezcla propia para activar el metabolismo con cúrcuma, pimienta, jengibre, ajo, cominos, clavo, perejil…)"
+      },
+      {
+        "type": "step",
+        "text": "👉 La más similar sería Sazonador gyros, si no simplemente añade cúrcuma y un poco de pimienta negra que actúa de activador 💪🏻"
+      },
+      {
+        "type": "step",
+        "text": "🌱 Fideos de arroz u otro tipo de pasta tipo: noodles,fideos chinos, pasta Konjac…"
+      },
+      {
+        "type": "step",
+        "text": "🌱1 vaso de agua caliente"
+      },
+      {
+        "type": "step",
+        "text": "➡️Tan sencillo como mezclar todo y esperar 3 minutos!!!"
+      }
+    ]
   },
   {
     "id": "sopa-verde-de-verano",
